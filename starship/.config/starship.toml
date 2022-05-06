@@ -1,0 +1,21 @@
+[aws]
+disabled = true
+
+[battery]
+disabled = true
+
+[cmd_duration]
+disabled = true
+
+[conda]
+disabled = true
+
+[directory]
+truncation_length = 2
+truncation_symbol = "…/"
+
+[helm]
+disabled = true
+
+[java]
+disabled = true
