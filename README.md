@@ -28,9 +28,9 @@ O passo a passo do processo fica:
     Note que o diretório de destino deve ser apenas um nível acima da `$HOME`
     para que o stow funcione corretamente.
 
-3.  Instalação de um módulo (por exemplo **prog**):
+3.  Instalação de um módulo (por exemplo **nvim**):
 
     ```bash
     cd ~/.dotfiles
-    stow prog
+    stow nvim
     ```
