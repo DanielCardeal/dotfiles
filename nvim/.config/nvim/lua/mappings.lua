@@ -33,12 +33,6 @@ wk.register({
         m = { "<cmd>Telescope man_pages<cr>", "man pages" },
     },
 
-    c = {
-        name = "code",
-        f = {"<cmd>lua vim.lsp.buf.formatting()<cr>", "format buffer" },
-        f = {"<cmd>lua vim.lsp.buf.code_actions()<cr>", "format buffer" },
-    },
-
     ["p"] = { "<cmd>Telescope projects<cr>", "projects" },
 	["q"] = { "<cmd>q<cr>", "quit" },
     ["h"] = { "<cmd>Telescope help_tags<cr>", "help" },
@@ -49,9 +43,11 @@ wk.register({
 -- Atalhos de movimentação [ (para trás)
 wk.register({
     ['h'] = { "<cmd>GitGutterPrevHunk<cr>", "prev hunk" },
+    ['e'] = { "<cmd> lua vim.diagnostic.goto_prev()<cr>", "prev err" }
 }, { prefix = "[" })
 
 -- Atalhos de movimentação ] (para frente)
 wk.register({
     ['h'] = { "<cmd>GitGutterNextHunk<cr>", "next hunk" },
+    ['e'] = { "<cmd> lua vim.diagnostic.goto_next()<cr>", "next err" }
 }, { prefix = "]" })

@@ -66,6 +66,50 @@ require('packer').startup(function()
     -- Git
     use 'airblade/vim-gitgutter'
 
+    -- LSP
+    use {
+        'neovim/nvim-lspconfig',
+        tag = "v0.1.3",
+        lock = true,
+        requires = 'williamboman/nvim-lsp-installer',
+        after = 'which-key.nvim',
+        config = function()
+            -- Função chamada quando um servidor é associado a um cliente
+            local on_attach = function(client, bufnr)
+                -- Configura omnifunc
+                vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+                -- Mappings.
+                local wk = require("which-key")
+                wk.register({
+                    K = { '<cmd>lua vim.lsp.buf.hover()<CR>' },
+                    ['C-k'] = {'<cmd>lua vim.lsp.buf.signature_help()<CR>'},
+                    g = {
+                        name = "goto",
+                        D = {'<cmd>lua vim.lsp.buf.declaration()<CR>', 'declaration'},
+                        d = {'<cmd>lua vim.lsp.buf.definition()<CR>', 'definition'},
+                        r = {'<cmd>lua vim.lsp.buf.references()<CR>', 'references'},
+                        i = {'<cmd>lua vim.lsp.buf.implementation()<CR>', 'implementation'},
+                    }
+                }, { buffer = bufnr })
+                wk.register({
+                    c = {
+                        name = 'code',
+                        r = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename' },
+                        a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', 'actions' },
+                        f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'format' },
+                    }
+                }, { prefix = "<leader>", buffer = bufnr })
+            end
+            -- Instalação & configuração
+            local servidores = { "sumneko_lua", "rust_analyzer", "pyright", "clangd"}
+            require('nvim-lsp-installer').setup { ensure_installed = servidores }
+            for _, servidor in pairs(servidores) do
+                require('lspconfig')[servidor].setup { on_attach = on_attach }
+            end
+        end,
+    }
+
     -- Treesitter
     -- use {
     --     disable = true,
@@ -91,23 +135,6 @@ require('packer').startup(function()
     --     end
     -- }
     -- use 'nvim-treesitter/nvim-treesitter-textobjects'
-
-    -- -- LSP
-    use {
-        'neovim/nvim-lspconfig',
-        requires = {{'williamboman/nvim-lsp-installer'}},
-        config = function()
-            local servidores = { "sumneko_lua", "rust_analyzer", "pyright" }
-            require("nvim-lsp-installer").setup {
-                -- Garante que os servidores estão instalados
-                ensure_installed = servidores
-            }
-            for _, servidor in ipairs(servidores) do
-                 -- Configura servidores
-                require('lspconfig')[servidor].setup {}
-            end
-        end,
-    }
 
     -- Linguagens
     -- Kitty
