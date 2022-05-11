@@ -33,10 +33,8 @@ wk.register({
         m = { "<cmd>Telescope man_pages<cr>", "man pages" },
     },
 
-    ["p"] = { "<cmd>Telescope projects<cr>", "projects" },
     ["q"] = { "<cmd>q<cr>", "quit" },
     ["h"] = { "<cmd>Telescope help_tags<cr>", "help" },
-    ["g"] = { "<cmd>Neogit<cr>", "git" },
     [":"] = { "<cmd>Telescope commands<cr>", "M-x" },
 }, { prefix = "<leader>" })
 
