@@ -60,7 +60,7 @@ require('packer').startup(function()
         end
     }
 
-    -- FIXME: ainda precisam ser configurados direito
+    -- Which-key
 	use  "folke/which-key.nvim"
 
     -- Git
