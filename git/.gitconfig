@@ -1,0 +1,7 @@
+[user]
+	email = cardeal.daniel@usp.br
+	name = Daniel Pessoa Cardeal
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
