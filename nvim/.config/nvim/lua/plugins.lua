@@ -2,22 +2,22 @@
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim/'
 
 if not vim.fn.isdirectory(install_path) then
-  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+    vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
 -- Inicializa os plugins
 local use = require('packer').use
 require('packer').startup(function()
-	-- Packer
-	use 'wbthomason/packer.nvim'
+    -- Packer
+    use 'wbthomason/packer.nvim'
 
-	-- Edição de texto
-	use 'tpope/vim-surround'
-	use 'tpope/vim-commentary'
+    -- Edição de texto
+    use 'tpope/vim-surround'
+    use 'tpope/vim-commentary'
     use 'jiangmiao/auto-pairs'
 
-	-- Tema
-	use {
+    -- Tema
+    use {
         'shaunsingh/nord.nvim',
         config = function()
             vim.g.nord_contrast = true
@@ -26,17 +26,17 @@ require('packer').startup(function()
             vim.cmd [[ colorscheme nord ]]
         end,
     }
-	use {'itchyny/lightline.vim', config = "vim.cmd [[ let g:lightline = {'colorscheme': 'nord' } ]]"}
+    use { 'itchyny/lightline.vim', config = "vim.cmd [[ let g:lightline = {'colorscheme': 'nord' } ]]" }
 
-	-- Busca (telescope)
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    -- Busca (telescope)
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use {
         'nvim-telescope/telescope.nvim',
         commit = 'd88094fbfd84b297178252230f6faf0e7d2f7650',
         lock = true,
         requires = { -- Deps
-            {'nvim-lua/plenary.nvim'},
-            {'kyazdani42/nvim-web-devicons'},
+            { 'nvim-lua/plenary.nvim' },
+            { 'kyazdani42/nvim-web-devicons' },
         },
         config = function()
             local t = require('telescope')
@@ -50,7 +50,7 @@ require('packer').startup(function()
                     live_grep = {
                         -- Busca em arquivos oculto em <leader>sp
                         additional_args = function(opts)
-                            return {'--hidden'}
+                            return { '--hidden' }
                         end,
                         file_ignore_patterns = { '.git' },
                     }
@@ -61,7 +61,7 @@ require('packer').startup(function()
     }
 
     -- Which-key
-	use  "folke/which-key.nvim"
+    use 'folke/which-key.nvim'
 
     -- Git
     use 'airblade/vim-gitgutter'
@@ -83,13 +83,13 @@ require('packer').startup(function()
                 local wk = require("which-key")
                 wk.register({
                     K = { '<cmd>lua vim.lsp.buf.hover()<CR>' },
-                    ['C-k'] = {'<cmd>lua vim.lsp.buf.signature_help()<CR>'},
+                    ['C-k'] = { '<cmd>lua vim.lsp.buf.signature_help()<CR>' },
                     g = {
                         name = "goto",
-                        D = {'<cmd>lua vim.lsp.buf.declaration()<CR>', 'declaration'},
-                        d = {'<cmd>lua vim.lsp.buf.definition()<CR>', 'definition'},
-                        r = {'<cmd>lua vim.lsp.buf.references()<CR>', 'references'},
-                        i = {'<cmd>lua vim.lsp.buf.implementation()<CR>', 'implementation'},
+                        D = { '<cmd>lua vim.lsp.buf.declaration()<CR>', 'declaration' },
+                        d = { '<cmd>lua vim.lsp.buf.definition()<CR>', 'definition' },
+                        r = { '<cmd>lua vim.lsp.buf.references()<CR>', 'references' },
+                        i = { '<cmd>lua vim.lsp.buf.implementation()<CR>', 'implementation' },
                     }
                 }, { buffer = bufnr })
                 wk.register({
@@ -102,7 +102,7 @@ require('packer').startup(function()
                 }, { prefix = "<leader>", buffer = bufnr })
             end
             -- Instalação & configuração
-            local servidores = { "sumneko_lua", "rust_analyzer", "pyright", "clangd"}
+            local servidores = { "sumneko_lua", "rust_analyzer", "pyright", "clangd" }
             require('nvim-lsp-installer').setup { ensure_installed = servidores }
             for _, servidor in pairs(servidores) do
                 require('lspconfig')[servidor].setup { on_attach = on_attach }
@@ -144,9 +144,9 @@ require('packer').startup(function()
         "jalvesaq/Nvim-R",
         branch = "stable",
         lock = true,
-        setup = function ()
+        setup = function()
             local g = vim.g
-            g.R_assign = 2  -- mapeia __ para ->
+            g.R_assign = 2 -- mapeia __ para ->
             g.R_auto_start = 1
         end,
     }
