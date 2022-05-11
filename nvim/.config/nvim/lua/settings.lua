@@ -17,6 +17,8 @@ o.scrolloff = 5
 o.clipboard = 'unnamed,unnamedplus'
 -- Edição
 o.smartindent = true
+-- Caracteres invisíveis
+o.list = true
 
 -- Opções de janela
 local wo = vim.wo
