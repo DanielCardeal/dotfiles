@@ -45,3 +45,13 @@ wk.register({
     ["g"] = { "<cmd>Neogit<cr>", "git" },
     [":"] = { "<cmd>Telescope commands<cr>", "M-x" },
 }, { prefix = "<leader>" })
+
+-- Atalhos de movimentação [ (para trás)
+wk.register({
+    ['h'] = { "<cmd>GitGutterPrevHunk<cr>", "prev hunk" },
+}, { prefix = "[" })
+
+-- Atalhos de movimentação ] (para frente)
+wk.register({
+    ['h'] = { "<cmd>GitGutterNextHunk<cr>", "next hunk" },
+}, { prefix = "]" })

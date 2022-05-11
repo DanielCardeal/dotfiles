@@ -63,6 +63,9 @@ require('packer').startup(function()
     -- FIXME: ainda precisam ser configurados direito
 	use  "folke/which-key.nvim"
 
+    -- Git
+    use 'airblade/vim-gitgutter'
+
     -- Treesitter
     -- use {
     --     disable = true,
