@@ -111,30 +111,36 @@ require('packer').startup(function()
     }
 
     -- Treesitter
-    -- use {
-    --     disable = true,
-    --     'nvim-treesitter/nvim-treesitter',
-    --     run = ':TSUpdate',
-    --     config = function()
-    --        require('nvim-treesitter.configs').setup {
-    --             ensure_installed = "maintained",
-    --             highlight = { enable = true },
-    --             textobjects = {
-    --                 select = {
-    --                     enable = true,
-    --                     lookahead = true,
-    --                     keymaps = {
-    --                         ["if"] = "@function.inner", ["af"] = "@function.outer",
-    --                         ["ia"] = "@parameter.inner", ["aa"] = "@parameter.outer",
-    --                         ["il"] = "@loop.inner", ["al"] = "@loop.outer",
-    --                         ["ic"] = "@class.inner", ["ac"] = "@class.outer",
-    --                     }
-    --                 }
-    --             }
-    --         }
-    --     end
-    -- }
-    -- use 'nvim-treesitter/nvim-treesitter-textobjects'
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        commit = "10d57b3ec14cac0b6b",
+        lock = true,
+        run = ':TSUpdate',
+        config = function()
+            require('nvim-treesitter.configs').setup {
+                ensure_installed = { "lua", "rust", "python", "c", "java" },
+                highlight = { enable = true },
+                textobjects = {
+                    select = {
+                        enable = true,
+                        lookahead = true,
+                        keymaps = {
+                            ["if"] = "@function.inner", ["af"] = "@function.outer",
+                            ["ia"] = "@parameter.inner", ["aa"] = "@parameter.outer",
+                            ["il"] = "@loop.inner", ["al"] = "@loop.outer",
+                            ["ic"] = "@class.inner", ["ac"] = "@class.outer",
+                        }
+                    }
+                }
+            }
+        end
+    }
+    use {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        commit = "094e8ad3cc839e825f",
+        lock = true,
+        after = 'nvim-treesitter',
+    }
 
     -- Linguagens
     -- Kitty
