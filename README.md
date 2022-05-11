@@ -34,3 +34,8 @@ O passo a passo do processo fica:
     cd ~/.dotfiles
     stow nvim
     ```
+
+    OBS: esse comando pode falhar se os arquivos presentes na sua máquina
+    conflitarem com os arquivos de configuração que se deseja sincronizar.
+    Nestes casos, o *stow* vai mostrar uma mensagem de erro que pode ser útil
+    para encontrar o arquivo problemático.
