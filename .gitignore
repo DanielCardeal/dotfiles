@@ -1,2 +1,7 @@
 # --- nvim
 nvim/**/plugin/
+
+# --- fish
+fish/**/completions/
+fish/**/conf.d/
+fish/**/functions/
