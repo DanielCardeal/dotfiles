@@ -1,6 +1,6 @@
 local wk = require('which-key')
 
--- Mappings do whichkey
+-- Atalhos de <leader>
 wk.register({
 	f = {
 		name = "file",
