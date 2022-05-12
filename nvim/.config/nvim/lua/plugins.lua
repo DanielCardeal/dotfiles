@@ -34,7 +34,7 @@ require('packer').startup(function()
         'nvim-telescope/telescope.nvim',
         commit = 'd88094fbfd84b297178252230f6faf0e7d2f7650',
         lock = true,
-        requires = { -- Deps
+        requires = {
             { 'nvim-lua/plenary.nvim' },
             { 'kyazdani42/nvim-web-devicons' },
         },
