@@ -33,6 +33,14 @@ wk.register({
         m = { "<cmd>Telescope man_pages<cr>", "man pages" },
     },
 
+    l = {
+        name = "lsp",
+        i = { "<cmd>LspInfo<cr>", "info" },
+        p = { "<cmd>LspPrintInstalled<cr>", "print servers" },
+        s = { "<cmd>LspStart<cr>", "start server" },
+        S = { "<cmd>LspStop<cr>", "stop server" },
+    },
+
     ["q"] = { "<cmd>q<cr>", "quit" },
     ["h"] = { "<cmd>Telescope help_tags<cr>", "help" },
     [":"] = { "<cmd>Telescope commands<cr>", "M-x" },
