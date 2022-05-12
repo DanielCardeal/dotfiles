@@ -39,7 +39,6 @@ wk.register({
         S = { "<cmd>LspStop<cr>", "stop server" },
     },
 
-    ["q"] = { "<cmd>q<cr>", "quit" },
     ["h"] = { "<cmd>Telescope help_tags<cr>", "help" },
     [":"] = { "<cmd>Telescope commands<cr>", "M-x" },
 }, { prefix = "<leader>" })
