@@ -44,5 +44,6 @@ O passo a passo do processo fica:
 
 Para que as configurações rodem tranquilamente, o seu sistema precisa ter:
 
+- Neovim >= 0.7.0
 - JetBrains Mono Nerd Font (download em
   [](https://www.nerdfonts.com/font-downloads))
