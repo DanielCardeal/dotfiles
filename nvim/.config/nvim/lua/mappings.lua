@@ -19,10 +19,8 @@ wk.register({
     [','] = { "<cmd>Telescope buffers<cr>", "list buffers" },
 
     w = {
-        name = "window",
-        w = { "<cmd>wNext<cr>", "window next" },
-        s = { "<cmd>split<cr>", "split horiz" },
-        v = { "<cmd>vsplit<cr>", "split vert" },
+        '<Cmd>lua require("which-key").show("\23", {mode = "n", auto = true})<CR>',
+        "window"
     },
 
     s = {
