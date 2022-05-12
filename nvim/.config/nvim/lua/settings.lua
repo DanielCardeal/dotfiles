@@ -19,6 +19,8 @@ o.clipboard = 'unnamed,unnamedplus'
 o.smartindent = true
 -- Caracteres invisíveis
 o.list = true
+-- Tempo de espera entre comandos
+o.timeoutlen = 500
 
 -- Opções de janela
 local wo = vim.wo
@@ -34,4 +36,3 @@ opt.tabstop = 4
 opt.shiftwidth = 0
 opt.expandtab = true
 opt.undofile = true -- undo persistente
-opt.timeoutlen = 300 -- tempo de espera entre comandos
