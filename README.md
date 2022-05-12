@@ -39,3 +39,10 @@ O passo a passo do processo fica:
     conflitarem com os arquivos de configuração que se deseja sincronizar.
     Nestes casos, o *stow* vai mostrar uma mensagem de erro que pode ser útil
     para encontrar o arquivo problemático.
+
+## Dependências
+
+Para que as configurações rodem tranquilamente, o seu sistema precisa ter:
+
+- JetBrains Mono Nerd Font (download em
+  [](https://www.nerdfonts.com/font-downloads))
