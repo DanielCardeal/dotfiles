@@ -71,8 +71,7 @@ require('packer').startup(function()
         'neovim/nvim-lspconfig',
         tag = "v0.1.3",
         lock = true,
-        requires = 'williamboman/nvim-lsp-installer',
-        after = 'which-key.nvim',
+        after = { 'which-key.nvim', 'nvim-lsp-installer' },
         config = function()
             -- Função chamada quando um servidor é associado a um cliente
             local on_attach = function(client, bufnr)
@@ -108,6 +107,11 @@ require('packer').startup(function()
                 require('lspconfig')[servidor].setup { on_attach = on_attach }
             end
         end,
+    }
+    use {
+        'williamboman/nvim-lsp-installer',
+        commit = 'b8a02bf2ec173c',
+        lock = true,
     }
 
     -- Treesitter
