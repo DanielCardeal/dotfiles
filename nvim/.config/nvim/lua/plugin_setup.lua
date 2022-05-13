@@ -85,6 +85,13 @@ require('packer').startup(function()
         after = 'nvim-treesitter',
     }
 
+    -- Goyo
+    use {
+        'junegunn/goyo.vim',
+        after = 'which-key.nvim',
+        config = require('plugins.goyo').config,
+    }
+
     -- Linguagens
     -- Kitty
     use { "fladson/vim-kitty", ft = "kitty" }
