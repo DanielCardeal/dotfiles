@@ -26,7 +26,13 @@ require('packer').startup(function()
     use { 'itchyny/lightline.vim', config = "vim.cmd [[ let g:lightline = {'colorscheme': 'nord' } ]]" }
 
     -- Git
-    use 'airblade/vim-gitgutter'
+    use {
+        'lewis6991/gitsigns.nvim',
+        tag = 'release',
+        lock = 'true',
+        after = 'which-key.nvim',
+        config = require('plugins.git').config,
+    }
 
     -- LSP
     use {
