@@ -25,6 +25,14 @@ require('packer').startup(function()
     }
     use { 'itchyny/lightline.vim', config = "vim.cmd [[ let g:lightline = {'colorscheme': 'nord' } ]]" }
 
+    -- Hop
+    use {
+        'phaazon/hop.nvim',
+        tag = 'v1.3.0',
+        lock = true,
+        config = require('plugins.hop').config,
+    }
+
     -- Git
     use {
         'lewis6991/gitsigns.nvim',
