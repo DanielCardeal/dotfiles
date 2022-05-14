@@ -10,7 +10,8 @@ function M.config()
                 s = { '<cmd>Gitsigns stage_hunk<cr>', 'stage hunk' },
                 u = { '<cmd>Gitsigns undo_stage_hunk<cr>', 'undo hunk' },
                 d = { gs.diffthis, 'diff file' },
-                p = { gs.preview_hunk, 'preview hunk' }
+                p = { gs.preview_hunk, 'preview hunk' },
+                b = { '<cmd>Gitsigns blame_line<cr>', 'blame line' },
             },
         }, { buffer = bufnr, prefix = '<leader>' })
         wk.register({
