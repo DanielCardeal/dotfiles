@@ -61,7 +61,7 @@ require('packer').startup(function()
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use {
         'nvim-telescope/telescope.nvim',
-        commit = 'd88094fbfd84b297178252230f6faf0e7d2f7650',
+        commit = 'b38dae44fb47a42d6588115928084b498c4c7b78',
         lock = true,
         requires = {
             { 'nvim-lua/plenary.nvim' },
