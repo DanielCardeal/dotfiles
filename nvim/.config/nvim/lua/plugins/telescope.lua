@@ -1,8 +1,7 @@
 local M = {}
 
 function M.config()
-    local t = require('telescope')
-    t.setup {
+    local setup = {
         pickers = {
             find_files = {
                 -- Mostra arquivos ocultos em <leader>ff
@@ -18,6 +17,23 @@ function M.config()
             }
         }
     }
+
+    -- Temas
+    local themes = {
+        ivy = {},
+        dropdown = { 'find_files', 'old_files', 'git_files', 'buffers', },
+        cursor = {},
+    }
+    for theme, pickers in pairs(themes) do
+        for _, picker in ipairs(pickers) do
+            setup.pickers[picker] = setup[picker] or {}
+            setup.pickers[picker].theme = theme
+        end
+    end
+
+    -- Inicialização e extensões
+    local t = require('telescope')
+    t.setup(setup)
     t.load_extension('fzf')
 end
 
