@@ -2,7 +2,13 @@ local M = {}
 
 function M.config()
     -- Servidores configurados
-    local servidores = { "sumneko_lua", "rust_analyzer", "pyright", "clangd" }
+    local servidores = {
+        "clangd",
+        "kotlin_language_server",
+        "pyright",
+        "rust_analyzer",
+        "sumneko_lua",
+    }
 
     -- Função chamada quando o cliente `client` é associado ao buffer de número
     -- `bufnr`.
