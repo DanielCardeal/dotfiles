@@ -21,7 +21,7 @@ function M.config()
     -- Temas
     local themes = {
         ivy = {},
-        dropdown = { 'find_files', 'old_files', 'git_files', 'buffers', },
+        dropdown = { 'find_files', 'old_files', 'git_files', 'buffers', 'oldfiles' },
         cursor = {},
     }
     for theme, pickers in pairs(themes) do
