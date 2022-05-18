@@ -150,6 +150,7 @@ require('packer').startup(function()
         "jalvesaq/Nvim-R",
         branch = "stable",
         lock = true,
+        ft = 'r',
         setup = require('ling.r').setup,
     }
 end)
