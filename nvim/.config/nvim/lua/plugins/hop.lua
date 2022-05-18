@@ -2,9 +2,7 @@ local M = {}
 
 function M.config()
     local wk = require('which-key')
-    wk.register({
-        f = { "<cmd>HopChar1<cr>" },
-        s = { "<cmd>HopChar2<cr>" },
+    wk.register {
         g = {
             s = {
                 name = "hop",
@@ -15,7 +13,9 @@ function M.config()
                 ["/"] = { "<cmd>HopPattern<cr>", "pattern" },
             },
         },
-    })
+    }
+    vim.api.nvim_set_keymap('n', 'f', "<cmd>HopChar1<cr>", {})
+    vim.api.nvim_set_keymap('n', 's', "<cmd>HopChar2<cr>", {})
 
     -- Inicializa hop com opções padrão
     require('hop').setup()
