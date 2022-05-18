@@ -21,6 +21,8 @@ o.smartindent = true
 o.list = true
 -- Tempo de espera entre comandos
 o.timeoutlen = 500
+-- Statusline global
+o.laststatus = 3
 
 -- Opções de janela
 local wo = vim.wo
