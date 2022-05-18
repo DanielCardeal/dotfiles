@@ -85,6 +85,17 @@ require('packer').startup(function()
         after = 'nvim-treesitter',
     }
 
+    -- File explorer
+    use {
+        'kyazdani42/nvim-tree.lua',
+        commit = '9d26594b6caf3caee46dc12ceae62b5dcbbc28d6',
+        lock = true,
+        requires = 'kyazdani42/nvim-web-devicons',
+        opt = false,
+        setup = require('plugins.nvim-tree').setup,
+        config = require('plugins.nvim-tree').config,
+    }
+
     -- Goyo
     use {
         'junegunn/goyo.vim',
