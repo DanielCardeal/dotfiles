@@ -6,12 +6,7 @@ function M.setup()
 end
 
 function M.config()
-    require('nvim-tree').setup { }
-    -- Mappings
-    local wk = require('which-key')
-    wk.register({
-        ['<tab>'] = { '<cmd>NvimTreeToggle<cr>', 'toggle tree' },
-    }, { prefix = '<leader>' })
+    require('nvim-tree').setup {}
 end
 
 return M
