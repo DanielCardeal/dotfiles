@@ -108,6 +108,13 @@ require('packer').startup(function()
         config = require('plugins.nvim-tree').config,
     }
 
+    -- Snippets
+    use {
+        'L3MON4D3/LuaSnip',
+        requires = 'rafamadriz/friendly-snippets',
+        config = require('plugins.snippets').config,
+    }
+
     -- Goyo
     use {
         'junegunn/goyo.vim',
