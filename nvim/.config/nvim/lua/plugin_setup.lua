@@ -49,7 +49,7 @@ require('packer').startup(function()
     use {
         'lewis6991/gitsigns.nvim',
         tag = 'release',
-        lock = 'true',
+        lock = true,
         after = 'which-key.nvim',
         config = require('plugins.git').config,
     }
