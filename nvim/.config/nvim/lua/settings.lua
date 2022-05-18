@@ -1,40 +1,40 @@
--- Variaveis globais
-local g = vim.g
-g.mapleader = ' '
+-- Variaveis globais ("let g:blabla")
+let = {
+    mapleader = ' ',
+}
+for k, v in pairs(let) do
+    vim.g[k] = v
+end
 
--- Opções globais
-local o = vim.o
-o.swapfile = false
-o.backup = false
--- Busca
-o.ignorecase = true
-o.smartcase = true
-o.hlsearch = true
-o.incsearch = true
--- Navegação
-o.scrolloff = 5
--- Copia e cola consistente
-o.clipboard = 'unnamed,unnamedplus'
--- Edição
-o.smartindent = true
--- Caracteres invisíveis
-o.list = true
--- Tempo de espera entre comandos
-o.timeoutlen = 500
--- Statusline global
-o.laststatus = 3
-
--- Opções de janela
-local wo = vim.wo
--- Estética
-wo.number = true
-wo.cursorline = true
--- Folds
-wo.foldminlines = 5
-
--- Opções gerais
-local opt = vim.opt
-opt.tabstop = 4
-opt.shiftwidth = 0
-opt.expandtab = true
-opt.undofile = true -- undo persistente
+-- Opções globais ("set blabla")
+local set = {
+    undofile = true,
+    swapfile = false,
+    backup = false,
+    -- Busca
+    ignorecase = true,
+    smartcase = true,
+    hlsearch = true,
+    incsearch = true,
+    -- Navegação
+    scrolloff = 5,
+    -- Copia e cola consistente
+    clipboard = 'unnamed,unnamedplus',
+    -- Edição
+    smartindent = true,
+    -- Caracteres invisíveis
+    list = true,
+    -- Tempo de espera entre comandos
+    timeoutlen = 500,
+    -- Statusline global
+    laststatus = 3,
+    tabstop = 4,
+    shiftwidth = 0,
+    expandtab = true,
+    -- Visuais
+    number = true,
+    cursorline = true,
+}
+for k, v in pairs(set) do
+    vim.o[k] = v
+end
