@@ -20,10 +20,15 @@ require('packer').startup(function()
     -- Temas
     use {
         'shaunsingh/nord.nvim',
+        disabled = true, -- NOTE: desabilitado
         setup = require('temas.nord').setup,
-        config = "vim.cmd [[ colorscheme nord ]]"
     }
     use { 'itchyny/lightline.vim', config = "vim.cmd [[ let g:lightline = {'colorscheme': 'nord' } ]]" }
+    use {
+        "catppuccin/nvim",
+        as = "catppuccin",
+        config = "vim.cmd [[ colorscheme catppuccin ]]"
+    }
 
     -- Hop
     use {
