@@ -20,7 +20,7 @@ function M.config()
         local wk = require("which-key")
         wk.register({
             K = { '<cmd>lua vim.lsp.buf.hover()<CR>' },
-            ['C-k'] = { '<cmd>lua vim.lsp.buf.signature_help()<CR>' },
+            ['<C-k>'] = { '<cmd>lua vim.lsp.buf.signature_help()<CR>' },
             g = {
                 name = "goto",
                 D = { '<cmd>lua vim.lsp.buf.declaration()<CR>', 'declaration' },
