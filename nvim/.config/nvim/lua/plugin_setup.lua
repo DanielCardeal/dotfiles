@@ -59,7 +59,7 @@ require('packer').startup(function()
         'neovim/nvim-lspconfig',
         tag = "v0.1.3",
         lock = true,
-        after = { 'which-key.nvim', 'nvim-lsp-installer' },
+        after = { 'which-key.nvim', 'nvim-lsp-installer', 'nvim-cmp' },
         config = require('plugins.lsp').config,
     }
     use {
@@ -113,6 +113,25 @@ require('packer').startup(function()
         'L3MON4D3/LuaSnip',
         requires = 'rafamadriz/friendly-snippets',
         config = require('plugins.snippets').config,
+    }
+
+    -- Autocomplete
+    use {
+        'hrsh7th/nvim-cmp',
+        commit = '9a0c639ac2324e6e9ecc54dc22b1d32bb6c42ab9',
+        lock = true,
+        requires = {
+            -- ícones
+            'onsails/lspkind.nvim',
+            -- completion sources
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lua',
+            'hrsh7th/cmp-path',
+            'saadparwaiz1/cmp_luasnip',
+        },
+        after = 'LuaSnip',
+        config = require('plugins.completion').config,
     }
 
     -- Goyo

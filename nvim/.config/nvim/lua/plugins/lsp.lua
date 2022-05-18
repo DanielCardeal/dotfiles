@@ -20,7 +20,6 @@ function M.config()
         local wk = require("which-key")
         wk.register({
             K = { '<cmd>lua vim.lsp.buf.hover()<CR>' },
-            ['<C-k>'] = { '<cmd>lua vim.lsp.buf.signature_help()<CR>' },
             g = {
                 name = "goto",
                 D = { '<cmd>lua vim.lsp.buf.declaration()<CR>', 'declaration' },
@@ -39,11 +38,19 @@ function M.config()
         }, { prefix = "<leader>", buffer = bufnr })
     end
 
+    -- Aprimora autocomplete dependendo do server
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+    )
+
     -- Garante que todos os servidores que devem ser usados estão devidamente
     -- instalados e inicializados
     require('nvim-lsp-installer').setup { ensure_installed = servidores }
     for _, servidor in pairs(servidores) do
-        require('lspconfig')[servidor].setup { on_attach = on_attach }
+        require('lspconfig')[servidor].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+        }
     end
 end
 
