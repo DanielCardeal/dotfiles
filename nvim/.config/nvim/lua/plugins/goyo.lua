@@ -1,6 +1,6 @@
 local M = {}
 
-function M.config()
+function M.setup()
     local wk = require('which-key')
     wk.register({
         z = { '<cmd>Goyo<cr>', 'toggle zen' },

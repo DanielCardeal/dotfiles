@@ -138,7 +138,8 @@ require('packer').startup(function()
     use {
         'junegunn/goyo.vim',
         after = 'which-key.nvim',
-        config = require('plugins.goyo').config,
+        cmd = 'Goyo',
+        setup = require('plugins.goyo').setup(),
     }
 
     -- Linguagens
