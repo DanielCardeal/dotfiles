@@ -4,8 +4,8 @@ local ls = require('luasnip')
 local map = vim.keymap.set
 
 -- Atalhos sem prefixo
-map('n', 'f', "<cmd>HopChar1<cr>", {})
-map('n', 's', "<cmd>HopChar2<cr>", {})
+map({ 'n', 'v' }, 'f', "<cmd>HopChar1<cr>", {})
+map({ 'n', 'v' }, 's', "<cmd>HopChar2<cr>", {})
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {})
 
 -- <c-j> para próximo campo do snippet
