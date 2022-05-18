@@ -19,7 +19,6 @@ function M.config()
         -- Mappings
         local wk = require("which-key")
         wk.register({
-            K = { '<cmd>lua vim.lsp.buf.hover()<CR>' },
             g = {
                 name = "goto",
                 D = { '<cmd>lua vim.lsp.buf.declaration()<CR>', 'declaration' },
