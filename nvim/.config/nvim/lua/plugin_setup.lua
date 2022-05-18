@@ -23,11 +23,18 @@ require('packer').startup(function()
         disabled = true, -- NOTE: desabilitado
         setup = require('temas.nord').setup,
     }
-    use { 'itchyny/lightline.vim', config = "vim.cmd [[ let g:lightline = {'colorscheme': 'nord' } ]]" }
     use {
         "catppuccin/nvim",
         as = "catppuccin",
         config = "vim.cmd [[ colorscheme catppuccin ]]"
+    }
+
+    -- StatusLine
+    use {
+        'feline-nvim/feline.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        after = 'catppuccin',
+        config = require('plugins.feline').config,
     }
 
     -- Hop
