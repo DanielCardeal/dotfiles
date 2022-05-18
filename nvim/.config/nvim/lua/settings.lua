@@ -1,6 +1,7 @@
 -- Variaveis globais ("let g:blabla")
 let = {
     mapleader = ' ',
+    nani_theme = 'catppuccin',
 }
 for k, v in pairs(let) do
     vim.g[k] = v

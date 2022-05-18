@@ -26,7 +26,6 @@ require('packer').startup(function()
     use {
         "catppuccin/nvim",
         as = "catppuccin",
-        config = "vim.cmd [[ colorscheme catppuccin ]]"
     }
 
     -- StatusLine
