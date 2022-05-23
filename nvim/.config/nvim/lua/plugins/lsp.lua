@@ -8,6 +8,7 @@ function M.config()
         "pyright",
         "rust_analyzer",
         "sumneko_lua",
+        "jdtls", -- Java
     }
 
     -- Função chamada quando o cliente `client` é associado ao buffer de número
