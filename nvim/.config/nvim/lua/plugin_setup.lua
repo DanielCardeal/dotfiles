@@ -28,6 +28,15 @@ require('packer').startup(function()
         as = "catppuccin",
     }
 
+    -- TODOs coloridos
+    use {
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        config = function()
+            require("todo-comments").setup {}
+        end,
+    }
+
     -- StatusLine
     use {
         'feline-nvim/feline.nvim',
