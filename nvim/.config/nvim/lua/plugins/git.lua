@@ -12,6 +12,8 @@ function M.config()
                 d = { gs.diffthis, 'diff file' },
                 p = { gs.preview_hunk, 'preview hunk' },
                 b = { '<cmd>Gitsigns blame_line<cr>', 'blame line' },
+                r = { '<cmd>Gitsigns reset_hunk<cr>', 'reset hunk' },
+                R = { '<cmd>Gitsigns reset_buffer<cr>', 'reset buffer' },
             },
         }, { buffer = bufnr, prefix = '<leader>' })
         wk.register({
