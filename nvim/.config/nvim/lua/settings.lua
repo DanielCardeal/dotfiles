@@ -23,6 +23,7 @@ local set = {
     clipboard = 'unnamed,unnamedplus',
     -- Edição
     smartindent = true,
+    textwidth = 80,
     -- Caracteres invisíveis
     list = true,
     -- Tempo de espera entre comandos
