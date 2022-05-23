@@ -1,11 +1,7 @@
 local M = {}
 
 function M.config()
-    -- Linguagens que devem estar no sistema
-    local linguagens = { "lua", "rust", "python", "c", "java", 'kotlin', }
-
     require('nvim-treesitter.configs').setup {
-        ensure_installed = linguagens,
         highlight = { enable = true },
         textobjects = {
             select = {
