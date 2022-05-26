@@ -36,6 +36,7 @@ local set = {
     -- Visuais
     number = true,
     cursorline = true,
+    termguicolors = true,
     -- Corretor de palavras
     spelllang = "pt_br",
     spell = true,
