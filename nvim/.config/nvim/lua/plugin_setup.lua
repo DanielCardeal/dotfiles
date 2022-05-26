@@ -106,6 +106,14 @@ require('packer').startup(function()
         after = 'nvim-treesitter',
     }
 
+    -- Trouble
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        cmd = "Trouble",
+        config = require('plugins.trouble').config,
+    }
+
     -- File explorer
     use {
         'kyazdani42/nvim-tree.lua',

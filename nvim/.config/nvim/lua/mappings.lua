@@ -48,6 +48,16 @@ wk.register({
         m = { "<cmd>Telescope man_pages<cr>", "man pages" },
     },
 
+    t = {
+        name = "trouble",
+        t = { "<cmd>Trouble<cr>", "focus" },
+        d = { "<cmd>Trouble document_diagnostics<cr>", "buf diag" },
+        D = { "<cmd>Trouble workspace_diagnostics<cr>", "work diag" },
+        q = { "<cmd>Trouble quickfix<cr>", "quickfix" },
+        l = { "<cmd>Trouble loclist<cr>", "loclist" },
+        g = { "<cmd>TodoTrouble<cr>", "TODOs" },
+    },
+
     l = {
         name = "lsp",
         i = { "<cmd>LspInfo<cr>", "info" },
