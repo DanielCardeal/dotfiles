@@ -30,6 +30,7 @@ local set = {
     timeoutlen = 500,
     -- Statusline global
     laststatus = 3,
+    -- Tab
     tabstop = 4,
     shiftwidth = 0,
     expandtab = true,
