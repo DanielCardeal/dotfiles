@@ -28,6 +28,14 @@ require('packer').startup(function()
         as = "catppuccin",
     }
 
+    -- StatusLine
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        after = 'catppuccin',
+        config = require('plugins.statusline').config,
+    }
+
     -- TODOs coloridos
     use {
         "folke/todo-comments.nvim",
@@ -35,14 +43,6 @@ require('packer').startup(function()
         config = function()
             require("todo-comments").setup {}
         end,
-    }
-
-    -- StatusLine
-    use {
-        'feline-nvim/feline.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
-        after = 'catppuccin',
-        config = require('plugins.feline').config,
     }
 
     -- Hop
