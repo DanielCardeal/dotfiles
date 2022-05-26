@@ -120,7 +120,7 @@ require('packer').startup(function()
         commit = '9d26594b6caf3caee46dc12ceae62b5dcbbc28d6',
         lock = true,
         requires = 'kyazdani42/nvim-web-devicons',
-        cmd = 'NvimTreeToggle',
+        cmd = {'NvimTreeFocus', 'NvimTreeClose'},
         setup = require('plugins.nvim-tree').setup,
         config = require('plugins.nvim-tree').config,
     }
