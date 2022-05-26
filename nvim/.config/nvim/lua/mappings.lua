@@ -82,7 +82,7 @@ wk.register({
         b = { "<cmd>Telescope keymaps<cr>", "bindings" },
     },
 
-    z = { '<cmd>Goyo<cr>', 'toggle zen' },
+    Z = { '<cmd>Goyo<cr>', 'toggle zen' },
 
     [":"] = { "<cmd>Telescope commands<cr>", "M-x" },
     [' '] = { "<cmd>Telescope git_files<cr>", "git files" },
