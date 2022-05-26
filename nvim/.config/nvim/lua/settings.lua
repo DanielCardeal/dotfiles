@@ -36,6 +36,9 @@ local set = {
     -- Visuais
     number = true,
     cursorline = true,
+    -- Corretor de palavras
+    spelllang = "pt_br",
+    spell = true,
 }
 for k, v in pairs(set) do
     vim.o[k] = v

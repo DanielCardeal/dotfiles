@@ -82,6 +82,11 @@ wk.register({
         b = { "<cmd>Telescope keymaps<cr>", "bindings" },
     },
 
+    z = {
+        function() vim.o.spell = not vim.o.spell end,
+        "toggle spell"
+    },
+
     Z = { '<cmd>Goyo<cr>', 'toggle zen' },
 
     [":"] = { "<cmd>Telescope commands<cr>", "M-x" },
