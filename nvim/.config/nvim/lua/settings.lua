@@ -1,5 +1,5 @@
 -- Variaveis globais ("let g:blabla")
-let = {
+local let = {
     mapleader = ' ',
     nani_theme = 'catppuccin',
 }
