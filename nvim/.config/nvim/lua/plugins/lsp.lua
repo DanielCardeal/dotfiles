@@ -9,6 +9,7 @@ function M.config()
         "rust_analyzer",
         "sumneko_lua",
         "jdtls", -- Java
+        "vimls", -- Vimscript
     }
 
     -- Função chamada quando o cliente `client` é associado ao buffer de número
