@@ -20,19 +20,16 @@ require('packer').startup(function()
     -- Temas
     use {
         'shaunsingh/nord.nvim',
-        disabled = true, -- NOTE: desabilitado
         setup = require('temas.nord').setup,
-    }
-    use {
-        "catppuccin/nvim",
-        as = "catppuccin",
+        config = function ()
+            vim.cmd("colorscheme nord")
+        end
     }
 
     -- StatusLine
     use {
         'nvim-lualine/lualine.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
-        after = 'catppuccin',
         config = require('plugins.statusline').config,
     }
 
