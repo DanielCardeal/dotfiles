@@ -30,6 +30,7 @@ require('packer').startup(function()
     use {
         'nvim-lualine/lualine.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
+        event = 'BufEnter',
         config = require('plugins.statusline').config,
     }
 
@@ -37,6 +38,7 @@ require('packer').startup(function()
     use {
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
+        event = "BufEnter",
         config = function()
             require("todo-comments").setup {}
         end,
@@ -70,6 +72,7 @@ require('packer').startup(function()
     use {
         'williamboman/nvim-lsp-installer',
         commit = 'b8a02bf2ec173c',
+        event  = 'BufEnter',
         lock = true,
     }
 
@@ -94,6 +97,7 @@ require('packer').startup(function()
         commit = "10d57b3ec14cac0b6b",
         lock = true,
         run = ':TSUpdate',
+        event = 'BufEnter',
         config = require('plugins.treesitter').config,
     }
     use {
