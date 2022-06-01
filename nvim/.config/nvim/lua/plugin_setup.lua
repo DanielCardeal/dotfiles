@@ -34,6 +34,14 @@ require('packer').startup(function()
         config = require('plugins.statusline').config,
     }
 
+    -- Remove trailing whitespace
+    use {
+        "DanielCardeal/trimmy",
+        config = function()
+            require('trimmy').setup()
+        end
+    }
+
     -- TODOs coloridos
     use {
         "folke/todo-comments.nvim",
