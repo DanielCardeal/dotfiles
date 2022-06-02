@@ -2,6 +2,14 @@ local M = {}
 
 function M.config()
     local setup = {
+        extensions = {
+            -- Extensão para fuzzy search com padrões inteligentes
+            fzf = {
+                fuzzy = true,
+                override_generic_sorter = true,
+                override_file_sorter = true,
+            }
+        },
         pickers = {
             find_files = {
                 -- Mostra arquivos ocultos em <leader>ff
