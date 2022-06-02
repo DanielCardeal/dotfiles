@@ -91,7 +91,7 @@ require('packer').startup(function()
         'williamboman/nvim-lsp-installer',
         commit = 'b8a02bf2ec173c',
         event  = 'BufEnter',
-        lock = true,
+        lock   = true,
     }
 
 
