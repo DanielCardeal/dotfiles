@@ -18,12 +18,17 @@ require('packer').startup(function()
     use 'folke/which-key.nvim'
 
     -- Temas
+    -- use {
+    --     'shaunsingh/nord.nvim',
+    --     setup = require('temas.nord').setup,
+    --     config = function()
+    --         vim.cmd("colorscheme nord")
+    --     end
+    -- }
     use {
-        'shaunsingh/nord.nvim',
-        setup = require('temas.nord').setup,
-        config = function ()
-            vim.cmd("colorscheme nord")
-        end
+        'marko-cerovac/material.nvim',
+        setup = function() require('temas.material').setup() end,
+        config = require('temas.material').config,
     }
 
     -- StatusLine
