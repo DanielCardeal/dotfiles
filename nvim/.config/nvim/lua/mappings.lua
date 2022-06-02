@@ -77,7 +77,7 @@ wk.register({
 
     h = {
         name = 'help',
-        h = { "<cmd>Telescope help_tags<cr>", "manual" },
+        h = { "<cmd>Telescope help_tags<cr>", "help" },
         t = { "<cmd>Telescope colorscheme<cr>", "themes" },
         b = { "<cmd>Telescope keymaps<cr>", "bindings" },
     },
