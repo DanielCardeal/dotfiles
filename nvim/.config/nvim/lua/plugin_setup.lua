@@ -14,8 +14,13 @@ require('packer').startup(function()
     -- Plugins simples
     use 'tpope/vim-surround'
     use 'tpope/vim-commentary'
-    use 'jiangmiao/auto-pairs'
     use 'folke/which-key.nvim'
+    use {
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup {}
+        end
+    }
 
     -- Temas
     -- use {
@@ -161,7 +166,7 @@ require('packer').startup(function()
             'hrsh7th/cmp-path',
             'saadparwaiz1/cmp_luasnip',
         },
-        after = 'LuaSnip',
+        after = { 'LuaSnip', 'nvim-autopairs' },
         config = require('plugins.completion').config,
     }
 
