@@ -39,6 +39,9 @@ local set = {
     termguicolors = true,
     -- Corretor de palavras
     spelllang = "pt_br,en",
+    -- Abrindo novas janelas
+    splitright = true,
+    splitbelow = true,
 }
 for k, v in pairs(set) do
     vim.o[k] = v
