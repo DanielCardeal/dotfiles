@@ -22,7 +22,7 @@ function M.config()
             },
             live_grep = {
                 -- Busca em arquivos oculto em <leader>sp
-                additional_args = function(opts)
+                additional_args = function(_)
                     return { '--hidden' }
                 end,
                 file_ignore_patterns = { '.git' },
