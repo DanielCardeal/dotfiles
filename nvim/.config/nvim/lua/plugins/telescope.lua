@@ -38,7 +38,7 @@ function M.config()
     }
     for theme, pickers in pairs(themes) do
         for _, picker in ipairs(pickers) do
-            setup.pickers[picker] = setup[picker] or {}
+            setup.pickers[picker] = setup.pickers[picker] or {}
             setup.pickers[picker].theme = theme
         end
     end
