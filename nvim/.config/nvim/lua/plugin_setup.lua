@@ -97,6 +97,7 @@ require('packer').startup(function()
 
     -- Telescope
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use 'nvim-telescope/telescope-ui-select.nvim'
     use {
         'nvim-telescope/telescope.nvim',
         commit = 'b38dae44fb47a42d6588115928084b498c4c7b78',

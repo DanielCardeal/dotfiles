@@ -8,7 +8,11 @@ function M.config()
                 fuzzy = true,
                 override_generic_sorter = true,
                 override_file_sorter = true,
-            }
+            },
+            -- Usa o telescope no lugar de vim.ui.select
+            ["ui-select"] = {
+                require("telescope.themes").get_dropdown {}
+            },
         },
         pickers = {
             find_files = {
@@ -43,6 +47,7 @@ function M.config()
     local t = require('telescope')
     t.setup(setup)
     t.load_extension('fzf')
+    t.load_extension('ui-select')
 end
 
 return M
