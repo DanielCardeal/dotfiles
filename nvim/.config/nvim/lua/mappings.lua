@@ -7,6 +7,7 @@ local map = vim.keymap.set
 map({ 'n', 'v' }, 'f', "<cmd>HopChar1<cr>", {})
 map({ 'n', 'v' }, 's', "<cmd>HopChar2<cr>", {})
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {})
+map({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>', {})
 
 -- <c-j> para próximo campo do snippet
 map({ "i", "s" }, "<c-j>", function()
@@ -28,6 +29,17 @@ wk.register({
         f = { "<cmd>Telescope find_files<cr>", "find files" },
         r = { "<cmd>Telescope oldfiles<cr>", "recent files" },
         s = { "<cmd>w<cr>", "save file" },
+    },
+
+    g = {
+        name = "git",
+        s = { '<cmd>Gitsigns stage_hunk<cr>', 'stage hunk' },
+        u = { '<cmd>Gitsigns undo_stage_hunk<cr>', 'undo hunk' },
+        d = { '<cmd>Gitsigns preview_hunk<cr>', 'preview hunk' },
+        b = { '<cmd>Gitsigns blame_line<cr>', 'blame line' },
+        B = { '<cmd>lua require("gitsigns").blame_line { full = true }<cr>', 'blame line (full)' },
+        r = { '<cmd>Gitsigns reset_hunk<cr>', 'reset hunk' },
+        R = { '<cmd>Gitsigns reset_buffer<cr>', 'reset buffer' },
     },
 
     b = {
@@ -110,12 +122,12 @@ wk.register({
 
 -- Atalhos de movimentação [ (para trás)
 wk.register({
-    ['h'] = { "<cmd>GitGutterPrevHunk<cr>", "prev hunk" },
+    ['h'] = { "<cmd>Gitsigns prev_hunk<cr>", "prev hunk" },
     ['e'] = { "<cmd> lua vim.diagnostic.goto_prev()<cr>", "prev err" }
 }, { prefix = "[" })
 
 -- Atalhos de movimentação ] (para frente)
 wk.register({
-    ['h'] = { "<cmd>GitGutterNextHunk<cr>", "next hunk" },
+    ['h'] = { "<cmd>Gitsigns next_hunk<cr>", "next hunk" },
     ['e'] = { "<cmd> lua vim.diagnostic.goto_next()<cr>", "next err" }
 }, { prefix = "]" })
