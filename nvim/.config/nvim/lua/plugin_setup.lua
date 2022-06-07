@@ -44,6 +44,12 @@ require('packer').startup(function()
         config = require('plugins.statusline').config,
     }
 
+    -- Notificações (UI)
+    use {
+        'rcarriga/nvim-notify',
+        config = function() vim.notify = require("notify") end
+    }
+
     -- Remove trailing whitespace
     use {
         "DanielCardeal/trimmy",
