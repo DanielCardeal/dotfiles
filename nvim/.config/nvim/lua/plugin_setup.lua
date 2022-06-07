@@ -93,6 +93,11 @@ require('packer').startup(function()
         event  = 'BufEnter',
         lock   = true,
     }
+    use {
+        'j-hui/fidget.nvim',
+        after = 'nvim-lspconfig',
+        config = function() require('fidget').setup {} end,
+    }
 
 
     -- Telescope
