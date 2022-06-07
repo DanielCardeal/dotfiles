@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-    local setup = {
+    local options = {
         defaults = {
             mappings = {
                 i = {
@@ -45,14 +45,14 @@ function M.config()
     }
     for theme, pickers in pairs(themes) do
         for _, picker in ipairs(pickers) do
-            setup.pickers[picker] = setup.pickers[picker] or {}
-            setup.pickers[picker].theme = theme
+            options.pickers[picker] = options.pickers[picker] or {}
+            options.pickers[picker].theme = theme
         end
     end
 
     -- Inicialização e extensões
     local t = require('telescope')
-    t.setup(setup)
+    t.setup(options)
     t.load_extension('fzf')
     t.load_extension('ui-select')
 end
