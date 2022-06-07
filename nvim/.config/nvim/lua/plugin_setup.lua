@@ -22,14 +22,6 @@ require('packer').startup(function()
         end
     }
 
-    -- Temas
-    -- use {
-    --     'shaunsingh/nord.nvim',
-    --     setup = require('temas.nord').setup,
-    --     config = function()
-    --         vim.cmd("colorscheme nord")
-    --     end
-    -- }
     use {
         'marko-cerovac/material.nvim',
         setup = function() require('temas.material').setup() end,
