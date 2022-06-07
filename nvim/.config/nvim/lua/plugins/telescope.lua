@@ -3,6 +3,7 @@ local M = {}
 function M.config()
     local options = {
         defaults = {
+            prompt_prefix = "  ",
             mappings = {
                 i = {
                     ["<C-q>"] = require('telescope.actions').smart_send_to_qflist,
