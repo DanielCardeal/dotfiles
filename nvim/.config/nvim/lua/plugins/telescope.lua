@@ -2,6 +2,13 @@ local M = {}
 
 function M.config()
     local setup = {
+        defaults = {
+            mappings = {
+                i = {
+                    ["<C-q>"] = require('telescope.actions').smart_send_to_qflist,
+                }
+            }
+        },
         extensions = {
             -- Extensão para fuzzy search com padrões inteligentes
             fzf = {
