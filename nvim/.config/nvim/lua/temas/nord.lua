@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup() 
+function M.setup()
     local g = vim.g
     g.nord_contrast = true
     g.nord_borders = true

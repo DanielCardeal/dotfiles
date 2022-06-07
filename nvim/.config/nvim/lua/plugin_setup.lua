@@ -114,8 +114,8 @@ require('packer').startup(function()
         commit = 'b38dae44fb47a42d6588115928084b498c4c7b78',
         lock = true,
         requires = {
-            { 'nvim-lua/plenary.nvim' },
-            { 'kyazdani42/nvim-web-devicons' },
+            'nvim-lua/plenary.nvim',
+            'kyazdani42/nvim-web-devicons',
         },
         cmd = 'Telescope',
         config = require('plugins.telescope').config,
