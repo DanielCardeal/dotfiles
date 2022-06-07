@@ -17,26 +17,6 @@ function M.config()
     local on_attach = function(client, bufnr)
         -- Configura omnifunc
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-        -- Mappings
-        local wk = require("which-key")
-        wk.register({
-            g = {
-                name = "goto",
-                D = { '<cmd>lua vim.lsp.buf.declaration()<CR>', 'declaration' },
-                d = { '<cmd>lua vim.lsp.buf.definition()<CR>', 'definition' },
-                r = { '<cmd>lua vim.lsp.buf.references()<CR>', 'references' },
-                i = { '<cmd>lua vim.lsp.buf.implementation()<CR>', 'implementation' },
-            }
-        }, { buffer = bufnr })
-        wk.register({
-            c = {
-                name = 'code',
-                r = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename' },
-                a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', 'actions' },
-                f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'format' },
-            }
-        }, { prefix = "<leader>", buffer = bufnr })
     end
 
     -- Aprimora autocomplete dependendo do server

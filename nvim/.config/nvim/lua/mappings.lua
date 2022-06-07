@@ -22,6 +22,17 @@ map({ "i", "s" }, "<c-k>", function()
     end
 end)
 
+-- Comandos de goto (sem leader)
+wk.register({
+    g = {
+        name = "goto",
+        D = { '<cmd>lua vim.lsp.buf.declaration()<CR>', 'declaration' },
+        d = { '<cmd>lua vim.lsp.buf.definition()<CR>', 'definition' },
+        r = { '<cmd>lua vim.lsp.buf.references()<CR>', 'references' },
+        i = { '<cmd>lua vim.lsp.buf.implementation()<CR>', 'implementation' },
+    }
+})
+
 -- Atalhos de <leader>
 wk.register({
     f = {
@@ -45,6 +56,13 @@ wk.register({
     b = {
         name = "buffer",
         k = { "<cmd>bp | bd#<cr>", "kill" },
+    },
+
+    c = {
+        name = 'code',
+        r = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename' },
+        a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', 'actions' },
+        f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'format' },
     },
 
     w = {
