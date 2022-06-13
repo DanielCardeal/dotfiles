@@ -11,7 +11,6 @@ function M.config()
                     ["if"] = "@function.inner", ["af"] = "@function.outer",
                     ["ia"] = "@parameter.inner", ["aa"] = "@parameter.outer",
                     ["il"] = "@loop.inner", ["al"] = "@loop.outer",
-                    ["ic"] = "@class.inner", ["ac"] = "@class.outer",
                 }
             }
         }
