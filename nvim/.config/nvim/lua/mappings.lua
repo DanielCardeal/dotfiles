@@ -7,7 +7,12 @@ local map = vim.keymap.set
 map({ 'n', 'v' }, 'f', "<cmd>HopChar1<cr>", {})
 map({ 'n', 'v' }, 's', "<cmd>HopChar2<cr>", {})
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {})
+
+-- Text objects
 map({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>', {})
+
+map({ 'o', 'x' }, 'ig', ':<c-u>normal! ggVG<cr>')
+map({ 'o', 'x' }, 'ag', ':<c-u>normal! ggVG<cr>')
 
 -- <c-j> para próximo campo do snippet
 map({ "i", "s" }, "<c-j>", function()
