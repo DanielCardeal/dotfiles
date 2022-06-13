@@ -173,13 +173,6 @@ require('packer').startup(function()
         config = require('plugins.completion').config,
     }
 
-    -- Goyo
-    use {
-        'junegunn/goyo.vim',
-        after = 'which-key.nvim',
-        cmd = 'Goyo',
-    }
-
     -- Linguagens
     -- Markdown
     use {
