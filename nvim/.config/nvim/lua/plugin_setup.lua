@@ -190,4 +190,15 @@ require('packer').startup(function()
         ft = 'r',
         setup = require('ling.r').setup,
     }
+
+    -- Rust
+    use {
+        'simrat39/rust-tools.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'neovim/nvim-lspconfig',
+        },
+        ft = 'rust',
+        config = function() require('rust-tools').setup {} end
+    }
 end)
