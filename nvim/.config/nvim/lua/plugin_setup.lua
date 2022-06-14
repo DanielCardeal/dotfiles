@@ -24,8 +24,14 @@ require('packer').startup(function()
 
     use {
         'marko-cerovac/material.nvim',
+        disable = true,
         setup = function() require('temas.material').setup() end,
         config = require('temas.material').config,
+    }
+
+    use {
+        'folke/tokyonight.nvim',
+        config = require('temas.tokyonight').config,
     }
 
     -- StatusLine
