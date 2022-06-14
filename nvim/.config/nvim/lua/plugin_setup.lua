@@ -97,6 +97,13 @@ require('packer').startup(function()
         config = function() require('fidget').setup {} end,
     }
 
+    -- Null-ls
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        after = 'nvim-lspconfig',
+        requires = 'nvim-lua/plenary.nvim',
+        config = require('plugins.null-ls').config,
+    }
 
     -- Telescope
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
