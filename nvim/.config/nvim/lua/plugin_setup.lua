@@ -69,7 +69,7 @@ require('packer').startup(function()
     -- Hop
     use {
         'phaazon/hop.nvim',
-        tag = 'v1.3.0',
+        tag = '*',
         lock = true,
         config = require('plugins.hop').config,
     }
@@ -86,16 +86,14 @@ require('packer').startup(function()
     -- LSP
     use {
         'neovim/nvim-lspconfig',
-        tag = "v0.1.3",
+        tag = "*",
         lock = true,
         after = { 'which-key.nvim', 'nvim-lsp-installer', 'nvim-cmp' },
         config = require('plugins.lsp').config,
     }
     use {
         'williamboman/nvim-lsp-installer',
-        commit = 'b8a02bf2ec173c',
         event  = 'BufEnter',
-        lock   = true,
     }
     use {
         'j-hui/fidget.nvim',
@@ -116,8 +114,6 @@ require('packer').startup(function()
     use 'nvim-telescope/telescope-ui-select.nvim'
     use {
         'nvim-telescope/telescope.nvim',
-        commit = 'b38dae44fb47a42d6588115928084b498c4c7b78',
-        lock = true,
         requires = {
             'nvim-lua/plenary.nvim',
             'kyazdani42/nvim-web-devicons',
@@ -129,16 +125,12 @@ require('packer').startup(function()
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
-        commit = "10d57b3ec14cac0b6b",
-        lock = true,
         run = ':TSUpdate',
         event = 'BufEnter',
         config = require('plugins.treesitter').config,
     }
     use {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        commit = "094e8ad3cc839e825f",
-        lock = true,
         after = 'nvim-treesitter',
     }
 
@@ -152,8 +144,6 @@ require('packer').startup(function()
     -- File explorer
     use {
         'kyazdani42/nvim-tree.lua',
-        commit = '9d26594b6caf3caee46dc12ceae62b5dcbbc28d6',
-        lock = true,
         requires = 'kyazdani42/nvim-web-devicons',
         cmd = { 'NvimTreeFocus', 'NvimTreeClose' },
         setup = require('plugins.nvim-tree').setup,
@@ -170,8 +160,6 @@ require('packer').startup(function()
     -- Autocomplete
     use {
         'hrsh7th/nvim-cmp',
-        commit = '9a0c639ac2324e6e9ecc54dc22b1d32bb6c42ab9',
-        lock = true,
         requires = {
             -- ícones
             'onsails/lspkind.nvim',
