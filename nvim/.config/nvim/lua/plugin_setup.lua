@@ -42,6 +42,12 @@ require('packer').startup(function()
         config = require('temas.tokyonight').config,
     }
 
+    -- Buffers
+    use {
+        'kazhala/close-buffers.nvim',
+        cmd = "BDelete",
+    }
+
     -- StatusLine
     use {
         'nvim-lualine/lualine.nvim',
