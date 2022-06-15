@@ -45,5 +45,5 @@ local set = {
     splitbelow = true,
 }
 for k, v in pairs(set) do
-    vim.o[k] = v
+    vim.opt[k] = v
 end
