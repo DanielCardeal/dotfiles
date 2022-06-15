@@ -155,16 +155,16 @@ wk.register({
 
 -- Atalhos de movimentação [ (para trás)
 wk.register({
-    ['h'] = { "<cmd>Gitsigns prev_hunk<cr>", "prev hunk" },
-    ['e'] = { "<cmd> lua vim.diagnostic.goto_prev()<cr>", "prev err" },
+    h = { "<cmd>Gitsigns prev_hunk<cr>", "Previous hunk" },
+    e = { "<cmd> lua vim.diagnostic.goto_prev()<cr>", "Previous error" },
     q = { "<cmd>cprevious<cr>", "Previous qfix" },
     l = { "<cmd>lprevious<cr>", "Previous loc" },
 }, { prefix = "[" })
 
 -- Atalhos de movimentação ] (para frente)
 wk.register({
-    ['h'] = { "<cmd>Gitsigns next_hunk<cr>", "next hunk" },
-    ['e'] = { "<cmd> lua vim.diagnostic.goto_next()<cr>", "next err" },
+    h = { "<cmd>Gitsigns next_hunk<cr>", "Next hunk" },
+    e = { "<cmd> lua vim.diagnostic.goto_next()<cr>", "Next error" },
     q = { "<cmd>cnext<cr>", "Next qfix" },
     l = { "<cmd>lnext<cr>", "Next loc" },
 }, { prefix = "]" })
