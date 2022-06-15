@@ -83,6 +83,13 @@ require('packer').startup(function()
         config = require('plugins.git').config,
     }
 
+    use {
+        'sindrets/diffview.nvim',
+        requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' },
+        cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
+        config = require('plugins.diffview').config,
+    }
+
     -- LSP
     use {
         'neovim/nvim-lspconfig',

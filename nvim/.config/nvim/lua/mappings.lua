@@ -52,12 +52,22 @@ wk.register({
         name = "git",
         s = { '<cmd>Gitsigns stage_hunk<cr>', 'stage hunk' },
         u = { '<cmd>Gitsigns undo_stage_hunk<cr>', 'undo hunk' },
-        d = { '<cmd>Gitsigns preview_hunk<cr>', 'preview hunk' },
+        p = { '<cmd>Gitsigns preview_hunk<cr>', 'preview hunk' },
         b = { '<cmd>Gitsigns blame_line<cr>', 'blame line' },
         B = { '<cmd>lua require("gitsigns").blame_line { full = true }<cr>', 'blame line (full)' },
         q = { '<cmd>Gitsigns setqflist all<cr>', 'set qflist' },
         r = { '<cmd>Gitsigns reset_hunk<cr>', 'reset hunk' },
         R = { '<cmd>Gitsigns reset_buffer<cr>', 'reset buffer' },
+        d = {
+            name = 'diffview',
+            c = { '<cmd>DiffviewClose<cr>', 'close' },
+            f = { '<cmd>DiffviewFocusFiles<cr>', 'focus files' },
+            o = { '<cmd>DiffviewOpen<cr>', 'open' },
+            r = { '<cmd>DiffviewRefresh<cr>', 'refresh' },
+            t = { '<cmd>DiffviewToggleFiles<cr>', 'toggle files' },
+            h = { '<cmd>DiffviewFileHistory %<cr>', 'history current file' },
+            H = { '<cmd>DiffviewFileHistory<cr>', 'history all files' },
+        }
     },
 
     b = {
