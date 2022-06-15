@@ -37,6 +37,7 @@ local set = {
     number = true,
     cursorline = true,
     termguicolors = true,
+    fillchars = 'diff:╱',
     -- Corretor de palavras
     spelllang = "pt_br,en",
     -- Abrindo novas janelas

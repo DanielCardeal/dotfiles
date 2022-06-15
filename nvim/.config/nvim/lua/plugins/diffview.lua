@@ -2,6 +2,7 @@ local M = {}
 
 function M.config()
     require('diffview').setup {
+        enhanced_diff_hl = true,
         file_panel = {
             win_config = {
                 position = 'bottom',
