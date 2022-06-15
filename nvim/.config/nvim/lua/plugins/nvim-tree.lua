@@ -10,13 +10,12 @@ function M.nani_toggle_nvimtree()
     end
 end
 
-function M.setup()
-    local g = vim.g
-    g.nvim_tree_group_empty = 1
-end
-
 function M.config()
-    require('nvim-tree').setup {}
+    require('nvim-tree').setup {
+        renderer = {
+            group_empty = true,
+        }
+    }
 end
 
 return M

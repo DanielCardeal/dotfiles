@@ -167,7 +167,6 @@ require('packer').startup(function()
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         cmd = { 'NvimTreeFocus', 'NvimTreeClose' },
-        setup = require('plugins.nvim-tree').setup,
         config = require('plugins.nvim-tree').config,
     }
 
