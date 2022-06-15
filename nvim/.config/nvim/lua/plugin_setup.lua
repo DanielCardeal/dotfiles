@@ -12,8 +12,10 @@ require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
     -- Plugins simples
-    use 'tpope/vim-surround'
     use 'folke/which-key.nvim'
+
+    -- Pairs
+    use 'tpope/vim-surround'
     use {
         'windwp/nvim-autopairs',
         config = function()
@@ -27,6 +29,7 @@ require('packer').startup(function()
         config = require("plugins.comment").config,
     }
 
+    -- Temas
     use {
         'marko-cerovac/material.nvim',
         disable = true,
