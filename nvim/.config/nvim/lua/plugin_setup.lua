@@ -13,13 +13,18 @@ require('packer').startup(function()
 
     -- Plugins simples
     use 'tpope/vim-surround'
-    use 'tpope/vim-commentary'
     use 'folke/which-key.nvim'
     use {
         'windwp/nvim-autopairs',
         config = function()
             require('nvim-autopairs').setup {}
         end
+    }
+
+    -- Comentarios
+    use {
+        'numToStr/Comment.nvim',
+        config = require("plugins.comment").config,
     }
 
     use {
