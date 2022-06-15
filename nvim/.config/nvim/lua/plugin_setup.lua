@@ -100,7 +100,7 @@ require('packer').startup(function()
     }
     use {
         'williamboman/nvim-lsp-installer',
-        event  = 'BufEnter',
+        event = 'BufEnter',
     }
     use {
         'j-hui/fidget.nvim',
