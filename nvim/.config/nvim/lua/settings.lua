@@ -25,6 +25,7 @@ local set = {
     textwidth = 80,
     -- Caracteres invisíveis
     list = true,
+    listchars = { tab = '» ', trail = '·' },
     -- Tempo de espera entre comandos
     timeoutlen = 500,
     -- Statusline global
