@@ -13,6 +13,7 @@ require('packer').startup(function()
 
     -- Plugins simples
     use 'folke/which-key.nvim'
+    use 'gpanders/editorconfig.nvim'
 
     -- Pairs
     use 'tpope/vim-surround'
