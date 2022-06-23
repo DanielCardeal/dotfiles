@@ -96,6 +96,7 @@ wk.register({
         p = { "<cmd>Telescope live_grep<cr>", "grep dir" },
         t = { "<cmd>Telescope colorscheme<cr>", "themes" },
         m = { "<cmd>Telescope man_pages<cr>", "man pages" },
+        i = { "<cmd>Telescope lsp_document_symbols<cr>", "symbols" },
     },
 
     t = {
