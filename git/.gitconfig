@@ -5,3 +5,16 @@
 	defaultBranch = main
 [pull]
 	ff = only
+[alias]
+	a = add
+	aa = add .
+	ap = add -p
+	ch = checkout
+	sw = switch
+	c  = commit --edit --verbose
+	ca = commit --edit --verbose --amend
+	l  = log --oneline --graph
+	lv = log
+	ll = log -1 HEAD
+	st = status
+	mg = mergetool --tool nvimdiff

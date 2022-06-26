@@ -5,11 +5,6 @@ SETUVAR Z_DATA_DIR:/home/nani/\x2elocal/share/z
 SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_ea:exa\x20\x2da
 SETUVAR _fish_abbr_el:exa\x20\x2dl\x20\x2d\x2dgit
-SETUVAR _fish_abbr_ga:git\x20add
-SETUVAR _fish_abbr_gc:git\x20commit\x20\x2d\x2dedit\x20\x2d\x2dverbose
-SETUVAR _fish_abbr_gd:git\x20diff
-SETUVAR _fish_abbr_gl:git\x20log\x20\x2d\x2doneline\x20\x2d\x2dgraph
-SETUVAR _fish_abbr_gs:git\x20status
 SETUVAR _fish_abbr_la:exa\x20\x2da
 SETUVAR _fish_abbr_ll:exa\x20\x2dl\x20\x2d\x2dgit
 SETUVAR _fish_abbr_ta:tmux\x20a
