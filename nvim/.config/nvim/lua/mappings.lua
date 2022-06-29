@@ -72,10 +72,10 @@ wk.register({
 
     b = {
         name = "buffer",
-        o = { "<cmd>BDelete other<cr>", "kill other"},
-        h = { "<cmd>BDelete hidden<cr>", "kill hidden"},
-        k = { "<cmd>BDelete this<cr>", "kill this"},
-        K = { "<cmd>BDelete all<cr>", "kill all"},
+        o = { "<cmd>BDelete other<cr>", "kill other" },
+        h = { "<cmd>BDelete hidden<cr>", "kill hidden" },
+        k = { "<cmd>BDelete this<cr>", "kill this" },
+        K = { "<cmd>BDelete all<cr>", "kill all" },
     },
 
     c = {
