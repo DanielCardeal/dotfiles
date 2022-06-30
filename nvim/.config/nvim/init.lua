@@ -1,4 +1,4 @@
 -- Importa os módulos de configuração
-require('settings')
-require('plugin_setup')
-require('mappings')
+require('nani.settings')
+require('nani.plugin_setup')
+require('nani.mappings')

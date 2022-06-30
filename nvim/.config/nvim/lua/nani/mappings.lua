@@ -142,7 +142,7 @@ wk.register({
     [' '] = { "<cmd>Telescope git_files<cr>", "git files" },
     [','] = { "<cmd>Telescope buffers<cr>", "list buffers" },
     ['.'] = { "<cmd>Telescope find_files<cr>", "find files" },
-    ['<tab>'] = { require('plugins.nvim-tree').nani_toggle_nvimtree, 'toggle tree' },
+    ['<tab>'] = { require('nani.plugins.nvim-tree').nani_toggle_nvimtree, 'toggle tree' },
 }, { prefix = "<leader>" })
 
 -- Atalhos de leader (visual mode)

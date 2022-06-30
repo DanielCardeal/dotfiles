@@ -27,20 +27,20 @@ require('packer').startup(function()
     -- Comentarios
     use {
         'numToStr/Comment.nvim',
-        config = require("plugins.comment").config,
+        config = require("nani.plugins.comment").config,
     }
 
     -- Temas
     use {
         'marko-cerovac/material.nvim',
-        setup = function() require('temas.material').setup('deep ocean') end,
-        config = require('temas.material').config,
+        setup = function() require('nani.temas.material').setup('deep ocean') end,
+        config = require('nani.temas.material').config,
     }
 
     use {
         'folke/tokyonight.nvim',
         disable = true,
-        config = require('temas.tokyonight').config,
+        config = require('nani.temas.tokyonight').config,
     }
 
     -- Buffers
@@ -54,7 +54,7 @@ require('packer').startup(function()
         'nvim-lualine/lualine.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
         event = 'BufEnter',
-        config = require('plugins.statusline').config,
+        config = require('nani.plugins.statusline').config,
     }
 
     -- Remove trailing whitespace
@@ -80,7 +80,7 @@ require('packer').startup(function()
         'phaazon/hop.nvim',
         tag = '*',
         lock = true,
-        config = require('plugins.hop').config,
+        config = require('nani.plugins.hop').config,
     }
 
     -- Git
@@ -89,14 +89,14 @@ require('packer').startup(function()
         tag = 'release',
         lock = true,
         after = 'which-key.nvim',
-        config = require('plugins.git').config,
+        config = require('nani.plugins.git').config,
     }
 
     use {
         'sindrets/diffview.nvim',
         requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' },
         cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
-        config = require('plugins.diffview').config,
+        config = require('nani.plugins.diffview').config,
     }
 
     -- LSP
@@ -105,7 +105,7 @@ require('packer').startup(function()
         tag = "*",
         lock = true,
         after = { 'which-key.nvim', 'nvim-lsp-installer', 'nvim-cmp' },
-        config = require('plugins.lsp').config,
+        config = require('nani.plugins.lsp').config,
     }
     use {
         'williamboman/nvim-lsp-installer',
@@ -122,7 +122,7 @@ require('packer').startup(function()
         'jose-elias-alvarez/null-ls.nvim',
         after = 'nvim-lspconfig',
         requires = 'nvim-lua/plenary.nvim',
-        config = require('plugins.null-ls').config,
+        config = require('nani.plugins.null-ls').config,
     }
 
     -- Telescope
@@ -135,7 +135,7 @@ require('packer').startup(function()
             'kyazdani42/nvim-web-devicons',
         },
         cmd = 'Telescope',
-        config = require('plugins.telescope').config,
+        config = require('nani.plugins.telescope').config,
     }
 
     -- Treesitter
@@ -143,7 +143,7 @@ require('packer').startup(function()
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         event = 'BufEnter',
-        config = require('plugins.treesitter').config,
+        config = require('nani.plugins.treesitter').config,
     }
     use {
         'nvim-treesitter/nvim-treesitter-textobjects',
@@ -155,7 +155,7 @@ require('packer').startup(function()
     use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
-        config = require('plugins.trouble').config,
+        config = require('nani.plugins.trouble').config,
     }
 
     -- File explorer
@@ -163,14 +163,14 @@ require('packer').startup(function()
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         cmd = { 'NvimTreeFocus', 'NvimTreeClose' },
-        config = require('plugins.nvim-tree').config,
+        config = require('nani.plugins.nvim-tree').config,
     }
 
     -- Snippets
     use {
         'L3MON4D3/LuaSnip',
         requires = 'rafamadriz/friendly-snippets',
-        config = require('plugins.snippets').config,
+        config = require('nani.plugins.snippets').config,
     }
 
     -- Autocomplete
@@ -188,7 +188,7 @@ require('packer').startup(function()
             'saadparwaiz1/cmp_luasnip',
         },
         after = { 'LuaSnip', 'nvim-autopairs' },
-        config = require('plugins.completion').config,
+        config = require('nani.plugins.completion').config,
     }
 
     -- CTags/Universal Tags
@@ -213,7 +213,7 @@ require('packer').startup(function()
         branch = "stable",
         lock = true,
         ft = 'r',
-        setup = require('ling.r').setup,
+        setup = require('nani.ling.r').setup,
     }
 
     -- Rust
