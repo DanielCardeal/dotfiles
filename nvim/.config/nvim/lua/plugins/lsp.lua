@@ -8,6 +8,7 @@ function M.config()
         "pyright",
         "rust_analyzer",
         "sumneko_lua",
+        "gopls", -- Go
         "jdtls", -- Java
         "vimls", -- Vimscript
     }
