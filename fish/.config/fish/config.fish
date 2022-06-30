@@ -32,8 +32,3 @@ end
 if type -q zoxide
     zoxide init fish | source
 end
-
-if type -q starship
-    # NOTE: para funcionar corretamente, essa deve ser a última linha do script
-    starship init fish | source
-end

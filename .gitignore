@@ -5,4 +5,3 @@ nvim/**/plugin/
 fish/**/fish_variables
 fish/**/completions/
 fish/**/conf.d/
-fish/**/functions/
