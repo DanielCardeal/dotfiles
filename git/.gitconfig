@@ -12,6 +12,8 @@
 	c  = commit --edit --verbose
 	ca = commit --edit --verbose --amend
 	ch = checkout
+	d  = diff
+	ds = diff --staged
 	l  = log --oneline --graph
 	ll = log -1 HEAD
 	lv = log
