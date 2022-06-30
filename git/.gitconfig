@@ -9,12 +9,12 @@
 	a = add
 	aa = add .
 	ap = add -p
-	ch = checkout
-	sw = switch
 	c  = commit --edit --verbose
 	ca = commit --edit --verbose --amend
+	ch = checkout
 	l  = log --oneline --graph
-	lv = log
 	ll = log -1 HEAD
-	st = status
+	lv = log
 	mg = mergetool --tool nvimdiff
+	st = status
+	sw = switch
