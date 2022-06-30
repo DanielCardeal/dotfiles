@@ -33,13 +33,13 @@ require('packer').startup(function()
     -- Temas
     use {
         'marko-cerovac/material.nvim',
-        disable = true,
-        setup = function() require('temas.material').setup() end,
+        setup = function() require('temas.material').setup('deep ocean') end,
         config = require('temas.material').config,
     }
 
     use {
         'folke/tokyonight.nvim',
+        disable = true,
         config = require('temas.tokyonight').config,
     }
 
