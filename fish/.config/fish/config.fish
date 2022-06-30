@@ -12,15 +12,15 @@ fish_vi_key_bindings
 # quando os diferentes programas estão presentes no sistema.
 if type -q exa
     alias exa "exa --icons"
-    alias ls "exa"
-    alias la "exa -a"
-    alias ll "exa -l --git"
+    abbr -a ls "exa"
+    abbr -a la "exa -a"
+    abbr -a ll "exa -l --git"
 end
 
 if type -q tmux
-    alias ta "tmux a"
-    alias tl "tmux ls"
-    alias tn "tmux new -s"
+    abbr -a ta "tmux a"
+    abbr -a tl "tmux ls"
+    abbr -a tn "tmux new -s"
 end
 
 if type -q bat
