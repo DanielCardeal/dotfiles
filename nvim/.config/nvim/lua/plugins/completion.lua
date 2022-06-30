@@ -44,6 +44,13 @@ function M.config()
         }
     }
 
+    -- Específica de linguagens
+    cmp.setup.filetype({ 'c', 'cpp' }, {
+        sources = {
+            { name = 'tags' },
+        }
+    })
+
     -- Integração com nvim-autopairs
     local cmp_autopairs = require('nvim-autopairs.completion.cmp')
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))

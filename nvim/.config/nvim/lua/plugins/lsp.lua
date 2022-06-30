@@ -3,7 +3,6 @@ local M = {}
 function M.config()
     -- Servidores configurados
     local servidores = {
-        "clangd",
         "kotlin_language_server",
         "pyright",
         "rust_analyzer",

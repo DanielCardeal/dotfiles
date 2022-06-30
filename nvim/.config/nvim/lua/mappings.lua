@@ -145,6 +145,14 @@ wk.register({
     ['<tab>'] = { require('plugins.nvim-tree').nani_toggle_nvimtree, 'toggle tree' },
 }, { prefix = "<leader>" })
 
+-- Atalhos de leader (visual mode)
+wk.register({
+    c = {
+        name = 'code',
+        f = { '<cmd>lua vim.lsp.buf.range_formatting()<CR>', 'format range' },
+    },
+}, { prefix = "<leader>", mode = "v" })
+
 -- Atalhos de goto
 wk.register({
     s = {

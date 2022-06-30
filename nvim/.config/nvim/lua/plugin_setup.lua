@@ -183,12 +183,20 @@ require('packer').startup(function()
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-nvim-lua',
+            'quangnguyen30192/cmp-nvim-tags',
             'hrsh7th/cmp-path',
             'saadparwaiz1/cmp_luasnip',
         },
         after = { 'LuaSnip', 'nvim-autopairs' },
         config = require('plugins.completion').config,
     }
+
+    -- CTags/Universal Tags
+    use {
+        "ludovicchabant/vim-gutentags",
+        ft = { "c", "cpp" },
+    }
+
 
     -- Linguagens
     -- Markdown
