@@ -7,6 +7,9 @@ function M.config()
             -- Python
             null_ls.builtins.formatting.black,
             null_ls.builtins.formatting.isort,
+            -- Fish
+            null_ls.builtins.diagnostics.fish,
+            null_ls.builtins.formatting.fish_indent,
         }
     }
 end
