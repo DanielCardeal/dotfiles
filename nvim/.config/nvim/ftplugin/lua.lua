@@ -1,16 +1,8 @@
-local function onBufEnter()
-    local wk = require('which-key')
-    local bufnr = vim.fn.bufnr()
-    -- Mappings locais
-    wk.register({
+require('nani.utils.ftype_setup').bufEnter("*.lua", function(utils)
+    utils.wk.register({
         m = {
             name = "lua",
             S = { "<cmd>luafile %<cr>", "source file" },
         }
-    }, { prefix = '<leader>', buffer = bufnr })
-end
-
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = "*.lua",
-    callback = onBufEnter,
-})
+    }, { prefix = '<leader>', buffer = utils.bufnr })
+end)

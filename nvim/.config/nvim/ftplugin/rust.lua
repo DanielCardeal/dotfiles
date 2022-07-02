@@ -1,8 +1,5 @@
--- Função chamada quando entramos em um buffer rust
-local function onBufEnter()
-    local wk = require("which-key")
-    local bufnr = vim.call('bufnr')
-    wk.register({
+require('nani.utils.ftype_setup').bufEnter("*.rs", function(utils)
+    utils.wk.register({
         m = {
             name = 'rust',
             c = { "<cmd>RustOpenCargo<cr>", 'open cargo' },
@@ -10,10 +7,5 @@ local function onBufEnter()
             r = { "<cmd>RustRunnables<cr>", 'run' },
             R = { "<cmd>RustReloadWorkspace<cr>", 'reload workspace' },
         }
-    }, { prefix = '<leader>', buffer = bufnr })
-end
-
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = "*.rs",
-    callback = onBufEnter,
-})
+    }, { prefix = '<leader>', buffer = utils.bufnr })
+end)
