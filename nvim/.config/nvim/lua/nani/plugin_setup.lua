@@ -213,7 +213,7 @@ require('packer').startup(function()
         branch = "stable",
         lock = true,
         ft = 'r',
-        setup = require('nani.ling.r').setup,
+        setup = require('nani.plugins.nvim-r').setup,
     }
 
     -- Rust
