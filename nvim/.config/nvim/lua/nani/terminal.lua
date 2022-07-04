@@ -10,5 +10,15 @@ end
 -- direto no neovim):
 vim.env.GIT_EDITOR = 'nvr -cc split --remote-wait'
 
+-- Delete buffers abertos pelo git automaticamente ao fechar a janela (baseado
+-- nas instruções do github do neovim-remote)
+-- vim.cmd [[autocmd FileType gitcommit,gitrebase,girconfig set bufhidden=delete]]
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "gitcommit,gitrebase,gitconfig",
+    callback = function()
+        vim.opt.bufhidden = "delete"
+    end
+})
+
 -- Usa <c-,> como esc do modo terminal
 vim.keymap.set('t', [[<C-,>]], [[<C-\><C-n>]])
