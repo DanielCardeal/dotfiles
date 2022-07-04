@@ -20,5 +20,11 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
+-- Entra no insert mode automaticamente ao entrar em um terminal
+vim.api.nvim_create_autocmd("TermOpen", {
+    pattern = "*",
+    command = "startinsert",
+})
+
 -- Usa <c-,> como esc do modo terminal
 vim.keymap.set('t', [[<C-,>]], [[<C-\><C-n>]])
