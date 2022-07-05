@@ -15,6 +15,9 @@ function M.config()
         italics = {
             comments = true,
         },
+        disable = {
+            background = true,
+        },
         lualine_style = "stealth",
     })
     vim.cmd [[ colorscheme material ]]
