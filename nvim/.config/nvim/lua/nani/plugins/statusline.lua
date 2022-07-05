@@ -33,12 +33,12 @@ function M.config()
             lualine_z = { 'location', 'progress' }
         },
         tabline = {
-            lualine_a = { 'buffers' },
+            lualine_a = { 'tabs' },
             lualine_b = {},
             lualine_c = {},
             lualine_x = {},
             lualine_y = {},
-            lualine_z = {}
+            lualine_z = { 'buffers' },
         }
     }
 end
