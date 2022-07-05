@@ -19,7 +19,7 @@ local set = {
     -- Navegação
     scrolloff = 5,
     -- Copia e cola consistente
-    clipboard = 'unnamed,unnamedplus',
+    clipboard = { 'unnamed', 'unnamedplus' },
     -- Edição
     smartindent = true,
     textwidth = 80,
@@ -38,9 +38,9 @@ local set = {
     number = true,
     cursorline = true,
     termguicolors = true,
-    fillchars = 'diff:╱',
+    fillchars = { diff = '╱' },
     -- Corretor de palavras
-    spelllang = "pt_br,en",
+    spelllang = { 'pt_br', 'en' },
     -- Abrindo novas janelas
     splitright = true,
     splitbelow = true,
