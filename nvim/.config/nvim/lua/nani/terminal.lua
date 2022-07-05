@@ -12,9 +12,8 @@ if vim.fn.executable('nvr') == 1 then
     vim.env.GIT_EDITOR = 'nvr -cc split --remote-wait'
 end
 
--- Delete buffers abertos pelo git automaticamente ao fechar a janela (baseado
+-- Deleta buffers abertos pelo git automaticamente ao fechar a janela (baseado
 -- nas instruções do github do neovim-remote)
--- vim.cmd [[autocmd FileType gitcommit,gitrebase,girconfig set bufhidden=delete]]
 local augroup = vim.api.nvim_create_augroup("NaniTerminal", {})
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "gitcommit,gitrebase,gitconfig",
