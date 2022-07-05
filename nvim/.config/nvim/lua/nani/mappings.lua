@@ -108,7 +108,7 @@ wk.register({
         name = "terminal",
         s = { "<cmd>bo 12sp <bar> term<cr>", "term below" },
         v = { "<cmd>bo vsp <bar> term<cr>", "term right" },
-        t = { "<cmd>tab <bar> term<cr>", "term tab" },
+        t = { "<cmd>tabnew <bar> term<cr>", "term tab" },
     },
 
     l = {
