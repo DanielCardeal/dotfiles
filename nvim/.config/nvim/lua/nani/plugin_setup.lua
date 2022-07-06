@@ -197,16 +197,16 @@ require('packer').startup(function()
         ft = { "c", "cpp" },
     }
 
-
-    -- Linguagens
     -- Markdown
     use {
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
         ft = "markdown",
     }
+
     -- Kitty
     use { "fladson/vim-kitty", ft = "kitty" }
+
     -- R
     use {
         "jalvesaq/Nvim-R",
