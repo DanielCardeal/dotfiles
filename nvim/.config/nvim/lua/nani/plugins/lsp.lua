@@ -3,10 +3,10 @@ local M = {}
 function M.config()
     -- Servidores configurados
     local servidores = {
-        "kotlin_language_server",
-        "pyright",
-        "rust_analyzer",
-        "sumneko_lua",
+        "kotlin_language_server", -- Kotlin
+        "pyright", -- Python
+        "rust_analyzer", -- Rust
+        "sumneko_lua", -- Lua
         "gopls", -- Go
         "jdtls", -- Java
         "vimls", -- Vimscript
@@ -14,7 +14,7 @@ function M.config()
 
     -- Função chamada quando o cliente `client` é associado ao buffer de número
     -- `bufnr`.
-    local on_attach = function(client, bufnr)
+    local on_attach = function(_, bufnr)
         -- Configura omnifunc
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     end
