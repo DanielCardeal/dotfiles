@@ -48,6 +48,9 @@ function M.config()
     cmp.setup.filetype({ 'c', 'cpp' }, {
         sources = {
             { name = 'tags' },
+            { name = 'path' },
+            { name = 'luasnip' },
+            { name = 'buffer', keyword_length = 5 },
         }
     })
 
