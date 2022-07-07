@@ -51,6 +51,15 @@ function M.config()
         }
     })
 
+    cmp.setup.filetype('r', {
+        sources = {
+            { name = 'omni' },
+            { name = 'path' },
+            { name = 'luasnip' },
+            { name = 'buffer', keyword_length = 5 },
+        }
+    })
+
     -- Integração com nvim-autopairs
     local cmp_autopairs = require('nvim-autopairs.completion.cmp')
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
