@@ -13,6 +13,10 @@ function M.config()
                     ["il"] = "@loop.inner", ["al"] = "@loop.outer",
                 }
             }
+        },
+        -- Extensão treesitter-playground
+        playground = {
+            enable = true,
         }
     }
 end

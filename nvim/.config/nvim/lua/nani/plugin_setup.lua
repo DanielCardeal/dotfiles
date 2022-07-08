@@ -150,6 +150,11 @@ require('packer').startup(function()
         after = 'nvim-treesitter',
     }
     use { 'nvim-treesitter/nvim-treesitter-context', after = 'nvim-treesitter' }
+    use {
+        'nvim-treesitter/playground',
+        after = 'nvim-treesitter',
+        cmd = 'TSPlaygroundToggle'
+    }
 
     -- Trouble
     use {
