@@ -5,3 +5,7 @@ nvim/**/plugin/
 fish/**/fish_variables
 fish/**/completions/
 fish/**/conf.d/
+
+# --- zsh
+zsh/**/.zhistory
+zsh/**/.zcompdump
