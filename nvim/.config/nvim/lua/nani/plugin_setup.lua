@@ -72,16 +72,6 @@ require('packer').startup(function()
         end
     }
 
-    -- TODOs coloridos
-    use {
-        "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim",
-        event = "BufEnter",
-        config = function()
-            require("todo-comments").setup {}
-        end,
-    }
-
     -- Hop
     use {
         'phaazon/hop.nvim',

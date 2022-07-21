@@ -87,7 +87,6 @@ wk.register({
         D = { "<cmd>Trouble workspace_diagnostics<cr>", "work diag" },
         q = { "<cmd>Trouble quickfix<cr>", "quickfix" },
         l = { "<cmd>Trouble loclist<cr>", "loclist" },
-        g = { "<cmd>TodoTrouble<cr>", "TODOs" },
     },
 
     w = {
