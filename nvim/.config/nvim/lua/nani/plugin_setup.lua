@@ -33,6 +33,7 @@ require('packer').startup(function()
     -- Temas
     use {
         'marko-cerovac/material.nvim',
+        disable = true,
         setup = function() require('nani.temas.material').setup('deep ocean') end,
         config = require('nani.temas.material').config,
     }
@@ -41,6 +42,12 @@ require('packer').startup(function()
         'folke/tokyonight.nvim',
         disable = true,
         config = require('nani.temas.tokyonight').config,
+    }
+
+    use {
+        'sainnhe/everforest',
+        setup = require('nani.temas.everforest').setup,
+        config = function() vim.cmd [[colorscheme everforest]] end,
     }
 
     -- Buffers
