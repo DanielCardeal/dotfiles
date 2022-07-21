@@ -8,6 +8,8 @@ map({ 'n', 'v' }, 'f', "<cmd>HopChar1<cr>")
 map({ 'n', 'v' }, 's', "<cmd>HopChar2<cr>")
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 
+map('n', '<tab>', 'za') -- Toggle de folds usando <tab>
+
 -- Text objects
 map({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>')
 map({ 'o', 'x' }, 'ah', ':<c-u>Gitsigns select_hunk<cr>')
