@@ -12,6 +12,7 @@ end
 
 function M.config()
     require('nvim-tree').setup {
+        sync_root_with_cwd = true,
         renderer = {
             group_empty = true,
         }
