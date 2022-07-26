@@ -15,6 +15,19 @@ require('packer').startup(function()
     use 'folke/which-key.nvim'
     use 'gpanders/editorconfig.nvim'
 
+    -- Mini plugins
+    -- NOTE: mini.nvim é uma coleção de vários "mini plugins", que resolvem
+    -- problemas diferentes. No meu caso, eu uso:
+    --  * MiniBufremove
+    --  * MiniIndentscope
+    --  * MiniComment
+    use {
+        'echasnovski/mini.nvim',
+        branch = 'stable',
+        lock = true,
+        config = require('nani.plugins.mini_nvim').config,
+    }
+
     -- Pairs
     use 'tpope/vim-surround'
     use {
@@ -22,12 +35,6 @@ require('packer').startup(function()
         config = function()
             require('nvim-autopairs').setup {}
         end
-    }
-
-    -- Comentarios
-    use {
-        'numToStr/Comment.nvim',
-        config = require("nani.plugins.comment").config,
     }
 
     -- Temas
@@ -48,12 +55,6 @@ require('packer').startup(function()
         'sainnhe/everforest',
         setup = require('nani.temas.everforest').setup,
         config = function() vim.cmd [[colorscheme everforest]] end,
-    }
-
-    -- Buffers
-    use {
-        'kazhala/close-buffers.nvim',
-        cmd = "BDelete",
     }
 
     -- StatusLine
