@@ -136,6 +136,18 @@ require('packer').startup(function()
         config = require('nani.plugins.telescope').config,
     }
 
+    if vim.fn.executable('z') then
+        -- Integração com zoxide
+        use {
+            'jvgrootveld/telescope-zoxide',
+            requires = {
+                'nvim-lua/plenary.nvim',
+                'nvim-lua/popup.nvim',
+                'nvim-telesocope/telescope.nvim',
+            }
+        }
+    end
+
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',

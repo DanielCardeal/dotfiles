@@ -45,6 +45,7 @@ wk.register({
 wk.register({
     f = {
         name = "file",
+        d = { "<cmd>Telescope zoxide list theme=dropdown<cr>", "goto dir" },
         f = { "<cmd>Telescope find_files<cr>", "find files" },
         r = { "<cmd>Telescope oldfiles<cr>", "recent files" },
         s = { "<cmd>w<cr>", "save file" },

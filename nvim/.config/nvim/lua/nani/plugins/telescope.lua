@@ -56,6 +56,22 @@ function M.config()
     t.setup(options)
     t.load_extension('fzf')
     t.load_extension('ui-select')
+
+    if vim.fn.executable('zoxide') then
+        require('telescope._extensions.zoxide.config').setup {
+            mappings = {
+                default = {
+                    action = function(selection)
+                        vim.cmd('tcd ' .. selection.path)
+                    end,
+                    after_action = function(selection)
+                        vim.notify('Changed tab cwd to ' .. selection.path)
+                    end
+                },
+            }
+        }
+        t.load_extension('zoxide')
+    end
 end
 
 return M
