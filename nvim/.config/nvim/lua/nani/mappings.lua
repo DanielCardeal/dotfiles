@@ -80,10 +80,10 @@ wk.register({
         r = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename' },
         a = { '<cmd>lua vim.lsp.buf.code_action()<CR>', 'actions' },
         f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'format' },
-        d = { "<cmd>Trouble document_diagnostics<cr>", "buf diag" },
-        D = { "<cmd>Trouble workspace_diagnostics<cr>", "work diag" },
-        q = { "<cmd>Trouble quickfix<cr>", "quickfix" },
-        l = { "<cmd>Trouble loclist<cr>", "loclist" },
+        d = { "<cmd>TroubleToggle document_diagnostics<cr>", "buf diag" },
+        D = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "work diag" },
+        q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
+        l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
     },
 
     w = {
