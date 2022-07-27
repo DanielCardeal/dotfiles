@@ -26,7 +26,6 @@ function M.config()
 
     -- Garante que todos os servidores que devem ser usados estão devidamente
     -- instalados e inicializados
-    require('nvim-lsp-installer').setup { automatic_installation = true }
     for _, servidor in pairs(servidores) do
         require('lspconfig')[servidor].setup {
             on_attach = on_attach,

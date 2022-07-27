@@ -8,8 +8,14 @@ end
 -- Inicializa os plugins
 local use = require('packer').use
 require('packer').startup(function()
-    -- Packer
+    -- Package management
     use 'wbthomason/packer.nvim'
+    use {
+        'williamboman/mason.nvim',
+        config = function()
+            require("mason").setup()
+        end
+    }
 
     -- Plugins simples
     use 'folke/which-key.nvim'
@@ -102,12 +108,8 @@ require('packer').startup(function()
         'neovim/nvim-lspconfig',
         tag = "*",
         lock = true,
-        after = { 'which-key.nvim', 'nvim-lsp-installer', 'nvim-cmp' },
+        after = { 'which-key.nvim', 'mason.nvim', 'nvim-cmp' },
         config = require('nani.plugins.lsp').config,
-    }
-    use {
-        'williamboman/nvim-lsp-installer',
-        event = 'BufEnter',
     }
     use {
         'j-hui/fidget.nvim',
