@@ -4,10 +4,7 @@ local ls = require('luasnip')
 local map = vim.keymap.set
 
 -- Atalhos sem prefixo
-map({ 'n', 'v' }, 'f', "<cmd>HopChar1<cr>")
-map({ 'n', 'v' }, 's', "<cmd>HopChar2<cr>")
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-
 map('n', '<tab>', 'za') -- Toggle de folds usando <tab>
 
 -- Text objects
@@ -154,18 +151,6 @@ wk.register({
         f = { '<cmd>lua vim.lsp.buf.range_formatting()<CR>', 'format range' },
     },
 }, { prefix = "<leader>", mode = "v" })
-
--- Atalhos de goto
-wk.register({
-    s = {
-        name = "hop",
-        w = { "<cmd>HopWord<cr>", "word" },
-        l = { "<cmd>HopLine<cr>", "line" },
-        k = { "<cmd>HopLineBC<cr>", "line up" },
-        j = { "<cmd>HopLineAC<cr>", "line down" },
-        ["/"] = { "<cmd>HopPattern<cr>", "pattern" },
-    },
-}, { prefix = 'g' })
 
 -- Atalhos de movimentação [ (para trás)
 wk.register({

@@ -79,14 +79,6 @@ require('packer').startup(function()
         end
     }
 
-    -- Hop
-    use {
-        'phaazon/hop.nvim',
-        tag = '*',
-        lock = true,
-        config = require('nani.plugins.hop').config,
-    }
-
     -- Git
     use {
         'lewis6991/gitsigns.nvim',
