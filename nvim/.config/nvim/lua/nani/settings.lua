@@ -44,6 +44,8 @@ local set = {
     -- Abrindo novas janelas
     splitright = true,
     splitbelow = true,
+    -- Tempo de espera para o cursorhold
+    updatetime = 300,
 }
 for k, v in pairs(set) do
     vim.opt[k] = v

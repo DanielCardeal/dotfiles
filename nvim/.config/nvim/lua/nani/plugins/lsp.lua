@@ -24,6 +24,15 @@ function M.config()
         vim.lsp.protocol.make_client_capabilities()
     )
 
+    -- Mostra detalhes dos diagnósticos em hover e não mostra `virtual text`
+    vim.diagnostic.config { virtual_text = false }
+    local augroup = vim.api.nvim_create_augroup('NaniLsp', {})
+    vim.api.nvim_create_autocmd('CursorHold', {
+        pattern = "*",
+        command = "lua vim.diagnostic.open_float()",
+        group = augroup,
+    })
+
     -- Garante que todos os servidores que devem ser usados estão devidamente
     -- instalados e inicializados
     for _, servidor in pairs(servidores) do
