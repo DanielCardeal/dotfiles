@@ -55,7 +55,13 @@ wk.register({
         p = { '<cmd>Gitsigns preview_hunk<cr>', 'preview hunk' },
         b = { '<cmd>Gitsigns blame_line<cr>', 'blame line' },
         B = { '<cmd>lua require("gitsigns").blame_line { full = true }<cr>', 'blame line (full)' },
-        q = { '<cmd>Gitsigns setqflist all<cr>', 'set qflist' },
+        q = {
+            function()
+                require('gitsigns').setqflist('all', { open = false })
+                print('Git hunks sent to qflist')
+            end,
+            'set qflist'
+        },
         r = { '<cmd>Gitsigns reset_hunk<cr>', 'reset hunk' },
         R = { '<cmd>Gitsigns reset_buffer<cr>', 'reset buffer' },
         d = {
