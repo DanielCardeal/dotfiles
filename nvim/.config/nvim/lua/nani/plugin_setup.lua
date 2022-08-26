@@ -59,8 +59,14 @@ require('packer').startup(function()
 
     use {
         'sainnhe/everforest',
+        disable = true,
         setup = require('nani.temas.everforest').setup,
         config = function() vim.cmd [[colorscheme everforest]] end,
+    }
+
+    use {
+        'sainnhe/gruvbox-material',
+        config = function() vim.cmd [[colorscheme gruvbox-material]] end,
     }
 
     -- StatusLine
