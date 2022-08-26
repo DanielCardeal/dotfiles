@@ -17,7 +17,6 @@ local set = {
     -- Busca
     ignorecase = true,
     smartcase = true,
-    hlsearch = true,
     incsearch = true,
     -- Navegação
     scrolloff = 5,
