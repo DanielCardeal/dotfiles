@@ -8,6 +8,9 @@ end
 
 -- Opções globais ("set blabla")
 local set = {
+    -- Colorscheme
+    background = 'dark',
+    -- Remove backups
     undofile = true,
     swapfile = false,
     backup = false,
