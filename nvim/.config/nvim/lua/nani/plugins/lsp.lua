@@ -10,6 +10,7 @@ function M.config()
         "gopls", -- Go
         "jdtls", -- Java
         "vimls", -- Vimscript
+        "bashls", -- Bash
     }
 
     -- Função chamada quando o cliente `client` é associado ao buffer de número

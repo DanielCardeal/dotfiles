@@ -13,6 +13,8 @@ function M.config()
             -- Fish
             null_ls.builtins.diagnostics.fish,
             null_ls.builtins.formatting.fish_indent,
+            -- Bash
+            null_ls.builtins.formatting.shfmt,
         }
     }
 end
