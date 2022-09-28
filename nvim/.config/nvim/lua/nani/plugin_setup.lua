@@ -53,7 +53,6 @@ require('packer').startup(function()
 
     use {
         'folke/tokyonight.nvim',
-        disable = true,
         config = require('nani.temas.tokyonight').config,
     }
 
@@ -66,6 +65,7 @@ require('packer').startup(function()
 
     use {
         'sainnhe/gruvbox-material',
+        disable = true,
         config = function() vim.cmd [[colorscheme gruvbox-material]] end,
     }
 
