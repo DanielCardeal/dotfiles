@@ -3,6 +3,7 @@ local M = {}
 function M.config()
     -- Servidores configurados
     local servidores = {
+        "gdscript", -- Godot
         "kotlin_language_server", -- Kotlin
         "pyright", -- Python
         "rust_analyzer", -- Rust
