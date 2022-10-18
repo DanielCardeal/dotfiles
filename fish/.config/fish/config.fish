@@ -2,7 +2,7 @@
 set -gx EDITOR nvim
 
 if not status is-interactive
-    return
+    exit
 end
 
 fish_vi_key_bindings
@@ -14,7 +14,7 @@ if type -q exa
     alias exa "exa --icons"
     abbr -a ls exa
     abbr -a la "exa -a"
-    abbr -a ll "exa -l --git"
+    abbr -a ll "exa -l"
 end
 
 if type -q tmux
@@ -26,6 +26,12 @@ end
 if type -q bat
     alias ccat cat
     alias cat bat
+end
+
+if type -q batcat
+    # Bat no Debian chama batcat
+    alias ccat cat
+    alias cat batcat
 end
 
 # --- Programas
@@ -41,7 +47,7 @@ if set -q NVIM_LISTEN_ADDRESS
     or set -q NVIM # Compatibilidade com NVIM 0.7.2
     if not type -q nvr
         echo "ERRO: neovim-remote não está instalado!"
-        return
+        exit
     end
     alias nvim "nvr -l"
 else
