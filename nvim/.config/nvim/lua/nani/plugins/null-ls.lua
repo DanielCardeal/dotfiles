@@ -15,6 +15,11 @@ function M.config()
             null_ls.builtins.formatting.fish_indent,
             -- Bash
             null_ls.builtins.formatting.shfmt,
+            -- Docker
+            null_ls.builtins.diagnostics.hadolint,
+            -- YAML
+            null_ls.builtins.formatting.yamlfmt,
+            null_ls.builtins.diagnostics.yamllint,
         }
     }
 end
