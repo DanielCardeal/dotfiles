@@ -243,4 +243,8 @@ require('packer').startup(function()
         ft = 'rust',
         config = function() require('rust-tools').setup {} end
     }
+
+    -- ASP
+    use 'rkaminsk/vim-syntax-clingo'
+
 end)
