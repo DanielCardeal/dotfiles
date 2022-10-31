@@ -1,8 +1,7 @@
 local M = {}
 
 function M.setup(style)
-    style = style or "darker"
-    vim.g.material_style = style
+    vim.g.material_style = style or "darker"
 end
 
 function M.config()
@@ -12,8 +11,27 @@ function M.config()
             floating_windows = true,
             popup_menu = true,
         },
-        italics = {
-            comments = true,
+        styles = {
+            comments = { italic = true },
+            strings = { bold = true },
+            keywords = { bold = true },
+        },
+        plugins = {
+            "gitsigns",
+            "mini",
+            "nvim-cmp",
+            "nvim-tree",
+            "telescope",
+            "which-key",
+            "trouble",
+            -- "dap",
+            -- "dashboard",
+            -- "hop",
+            -- "indent-blankline",
+            -- "lspsaga",
+            -- "neogit",
+            -- "nvim-navic",
+            -- "sneak",
         },
         lualine_style = "stealth",
     })

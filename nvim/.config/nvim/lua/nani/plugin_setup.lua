@@ -46,13 +46,13 @@ require('packer').startup(function()
     -- Temas
     use {
         'marko-cerovac/material.nvim',
-        disable = true,
         setup = function() require('nani.temas.material').setup('deep ocean') end,
         config = require('nani.temas.material').config,
     }
 
     use {
         'folke/tokyonight.nvim',
+        disable = true,
         config = require('nani.temas.tokyonight').config,
     }
 
