@@ -77,6 +77,13 @@ require('packer').startup(function()
         config = require('nani.plugins.statusline').config,
     }
 
+    -- TODO em comentários
+    use {
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        config = function() require("todo-comments").setup {} end,
+    }
+
     -- Remove trailing whitespace
     use {
         "DanielCardeal/trimmy",
