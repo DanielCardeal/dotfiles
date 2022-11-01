@@ -1,5 +1,6 @@
 # --- nvim
 nvim/**/plugin/
+nvim/**/spell/
 
 # --- fish
 fish/**/fish_variables
