@@ -2,7 +2,10 @@ local M = {}
 
 function M.config()
     require('nvim-treesitter.configs').setup {
-        highlight = { enable = true },
+        highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = { 'org' }
+        },
         textobjects = {
             select = {
                 enable = true,
@@ -14,6 +17,7 @@ function M.config()
                 }
             }
         },
+        ensure_installed = { 'org' },
         -- Extensão treesitter-playground
         playground = {
             enable = true,

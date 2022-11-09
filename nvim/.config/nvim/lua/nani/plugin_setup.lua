@@ -254,4 +254,11 @@ require('packer').startup(function()
     -- ASP
     use 'rkaminsk/vim-syntax-clingo'
 
+    -- Org mode
+    use {
+        'nvim-orgmode/orgmode',
+        requires = 'nvim-treesitter/nvim-treesitter',
+        after = "nvim-treesitter",
+        config = require('nani.plugins.orgmode').config,
+    }
 end)

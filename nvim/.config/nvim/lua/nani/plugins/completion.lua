@@ -21,6 +21,7 @@ function M.config()
             -- lista, maior a prioridade.
             { name = 'nvim_lua' },
             { name = 'nvim_lsp' },
+            { name = "orgmode" },
             { name = 'path' },
             { name = 'luasnip' },
             { name = 'emoji' },

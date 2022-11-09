@@ -48,6 +48,9 @@ local set = {
     splitbelow = true,
     -- Tempo de espera para o cursorhold
     updatetime = 300,
+    -- Concealing
+    conceallevel = 2,
+    concealcursor = "nc",
 }
 for k, v in pairs(set) do
     vim.opt[k] = v

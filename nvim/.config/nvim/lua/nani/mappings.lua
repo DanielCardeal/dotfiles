@@ -78,6 +78,10 @@ wk.register({
         }
     },
 
+    o = {
+        name = 'org',
+    },
+
     b = {
         name = "buffer",
         k = { "<cmd>lua MiniBufremove.delete()<cr>", "delete this" },
