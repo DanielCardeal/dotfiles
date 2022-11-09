@@ -46,7 +46,7 @@ require('packer').startup(function()
     -- Temas
     use {
         'marko-cerovac/material.nvim',
-        setup = function() require('nani.temas.material').setup('deep ocean') end,
+        setup = function() require('nani.temas.material').setup('darker') end,
         config = require('nani.temas.material').config,
     }
 
