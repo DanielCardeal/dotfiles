@@ -12,6 +12,7 @@ function M.config()
         "jdtls", -- Java
         "vimls", -- Vimscript
         "bashls", -- Bash
+        'julials', -- Julia
     }
 
     -- Função chamada quando o cliente `client` é associado ao buffer de número
@@ -27,13 +28,13 @@ function M.config()
     )
 
     -- Mostra detalhes dos diagnósticos em hover e não mostra `virtual text`
-    vim.diagnostic.config { virtual_text = false }
-    local augroup = vim.api.nvim_create_augroup('NaniLsp', {})
-    vim.api.nvim_create_autocmd('CursorHold', {
-        pattern = "*",
-        command = "lua vim.diagnostic.open_float()",
-        group = augroup,
-    })
+    -- vim.diagnostic.config { virtual_text = false }
+    -- local augroup = vim.api.nvim_create_augroup('NaniLsp', {})
+    -- vim.api.nvim_create_autocmd('CursorHold', {
+    --     pattern = "*",
+    --     command = "lua vim.diagnostic.open_float()",
+    --     group = augroup,
+    -- })
 
     -- Garante que todos os servidores que devem ser usados estão devidamente
     -- instalados e inicializados

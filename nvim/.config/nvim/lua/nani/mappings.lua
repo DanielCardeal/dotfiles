@@ -46,9 +46,12 @@ wk.register({
         f = { "<cmd>Telescope find_files<cr>", "find files" },
         r = { "<cmd>Telescope oldfiles<cr>", "recent files" },
         s = { "<cmd>w<cr>", "save file" },
+        S = { "<cmd>wa<cr>", "save all" },
         p = { "<cmd>let @+ = expand('%:t')<cr>", "copy path" },
         P = { "<cmd>let @+ = expand('%:p')<cr>", "copy full path" },
     },
+
+    q = { "<cmd>q<cr>", "close window" },
 
     g = {
         name = "git",
@@ -96,6 +99,18 @@ wk.register({
         D = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "work diag" },
         q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
         l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
+    },
+
+    d = {
+        name = "debugger",
+        t = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "toggle breakpoint" },
+        c = { "<cmd>lua require('dap').continue()<cr>", "continue" },
+        b = { "<cmd>lua require('dap').terminate()<cr>", "break" },
+        n = { "<cmd>lua require('dap').step_over()<cr>", "next" },
+        i = { "<cmd>lua require('dap').step_into()<cr>", "step in" },
+        o = { "<cmd>lua require('dap').step_out()<cr>", "step out" },
+        q = { "<cmd>lua require('dap').close()<cr>", "quit" },
+        r = { "<cmd>lua require('dap').repl.open()<cr>", "repl" },
     },
 
     w = {

@@ -130,6 +130,20 @@ require('packer').startup(function()
         config = require('nani.plugins.null-ls').config,
     }
 
+    -- DAP (debugger)
+    use {
+        "mfussenegger/nvim-dap",
+        requires = {
+            -- Gerais
+            "rcarriga/nvim-dap-ui",
+            "theHamsta/nvim-dap-virtual-text",
+            "nvim-telescope/telescope-dap.nvim",
+            -- Linguagens
+            "mfussenegger/nvim-dap-python",
+        },
+        config = require('nani.plugins.dap').config,
+    }
+
     -- Telescope
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use 'nvim-telescope/telescope-ui-select.nvim'
