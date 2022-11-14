@@ -24,7 +24,9 @@ local set = {
     clipboard = { 'unnamed', 'unnamedplus' },
     -- Edição
     smartindent = true,
-    textwidth = 80,
+    textwidth = 0,
+    wrap = true,
+    linebreak = true,
     -- Caracteres invisíveis
     list = true,
     listchars = { tab = '» ', trail = '·' },
