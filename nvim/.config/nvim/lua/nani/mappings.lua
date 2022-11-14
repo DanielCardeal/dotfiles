@@ -7,6 +7,10 @@ local map = vim.keymap.set
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 map('n', '<tab>', 'za') -- Toggle de folds usando <tab>
 
+-- Melhora movimento em linhas visuais
+map({ 'n', 'v' }, 'j', 'gj')
+map({ 'n', 'v' }, 'k', 'gk')
+
 -- Text objects
 map({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>')
 map({ 'o', 'x' }, 'ah', ':<c-u>Gitsigns select_hunk<cr>')
