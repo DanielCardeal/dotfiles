@@ -53,7 +53,7 @@ local set = {
     updatetime = 300,
     -- Concealing
     conceallevel = 2,
-    concealcursor = "nc",
+    concealcursor = "c",
 }
 for k, v in pairs(set) do
     vim.opt[k] = v
