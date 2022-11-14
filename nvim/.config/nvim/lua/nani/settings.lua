@@ -29,7 +29,8 @@ local set = {
     linebreak = true,
     -- Caracteres invisíveis
     list = true,
-    listchars = { tab = '» ', trail = '·' },
+    listchars = { tab = '» ', trail = '·', eol = '¬' },
+    showbreak = '↳',
     -- Tempo de espera entre comandos
     timeoutlen = 500,
     -- Statusline global
