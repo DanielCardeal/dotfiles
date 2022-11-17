@@ -268,6 +268,9 @@ require('packer').startup(function()
     -- ASP
     use 'rkaminsk/vim-syntax-clingo'
 
+    -- Latex
+    use 'lervag/vimtex'
+
     -- Org mode
     use {
         'nvim-orgmode/orgmode',
