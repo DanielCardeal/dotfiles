@@ -153,7 +153,6 @@ require('packer').startup(function()
             'nvim-lua/plenary.nvim',
             'kyazdani42/nvim-web-devicons',
         },
-        cmd = 'Telescope',
         config = require('nani.plugins.telescope').config,
     }
 
