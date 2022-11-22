@@ -73,7 +73,7 @@ require('packer').startup(function()
     -- StatusLine
     use {
         'nvim-lualine/lualine.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
+        requires = 'nvim-tree/nvim-web-devicons',
         event = 'BufEnter',
         config = require('nani.plugins.statusline').config,
     }
@@ -104,7 +104,7 @@ require('packer').startup(function()
 
     use {
         'sindrets/diffview.nvim',
-        requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' },
+        requires = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' },
         cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
         config = require('nani.plugins.diffview').config,
     }
@@ -152,7 +152,7 @@ require('packer').startup(function()
         'nvim-telescope/telescope.nvim',
         requires = {
             'nvim-lua/plenary.nvim',
-            'kyazdani42/nvim-web-devicons',
+            'nvim-tree/nvim-web-devicons',
         },
         config = require('nani.plugins.telescope').config,
     }
@@ -190,14 +190,14 @@ require('packer').startup(function()
     -- Trouble
     use {
         "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
+        requires = "nvim-tree/nvim-web-devicons",
         config = require('nani.plugins.trouble').config,
     }
 
     -- File explorer
     use {
-        'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons',
+        'nvim-tree/nvim-tree.lua',
+        requires = 'nvim-tree/nvim-web-devicons',
         cmd = { 'NvimTreeFocus', 'NvimTreeClose' },
         config = require('nani.plugins.nvim-tree').config,
     }
