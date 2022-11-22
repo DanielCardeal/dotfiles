@@ -126,7 +126,6 @@ wk.register({
         name = "search",
         s = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "grep buffer" },
         p = { "<cmd>Telescope live_grep<cr>", "grep dir" },
-        t = { "<cmd>Telescope colorscheme<cr>", "themes" },
         m = { "<cmd>Telescope man_pages<cr>", "man pages" },
         i = { "<cmd>Telescope lsp_document_symbols<cr>", "symbols" },
     },
