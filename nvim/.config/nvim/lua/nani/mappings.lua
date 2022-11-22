@@ -62,8 +62,7 @@ wk.register({
         s = { '<cmd>Gitsigns stage_hunk<cr>', 'stage hunk' },
         u = { '<cmd>Gitsigns undo_stage_hunk<cr>', 'undo hunk' },
         p = { '<cmd>Gitsigns preview_hunk<cr>', 'preview hunk' },
-        b = { '<cmd>Gitsigns blame_line<cr>', 'blame line' },
-        B = { '<cmd>lua require("gitsigns").blame_line { full = true }<cr>', 'blame line (full)' },
+        b = { '<cmd>Telescope git_branches<cr>', 'branch' },
         q = {
             function()
                 require('gitsigns').setqflist('all', { open = false })

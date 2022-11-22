@@ -7,6 +7,13 @@ function M.config()
             mappings = {
                 i = {
                     ["<C-q>"] = require('telescope.actions').smart_send_to_qflist,
+                    ["<C-d>"] = require('telescope.actions').delete_buffer,
+                    ["<C-a>"] = require('telescope.actions').select_all,
+                },
+                n = {
+                    ["<C-q>"] = require('telescope.actions').smart_send_to_qflist,
+                    ["<C-d>"] = require('telescope.actions').delete_buffer,
+                    ["<C-a>"] = require('telescope.actions').select_all,
                 }
             }
         },
