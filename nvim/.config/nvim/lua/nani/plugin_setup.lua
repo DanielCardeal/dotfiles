@@ -20,6 +20,7 @@ require('packer').startup(function()
     -- Plugins simples
     use 'folke/which-key.nvim'
     use 'gpanders/editorconfig.nvim'
+    use 'justinmk/vim-sneak'
 
     -- Mini plugins
     -- NOTE: mini.nvim é uma coleção de vários "mini plugins", que resolvem
