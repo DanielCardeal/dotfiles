@@ -24,7 +24,6 @@ function M.config()
             { name = "orgmode" },
             { name = 'path' },
             { name = 'luasnip' },
-            { name = 'emoji' },
             { name = 'buffer', keyword_length = 5 },
         },
 
