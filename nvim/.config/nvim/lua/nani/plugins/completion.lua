@@ -46,22 +46,12 @@ function M.config()
         }
     }
 
-    -- Específica de linguagens
-    cmp.setup.filetype({ 'c', 'cpp' }, {
-        sources = {
-            { name = 'tags' },
+    -- Configuração para `command mode` do Vim
+    cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources {
             { name = 'path' },
-            { name = 'luasnip' },
-            { name = 'buffer', keyword_length = 5 },
-        }
-    })
-
-    cmp.setup.filetype('r', {
-        sources = {
-            { name = 'omni' },
-            { name = 'path' },
-            { name = 'luasnip' },
-            { name = 'buffer', keyword_length = 5 },
+            { name = 'cmdline' },
         }
     })
 

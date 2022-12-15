@@ -228,7 +228,7 @@ require('packer').startup(function()
             'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-omni',
             'hrsh7th/cmp-path',
-            'quangnguyen30192/cmp-nvim-tags',
+            'hrsh7th/cmp-cmdline',
             'saadparwaiz1/cmp_luasnip',
         },
         after = { 'LuaSnip', 'nvim-autopairs' },
