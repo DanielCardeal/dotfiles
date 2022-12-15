@@ -235,7 +235,7 @@ require('packer').startup(function()
             'saadparwaiz1/cmp_luasnip',
         },
         after = { 'LuaSnip', 'nvim-autopairs' },
-        config = require('nani.plugins.completion').config,
+        config = require('nani.plugins.nvim_cmp').config,
     }
 
     -- CTags/Universal Tags
