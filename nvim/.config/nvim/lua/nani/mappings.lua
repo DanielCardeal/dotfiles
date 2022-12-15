@@ -167,6 +167,8 @@ wk.register({
         "toggle spell"
     },
 
+    Z = { "<cmd>ZenMode<cr>", "toggle zen" },
+
     [' '] = { "<cmd>Telescope git_files<cr>", "git files" },
     [','] = { "<cmd>Telescope buffers<cr>", "list buffers" },
     ['.'] = { "<cmd>Telescope find_files<cr>", "find files" },

@@ -209,6 +209,12 @@ require('packer').startup(function()
         config = require('nani.plugins.snippets').config,
     }
 
+    -- Zen Mode
+    use {
+        "folke/zen-mode.nvim",
+        config = require('nani.plugins.zen').config,
+    }
+
     -- Autocomplete
     use {
         'hrsh7th/nvim-cmp',
