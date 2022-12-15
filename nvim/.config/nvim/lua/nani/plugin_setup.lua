@@ -17,6 +17,10 @@ require('packer').startup(function()
         end
     }
 
+    -- Dependências comuns
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-tree/nvim-web-devicons'
+
     -- Plugins simples
     use 'folke/which-key.nvim'
     use 'gpanders/editorconfig.nvim'
