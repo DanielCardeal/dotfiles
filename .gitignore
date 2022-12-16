@@ -6,6 +6,11 @@ nvim/**/spell/
 fish/**/fish_variables
 fish/**/completions/
 fish/**/conf.d/
+# fisher package manager
+fish/**/*nvm*
+fish/**/fisher.fish
+fish/**/fisher.fish
+
 
 # --- zsh
 zsh/**/.zhistory
