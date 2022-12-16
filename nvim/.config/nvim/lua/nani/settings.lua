@@ -14,6 +14,7 @@ local set = {
     undofile = true,
     swapfile = false,
     backup = false,
+    writebackup = false,
     -- Busca
     ignorecase = true,
     smartcase = true,
@@ -42,6 +43,7 @@ local set = {
     -- Visuais
     number = true,
     cursorline = true,
+    signcolumn = 'yes',
     termguicolors = true,
     fillchars = { diff = '╱', eob = " " },
     -- Corretor de palavras
