@@ -126,10 +126,14 @@ require('packer').startup(function()
             'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
-            'hrsh7th/cmp-omni',
             'quangnguyen30192/cmp-nvim-ultisnips',
         },
     }
+
+    -- ###########
+    --    LATEX
+    -- ###########
+    use 'lervag/vimtex'
 
     -- Sincroniza o ambiente na primeira instalação
     if is_bootstrap then
@@ -160,7 +164,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 --    SETTINGS GERAIS
 -- #####################
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 local set = {
     -- Cores
@@ -435,7 +438,7 @@ local on_attach = function(_, bufnr)
 end
 
 -- Instala e configura LSPs automaticamente
-local default_servers = { 'clangd', 'rust_analyzer', 'pyright', 'sumneko_lua', }
+local default_servers = { 'clangd', 'rust_analyzer', 'pyright', 'sumneko_lua', 'texlab' }
 
 require('mason').setup()
 require('mason-lspconfig').setup {
