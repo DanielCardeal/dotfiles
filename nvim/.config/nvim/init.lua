@@ -110,8 +110,7 @@ require('packer').startup(function()
     -- ##############
     --    SNIPPETS
     -- ##############
-    use 'SirVer/ultisnips' -- snippet engine
-    use 'honza/vim-snippets' -- pacote de snippets
+    use { 'L3MON4D3/LuaSnip' }
 
     -- #################
     --   AUTOCOMPLETE
@@ -126,7 +125,7 @@ require('packer').startup(function()
             'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
-            'quangnguyen30192/cmp-nvim-ultisnips',
+            'saadparwaiz1/cmp_luasnip',
         },
     }
 
@@ -228,13 +227,17 @@ vim.cmd.colorscheme(tema_ativo)
 -- ####################
 --    KEYMAPS GERAIS
 -- ####################
-local map = function(mode, left, right, description)
+map = function(mode, left, right, description)
     mode = mode or 'n'
     description = description or ''
     vim.keymap.set(mode, left, right, { desc = description })
 end
-local nmap = function(lhs, rhs, desc)
+nmap = function(lhs, rhs, desc)
     map('n', lhs, rhs, desc)
+end
+ftmap = function(ft, mode, lhs, rhs, desc)
+    ft = string.upper(ft)
+    map(mode, lhs, rhs, ft .. ": " .. desc)
 end
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -467,13 +470,36 @@ end
 -- Habilita LSP status
 require('fidget').setup()
 
--- #############
---    SNIPPET
--- #############
+-- #######################
+--    SNIPPETS (CONFIG)
+-- #######################
+local luasnip = require('luasnip')
+luasnip.config.set_config {
+    -- Permite voltar para o snippet mesmo após ter saído dele
+    history = false,
+    -- Atualiza o snippet enquanto escreve
+    updateevents = 'TextChanged,TextChangedI',
+}
+
 -- Mapeia <c-j> e <c-k> para próximo campo / campo anterior do snippet
-vim.UltiSnipsExpandTrigger = "<c-space>"
-vim.UltiSnipsJumpForwardTrigger = "<c-j>"
-vim.UltiSnipsJumpBackwardTrigger = "<c-k>"
+map({ "i", "s" }, "<c-j>", function()
+    if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+    end
+end, { silent = true })
+
+map({ "i", "s" }, "<c-k>", function()
+    if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+    end
+end, { silent = true })
+
+-- <c-l> seleciona o próximo item quando existe uma lista de opções
+map("i", "<c-l>", function()
+    if luasnip.choice_active() then
+        luasnip.change_choice(1)
+    end
+end)
 
 -- ###########################
 --    AUTOCOMPLETE (CONFIG)
@@ -510,13 +536,13 @@ cmp.setup {
     sources = {
         { name = 'nvim_lsp' },
         { name = 'nvim_lua' },
+        { name = 'luasnip' },
         { name = 'path' },
-        { name = "ultisnips" },
         { name = 'buffer', keyword_length = 5 },
     },
     snippet = {
         expand = function(args)
-            vim.fn["UltiSnips#Anon"](args.body)
+            luasnip.lsp_expand(args.body)
         end,
     }
 }
