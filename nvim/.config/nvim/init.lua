@@ -247,6 +247,10 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 nmap('<leader>fs', '<cmd>w<cr>', '[F]ile [S]ave')
 nmap('<leader>fS', '<cmd>wa<cr>', '[F]ile [S]ave (all)')
 
+-- Text objects
+map({ 'o', 'x' }, 'ig', ':<c-u>normal! ggVG<cr>')
+map({ 'o', 'x' }, 'ag', ':<c-u>normal! ggVG<cr>')
+
 -- Manipulação de buffers/janelas
 nmap('<leader>w', '\23', "[W]indow")
 nmap('<leader>q', '<cmd>q<cr>', 'Close Window')
@@ -401,6 +405,9 @@ nmap('<leader>gR', require('gitsigns').reset_buffer, '[G]it [R]eset Buffer')
 
 nmap("]h", require('gitsigns').next_hunk, "Next [H]unk")
 nmap("[h", require('gitsigns').prev_hunk, "Previous [H]unk")
+
+map({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>')
+map({ 'o', 'x' }, 'ah', ':<c-u>Gitsigns select_hunk<cr>')
 
 -- ##################
 --    LSP (CONFIG)
