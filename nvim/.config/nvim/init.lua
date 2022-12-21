@@ -206,6 +206,7 @@ local set = {
     signcolumn = 'yes',
     fillchars = { diff = '╱', eob = " " },
     -- Corretor de palavras
+    spellsuggest = "best,9",
     spelllang = { 'pt_br', 'en' },
     -- Abrindo novas janelas
     splitright = true,
