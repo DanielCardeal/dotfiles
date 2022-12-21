@@ -226,10 +226,13 @@ vim.cmd [[colorscheme nightfox]]
 -- ####################
 --    KEYMAPS GERAIS
 -- ####################
-local map = function(left, right, description, mode)
+local map = function(mode, left, right, description)
     mode = mode or 'n'
     description = description or ''
     vim.keymap.set(mode, left, right, { desc = description })
+end
+local nmap = function(lhs, rhs, desc)
+    map('n', lhs, rhs, desc)
 end
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -239,22 +242,19 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Salvar arquivos
-map('<leader>fs', '<cmd>w<cr>', '[F]ile [S]ave')
-map('<leader>fS', '<cmd>wa<cr>', '[F]ile [S]ave (all)')
+nmap('<leader>fs', '<cmd>w<cr>', '[F]ile [S]ave')
+nmap('<leader>fS', '<cmd>wa<cr>', '[F]ile [S]ave (all)')
 
 -- Manipulação de buffers/janelas
-map('<leader>w', '\23', "[W]indow")
-map('<leader>q', '<cmd>q<cr>', 'Close Window')
-map('<leader>bk', '<cmd>bd<cr>', '[B]uffer [D]elete')
+nmap('<leader>w', '\23', "[W]indow")
+nmap('<leader>q', '<cmd>q<cr>', 'Close Window')
+nmap('<leader>bk', '<cmd>bd<cr>', '[B]uffer [D]elete')
 
 -- GOTOs
-map("]q", "<cmd>cnext<cr>", "[Q]fix Next")
-map("[q", "<cmd>cprevious<cr>", "[Q]fix Previous")
-map("]l", "<cmd>lnext<cr>", "[L]oclist Next")
-map("[l", "<cmd>lprevious<cr>", "[L]oclist Previous")
-
--- Corretor ortográfico
-map("<leader>z", function() vim.o.spell = not vim.o.spell end, "Toggle Spell")
+nmap("]q", "<cmd>cnext<cr>", "[Q]fix Next")
+nmap("[q", "<cmd>cprevious<cr>", "[Q]fix Previous")
+nmap("]l", "<cmd>lnext<cr>", "[L]oclist Next")
+nmap("[l", "<cmd>lprevious<cr>", "[L]oclist Previous")
 
 -- ######################
 --    LUALINE (CONFIG)
@@ -329,21 +329,21 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzf')
 
 -- Keymaps
-map('<leader><leader>', require('telescope.builtin').git_files, 'Git Files')
-map('<leader>,', require('telescope.builtin').buffers, 'List Buffers')
-map('<leader>.', require('telescope.builtin').find_files, 'Find Files')
+nmap('<leader><leader>', require('telescope.builtin').git_files, 'Git Files')
+nmap('<leader>,', require('telescope.builtin').buffers, 'List Buffers')
+nmap('<leader>.', require('telescope.builtin').find_files, 'Find Files')
 
-map('<leader>ff', require('telescope.builtin').find_files, '[F]ind [F]iles')
-map('<leader>fr', require('telescope.builtin').oldfiles, '[F]ind [R]ecent')
+nmap('<leader>ff', require('telescope.builtin').find_files, '[F]ind [F]iles')
+nmap('<leader>fr', require('telescope.builtin').oldfiles, '[F]ind [R]ecent')
 
-map('<leader>ss', require('telescope.builtin').current_buffer_fuzzy_find, '[S]earch [S]tring')
-map('<leader>sp', require('telescope.builtin').live_grep, '[S]earch [P]roject')
-map('<leader>st', require('telescope.builtin').colorscheme, '[S]earch [T]hemes')
+nmap('<leader>ss', require('telescope.builtin').current_buffer_fuzzy_find, '[S]earch [S]tring')
+nmap('<leader>sp', require('telescope.builtin').live_grep, '[S]earch [P]roject')
+nmap('<leader>st', require('telescope.builtin').colorscheme, '[S]earch [T]hemes')
 
-map('<leader>hh', require('telescope.builtin').help_tags, '[H]elp [H]elp')
-map('<leader>hm', require('telescope.builtin').man_pages, '[H]elp [M]anpages')
-map('<leader>hb', require('telescope.builtin').keymaps, '[H]elp [B]indings')
-map('<leader>hk', require('telescope.builtin').keymaps, '[H]elp [K]eymaps')
+nmap('<leader>hh', require('telescope.builtin').help_tags, '[H]elp [H]elp')
+nmap('<leader>hm', require('telescope.builtin').man_pages, '[H]elp [M]anpages')
+nmap('<leader>hb', require('telescope.builtin').keymaps, '[H]elp [B]indings')
+nmap('<leader>hk', require('telescope.builtin').keymaps, '[H]elp [K]eymaps')
 
 -- #########################
 --    TREESITTER (CONFIG)
@@ -388,14 +388,14 @@ require('trimmy').setup()
 -- ##################
 
 -- Keymaps
-map('<leader>gs', require('gitsigns').stage_hunk, '[G]it [S]tage Hunk')
-map('<leader>gu', require('gitsigns').undo_stage_hunk, '[G]it [U]ndo Stage Hunk')
-map('<leader>gp', require('gitsigns').preview_hunk, '[G]it [P]review Hunk')
-map('<leader>gr', require('gitsigns').reset_hunk, '[G]it [R]eset Hunk')
-map('<leader>gR', require('gitsigns').reset_buffer, '[G]it [R]eset Buffer')
+nmap('<leader>gs', require('gitsigns').stage_hunk, '[G]it [S]tage Hunk')
+nmap('<leader>gu', require('gitsigns').undo_stage_hunk, '[G]it [U]ndo Stage Hunk')
+nmap('<leader>gp', require('gitsigns').preview_hunk, '[G]it [P]review Hunk')
+nmap('<leader>gr', require('gitsigns').reset_hunk, '[G]it [R]eset Hunk')
+nmap('<leader>gR', require('gitsigns').reset_buffer, '[G]it [R]eset Buffer')
 
-map("]h", require('gitsigns').next_hunk, "Next [H]unk")
-map("[h", require('gitsigns').prev_hunk, "Previous [H]unk")
+nmap("]h", require('gitsigns').next_hunk, "Next [H]unk")
+nmap("[h", require('gitsigns').prev_hunk, "Previous [H]unk")
 
 -- ##################
 --    LSP (CONFIG)
@@ -406,7 +406,7 @@ local on_attach = function(_, bufnr)
         if desc then
             desc = 'LSP: ' .. desc
         end
-        map(left, right, desc)
+        nmap(left, right, desc)
     end
 
     nmap('<leader>cr', vim.lsp.buf.rename, '[C]ode [R]ename')
@@ -517,10 +517,18 @@ cmp.setup {
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
 
+-- #########################
+--    CORRETOR AUTOMÁTICO
+-- #########################
+nmap("<leader>zz", function() vim.o.spell = not vim.o.spell end, "[Z]pell [Z]tart")
+nmap("<leader>zc", "1z=", "[Z]pell [C]orrect Default")
+nmap("<leader>zC", "1z=", "[Z]pell [C]orrect")
+nmap("<leader>za", "zg", "[Z]pell [A]dd")
+
 -- ##############
 --    ZEN MODE
 -- ##############
-map('<leader>Z', require('zen-mode').toggle, 'Toogle [Z]en-Mode')
+nmap('<leader>Z', require('zen-mode').toggle, 'Toogle [Z]en-Mode')
 
 -- ##############
 --    TERMINAL
@@ -557,7 +565,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 -- Usa <c-,> como esc do modo terminal
 vim.keymap.set('t', [[<C-,>]], [[<C-\><C-n>]])
 
-map('<leader>to', '<cmd>term<cr>', '[T]erminal [O]pen')
-map('<leader>ts', "<cmd>bo 12sp <bar> term<cr>", '[T]erminal [S]plit')
-map('<leader>tv', "<cmd>bo vsp <bar> term<cr>", '[T]erminal [V]split')
-map('<leader>tt', "<cmd>tabnew <bar> term<cr>", '[T]erminal [T]ab')
+nmap('<leader>to', '<cmd>term<cr>', '[T]erminal [O]pen')
+nmap('<leader>ts', "<cmd>bo 12sp <bar> term<cr>", '[T]erminal [S]plit')
+nmap('<leader>tv', "<cmd>bo vsp <bar> term<cr>", '[T]erminal [V]split')
+nmap('<leader>tt', "<cmd>tabnew <bar> term<cr>", '[T]erminal [T]ab')
