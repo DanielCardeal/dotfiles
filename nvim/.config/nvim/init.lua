@@ -223,7 +223,7 @@ end
 --    CONFIG (TEMA)
 -- ###################
 local tema_ativo = 'nightfox'
-vim.cmd("colorscheme " .. tema_ativo)
+vim.cmd.colorscheme(tema_ativo)
 
 -- ####################
 --    KEYMAPS GERAIS
