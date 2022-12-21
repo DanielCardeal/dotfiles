@@ -258,7 +258,7 @@ nmap("]l", "<cmd>lnext<cr>", "[L]oclist Next")
 nmap("[l", "<cmd>lprevious<cr>", "[L]oclist Previous")
 
 -- ######################
---    LUALINE (CONFIG)
+--    STATUSLINE (CONFIG)
 -- ######################
 require('lualine').setup {
     options = {
@@ -268,6 +268,9 @@ require('lualine').setup {
         component_separators = { left = '', right = '' },
     }
 }
+
+-- Adiciona uma winbar para facilitar a detecção dos arquivos
+vim.o.winbar = "%=%f"
 
 -- ###########################
 --    COMMENT.NVIM (CONFIG)
