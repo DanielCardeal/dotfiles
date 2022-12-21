@@ -282,15 +282,6 @@ vim.o.winbar = "%=%f"
 -- ###########################
 require('Comment').setup()
 
--- #######################
---    GITSIGNS (CONFIG)
--- #######################
-require('gitsigns').setup {
-    numhl = true,
-    current_line_blame = true,
-    keymaps = {},
-}
-
 -- ########################
 --    TELESCOPE (CONFIG)
 -- ########################
@@ -395,6 +386,11 @@ require('trimmy').setup()
 -- ##################
 --    GIT (CONFIG)
 -- ##################
+require('gitsigns').setup {
+    numhl = true,
+    current_line_blame = true,
+    keymaps = {},
+}
 
 -- Keymaps
 nmap('<leader>gs', require('gitsigns').stage_hunk, '[G]it [S]tage Hunk')
