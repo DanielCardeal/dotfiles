@@ -129,6 +129,11 @@ require('packer').startup(function()
         },
     }
 
+    -- ###############
+    --    TEMPLATES
+    -- ###############
+    use 'DanielCardeal/temple.nvim'
+
     -- ###########
     --    LATEX
     -- ###########
@@ -558,6 +563,11 @@ nmap("<leader>zz", function() vim.o.spell = not vim.o.spell end, "[Z]pell [Z]tar
 nmap("<leader>zc", "1z=", "[Z]pell [C]orrect Default")
 nmap("<leader>zC", "1z=", "[Z]pell [C]orrect")
 nmap("<leader>za", "zg", "[Z]pell [A]dd")
+
+-- ########################
+--    TEMPLATES (CONFIG)
+-- ########################
+require('temple').setup()
 
 -- ##############
 --    ZEN MODE
