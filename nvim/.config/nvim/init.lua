@@ -450,6 +450,7 @@ local on_attach = function(_, bufnr)
 
     nmap("]e", vim.diagnostic.goto_next, "Next [E]rror")
     nmap("[e", vim.diagnostic.goto_prev, "Prev [E]rror")
+    nmap("<leader>e", vim.diagnostic.open_float, "[E]rror details")
 
     -- Formatação do buffer
     local fmt = function(_)
