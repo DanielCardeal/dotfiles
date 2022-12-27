@@ -1,0 +1,60 @@
+\documentclass[12pt, twoside, a4paper]{article}
+
+% --- Formatação doc ---
+\usepackage[top = 2.5cm, bottom = 2cm, left = 2.5cm, right = 2.5cm]{geometry}
+\usepackage{lmodern}  % fonte ABNT
+\usepackage{indentfirst} % identação do primeiro parágrafo
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{gensymb}
+
+% --- Utils ---
+\usepackage{amsmath} % | matemática
+\usepackage{amssymb} % |
+\usepackage{graphicx}
+\usepackage{enumitem} % configura enumerate
+
+\usepackage{minted}    % | trechos de código
+\usemintedstyle{manni} % |
+
+\usepackage{tabularx} % | Tabelas melhores
+\usepackage{booktabs} % |
+
+% Remove número das seções
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+% Header bonitinho
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+\newcommand{\cabecalho}[2]{%
+    \thispagestyle{plain}
+    {\flushleft{%
+        {{\bf\Large #1 --- #2} \hfill \today}\\
+        {\bf Nome}: Daniel Pessoa Cardeal\\
+        {\bf N\degree{} USP}: 10693170
+    }}
+    \vspace*{8mm}
+    \hrule
+    \vspace*{8mm}
+    \lhead{#1}
+    \rhead{#2}
+    \cfoot{\thepage}
+}
+
+% Ajeita o espaçamento para equivalente ao 1.5
+\linespread{1.25}
+
+% Facilita escrever coisas entre aspas
+\renewcommand{\quote}[1]{``#1''}
+
+% --- Começo do documento ---
+\begin{document}
+
+\cabecalho{}{}
+
+\end{document}
+
