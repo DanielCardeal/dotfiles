@@ -366,9 +366,8 @@ nmap('<leader>hk', require('telescope.builtin').keymaps, '[H]elp [K]eymaps')
 --    TREESITTER (CONFIG)
 -- #########################
 require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'help' },
-    -- TODO começar o highlight
-    highlight = { enable = true },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'help', 'comment' },
+    highlight = { enable = true, additional_vim_regex_highlighting = false },
     indent = { enable = true },
     textobjects = {
         select = {
