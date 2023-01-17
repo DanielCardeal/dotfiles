@@ -19,10 +19,10 @@ require('packer').startup(function()
     -- #####################
     use 'wbthomason/packer.nvim'
 
-    -- ###########
-    --    SNEAK
-    -- ###########
-    use 'justinmk/vim-sneak'
+    -- ##########
+    --    LEAP
+    -- ##########
+    use 'ggandor/leap.nvim'
 
     -- ################
     --    PARÊNTESIS
@@ -298,6 +298,11 @@ vim.o.winbar = "%=%f"
 --    COMMENT.NVIM (CONFIG)
 -- ###########################
 require('Comment').setup()
+
+-- ###################
+--    LEAP (CONFIG)
+-- ###################
+require('leap').add_default_mappings()
 
 -- ########################
 --    TELESCOPE (CONFIG)
