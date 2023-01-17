@@ -578,9 +578,9 @@ nmap("<leader>za", "zg", "[Z]pell [A]dd")
 -- ########################
 require('temple').setup()
 
--- ##############
---    ZEN MODE
--- ##############
+-- #######################
+--    ZEN MODE (CONFIG)
+-- #######################
 nmap('<leader>Z', require('zen-mode').toggle, 'Toogle [Z]en-Mode')
 
 -- ##############
