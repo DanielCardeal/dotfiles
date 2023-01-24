@@ -590,7 +590,7 @@ require('temple').setup()
 
 
 -- ###################
---    iron (config)
+--    IRON (CONFIG)
 -- ###################
 local iron = require("iron.core")
 
