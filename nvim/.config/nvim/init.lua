@@ -102,6 +102,11 @@ require('packer').startup(function()
         after = 'nvim-treesitter',
     }
 
+    -- ##########
+    --    IRON
+    -- ##########
+    use { 'hkupty/iron.nvim' }
+
     -- ##############
     --    Zen Mode
     -- ##############
@@ -582,6 +587,34 @@ nmap("<leader>za", "zg", "[Z]pell [A]dd")
 --    TEMPLATES (CONFIG)
 -- ########################
 require('temple').setup()
+
+
+-- ###################
+--    iron (config)
+-- ###################
+local iron = require("iron.core")
+
+iron.setup {
+    config = {
+        scratch_repl = true,
+        repl_definition = {
+            sh = { command = { "bash" } },
+            python = { command = { "ipython3", "--no-autoindent" } },
+        },
+        repl_open_cmd = require('iron.view').right(80),
+    },
+    keymaps = {
+        send_motion = "<space>rs",
+        visual_send = "<space>rs",
+        send_file = "<space>rf",
+        send_line = "<space>rl",
+        cr = "<space>r<cr>",
+        interrupt = "<space>r<space>",
+        exit = "<space>rq",
+        clear = "<space>rc",
+    },
+    ignore_blank_lines = true,
+}
 
 -- #######################
 --    ZEN MODE (CONFIG)
