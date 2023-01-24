@@ -624,6 +624,11 @@ nmap('<leader>Z', require('zen-mode').toggle, 'Toogle [Z]en-Mode')
 -- ##############
 --    TERMINAL
 -- ##############
+-- Usa fish como shell padrão caso instalada
+if vim.fn.executable('fish') == 1 then
+    vim.opt.shell = '/usr/bin/fish'
+end
+
 -- Corrige caractere emitido por <C-,>, <C-[>, ... no kitty. Para mais informações: https://github.com/neovim/neovim/issues/17867#issuecomment-1079934289
 if vim.env.TERM == 'xterm-kitty' then
     vim.cmd([[autocmd UIEnter * if v:event.chan ==# 0 | call chansend(v:stderr, "\x1b[>1u") | endif]])
