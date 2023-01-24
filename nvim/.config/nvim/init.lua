@@ -74,6 +74,11 @@ require('packer').startup(function()
         },
     }
 
+    -- #############
+    --    NULL-LS
+    -- #############
+    use 'jose-elias-alvarez/null-ls.nvim'
+
     -- ###############
     --    Telescope
     -- ###############
@@ -430,6 +435,26 @@ nmap("[h", require('gitsigns').prev_hunk, "Previous [H]unk")
 
 map({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>')
 map({ 'o', 'x' }, 'ah', ':<c-u>Gitsigns select_hunk<cr>')
+
+-- ######################
+--    NULL-LS (CONFIG)
+-- ######################
+local null_ls = require('null-ls')
+null_ls.setup {
+    debug = true,
+    sources = {
+        -- C
+        null_ls.builtins.formatting.clang_format,
+        -- Python
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.isort,
+        -- Fish
+        null_ls.builtins.diagnostics.fish,
+        null_ls.builtins.formatting.fish_indent,
+        -- Bash
+        null_ls.builtins.formatting.shfmt,
+    }
+}
 
 -- ##################
 --    LSP (CONFIG)
