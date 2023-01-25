@@ -626,7 +626,7 @@ iron.setup {
             sh = { command = { "bash" } },
             python = { command = { "ipython3", "--no-autoindent" } },
         },
-        repl_open_cmd = require('iron.view').right(80),
+        repl_open_cmd = require('iron.view').split.vertical(80),
     },
     keymaps = {
         send_motion = "<space>rs",
