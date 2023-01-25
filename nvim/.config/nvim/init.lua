@@ -47,6 +47,7 @@ require('packer').startup(function()
     -- ############
     use 'navarasu/onedark.nvim'
     use 'EdenEast/nightfox.nvim'
+    use 'projekt0n/github-nvim-theme'
 
     -- ################
     --    StatusLine
@@ -236,7 +237,7 @@ end
 -- ###################
 --    TEMA (CONFIG)
 -- ###################
-local tema_ativo = 'nightfox'
+local tema_ativo = 'github_dark'
 vim.cmd.colorscheme(tema_ativo)
 
 -- Faz sintax highlight em texto copiado
@@ -619,7 +620,6 @@ nmap("<leader>za", "zg", "[Z]pell [A]dd")
 --    TEMPLATES (CONFIG)
 -- ########################
 require('temple').setup()
-
 
 -- ###################
 --    IRON (CONFIG)
