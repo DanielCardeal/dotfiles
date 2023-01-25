@@ -252,14 +252,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- ####################
 --    KEYMAPS GERAIS
 -- ####################
+---@diagnostic disable-next-line: lowercase-global
 map = function(mode, left, right, description)
     mode = mode or 'n'
     description = description or ''
     vim.keymap.set(mode, left, right, { desc = description })
 end
+
+---@diagnostic disable-next-line: lowercase-global
 nmap = function(lhs, rhs, desc)
     map('n', lhs, rhs, desc)
 end
+
+---@diagnostic disable-next-line: lowercase-global
 ftmap = function(ft, mode, lhs, rhs, desc)
     ft = string.upper(ft)
     map(mode, lhs, rhs, ft .. ": " .. desc)
