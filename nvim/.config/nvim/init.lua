@@ -313,6 +313,13 @@ require('Comment').setup()
 --    LEAP (CONFIG)
 -- ###################
 require('leap').add_default_mappings()
+vim.api.nvim_create_autocmd('ColorScheme', {
+    group = vim.api.nvim_create_augroup('LeapAugroup', { clear = true }),
+    pattern = '*',
+    callback = function()
+        require('leap').init_highlight(true)
+    end,
+})
 
 -- ########################
 --    TELESCOPE (CONFIG)
