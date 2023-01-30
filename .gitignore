@@ -11,7 +11,6 @@ fish/**/*nvm*
 fish/**/fisher.fish
 fish/**/fisher.fish
 
-
 # --- zsh
 zsh/**/.zhistory
 zsh/**/.zcompdump
