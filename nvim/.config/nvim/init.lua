@@ -19,6 +19,12 @@ require('packer').startup(function()
     -- #####################
     use 'wbthomason/packer.nvim'
 
+
+    -- ##################
+    --    FILE MANAGER
+    -- ##################
+    use 'nvim-tree/nvim-tree.lua'
+
     -- ##########
     --    LEAP
     -- ##########
@@ -314,6 +320,16 @@ vim.o.winbar = "%=%f"
 --    COMMENT.NVIM (CONFIG)
 -- ###########################
 require('Comment').setup()
+
+-- ###########################
+--    FILE MANAGER (CONFIG)
+-- ###########################
+require('nvim-tree').setup {
+    renderer = {
+        group_empty = true,
+    },
+}
+nmap('<leader><tab>', '<cmd>NvimTreeToggle<cr>', 'Toggle Nvim Tree')
 
 -- ###################
 --    LEAP (CONFIG)
