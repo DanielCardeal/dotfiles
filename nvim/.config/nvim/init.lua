@@ -576,7 +576,7 @@ map({ "i", "s" }, "<c-k>", function()
 end, { silent = true })
 
 -- <c-l> seleciona o próximo item quando existe uma lista de opções
-map("i", "<c-l>", function()
+map({ "i", "s" }, "<c-l>", function()
     if luasnip.choice_active() then
         luasnip.change_choice(1)
     end
