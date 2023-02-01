@@ -480,6 +480,7 @@ null_ls.setup {
         -- Python
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
+        null_ls.builtins.diagnostics.mypy,
         -- Fish
         null_ls.builtins.diagnostics.fish,
         null_ls.builtins.formatting.fish_indent,
