@@ -452,6 +452,10 @@ require('gitsigns').setup {
 }
 
 -- Keymaps
+nmap('<leader>gg', '<cmd>Git<cr>', "[G]it fugitive")
+nmap('<leader>gl', '<cmd>Git log<cr>', "[G]it [L]og")
+nmap('<leader>gP', '<cmd>Git push<cr>', "[G]it [P]ush")
+nmap('<leader>gb', '<cmd>Git blame<cr>', "[G]it [B]lame")
 nmap('<leader>gs', require('gitsigns').stage_hunk, '[G]it [S]tage Hunk')
 nmap('<leader>gu', require('gitsigns').undo_stage_hunk, '[G]it [U]ndo Stage Hunk')
 nmap('<leader>gp', require('gitsigns').preview_hunk, '[G]it [P]review Hunk')
