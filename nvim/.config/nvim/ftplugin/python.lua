@@ -22,6 +22,16 @@ ls.add_snippets("python", {
         {}
     ]], { i(1, "Name"), i(2, "pass") })),
 
+    s('def', fmt([[
+    def {}({}){}:
+        {}
+    ]], {
+        i(1, 'name'),
+        i(2, 'arguments'),
+        c(3, { { t(' -> '), i(1, 'None') }, t('') }),
+        i(4, 'pass'),
+    })),
+
     -- Imports
     s('pd', t("import pandas as pd")),
     s('np', t("import numpy as np")),
