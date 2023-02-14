@@ -38,18 +38,3 @@ end
 if type -q zoxide
     zoxide init fish | source
 end
-
-# --- Terminal do Neovim
-# Configuração para melhorar a utilização do terminal integrado do neovim por
-# meio do programa `neovim-remote`. Mais informação disponível na página do
-# github: https://github.com/mhinz/neovim-remote
-if set -q NVIM_LISTEN_ADDRESS
-    or set -q NVIM # Compatibilidade com NVIM 0.7.2
-    if not type -q nvr
-        echo "ERRO: neovim-remote não está instalado!"
-        exit
-    end
-    alias nvim "nvr -l"
-else
-    alias nvim "nvim --listen /tmp/nvimsocket"
-end
