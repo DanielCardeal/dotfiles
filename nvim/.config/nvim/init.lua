@@ -630,8 +630,11 @@ cmp.setup {
 }
 
 -- Integração com nvim-autopairs
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+if not CONFIG_AUTOPAIRS_NVIM_CMP_INTEGRATION then
+    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+    CONFIG_AUTOPAIRS_NVIM_CMP_INTEGRATION = true
+end
 
 -- #########################
 --    CORRETOR AUTOMÁTICO
