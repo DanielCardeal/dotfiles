@@ -162,11 +162,13 @@ require('packer').startup(function()
 end)
 
 if is_bootstrap then
-    print '=========================================='
-    print '    Os plugins estão sendo instalados'
-    print '    Espere até que o Packer finalize'
-    print '       e então reinicie o Neovim.'
-    print '=========================================='
+    print [[
+==========================================
+    Os plugins estão sendo instalados
+    Espere até que o Packer finalize
+       e então reinicie o Neovim.
+==========================================
+]]
     return
 end
 
