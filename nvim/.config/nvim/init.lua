@@ -242,7 +242,7 @@ end
 -- ###################
 --    TEMA (CONFIG)
 -- ###################
-local tema_ativo = 'nightfox'
+local tema_ativo = 'terafox'
 vim.cmd.colorscheme(tema_ativo)
 
 -- Faz sintax highlight em texto copiado
