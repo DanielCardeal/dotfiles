@@ -700,10 +700,13 @@ if vim.env.TERM == 'xterm-kitty' then
 end
 
 -- Entra no insert mode automaticamente ao entrar em um terminal
+if not TERM_AUGROUP then
+    TERM_AUGROUP = vim.api.nvim_create_augroup("NaniTerminal", {})
+end
 vim.api.nvim_create_autocmd("TermOpen", {
     pattern = "*",
     command = "startinsert",
-    group = augroup,
+    group = TERM_AUGROUP,
 })
 
 -- Keymaps
