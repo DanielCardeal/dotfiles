@@ -19,6 +19,11 @@ require('packer').startup(function()
     -- #####################
     use 'wbthomason/packer.nvim'
 
+    -- ###########
+    --    ALPHA
+    -- ###########
+    use 'goolord/alpha-nvim'
+
     -- ##################
     --    FILE MANAGER
     -- ##################
@@ -321,6 +326,23 @@ vim.o.winbar = "%=%f"
 --    COMMENT.NVIM (CONFIG)
 -- ###########################
 require('Comment').setup()
+
+-- ####################
+--    ALPHA (CONFIG)
+-- ####################
+local alpha_dashboard = require('alpha.themes.dashboard')
+require('alpha').setup(alpha_dashboard.config)
+--
+alpha_dashboard.section.header.val = {
+    "                                                     ",
+    "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+    "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+    "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+    "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+    "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+    "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+    "                                                     ",
+}
 
 -- ###########################
 --    FILE MANAGER (CONFIG)
