@@ -58,6 +58,7 @@ require('packer').startup(function()
     use 'navarasu/onedark.nvim'
     use 'EdenEast/nightfox.nvim'
     use 'projekt0n/github-nvim-theme'
+    use 'sainnhe/gruvbox-material'
 
     -- ################
     --    StatusLine
@@ -249,7 +250,16 @@ end
 -- ###################
 --    TEMA (CONFIG)
 -- ###################
-local tema_ativo = 'terafox'
+
+-- GRUVBOX (CONFIG)
+vim.g.gruvbox_material_background = 'hard'
+vim.g.gruvbox_material_foreground = 'material'
+vim.g.gruvbox_material_enable_bold = 1
+vim.g.gruvbox_material_transparent_background = 2
+vim.g.gruvbox_material_dim_inactive_windows = 0
+
+-- SELEÇÃO DO TEMA
+local tema_ativo = 'gruvbox-material'
 vim.cmd.colorscheme(tema_ativo)
 
 -- Faz sintax highlight em texto copiado
