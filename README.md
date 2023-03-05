@@ -23,8 +23,7 @@ O passo a passo do processo fica:
     git clone "https://github.com/DanielCardeal/dotfiles" ~/.dotfiles
     ```
 
-    Note que o diretório de destino deve ser apenas um nível acima da `$HOME`
-    para que o stow funcione corretamente.
+OBS: é necessário que o repositório seja clonado para apenas um nível acima da `$HOME` para que o stow funcione corretamente.
 
 3.  Instalação de um módulo (por exemplo **nvim**):
 
@@ -33,7 +32,7 @@ O passo a passo do processo fica:
     stow nvim
     ```
 
-    OBS: esse comando pode falhar se os arquivos presentes na sua máquina conflitarem com os arquivos de configuração que se deseja sincronizar. Nestes casos, o *stow* vai mostrar uma mensagem de erro que pode ser útil para encontrar o arquivo problemático.
+OBS: esse comando pode falhar se os arquivos presentes na sua máquina conflitarem com os arquivos de configuração que se deseja sincronizar. Nestes casos, o *stow* vai mostrar uma mensagem de erro que pode ser útil para encontrar o arquivo problemático.
 
 ## Dependências
 
