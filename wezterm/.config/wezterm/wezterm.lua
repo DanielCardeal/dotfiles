@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 
 return {
     -- ###########
@@ -27,12 +28,15 @@ return {
     leader = { key = 'h', mods = 'CTRL', timeout_milliseconds = 1000 },
     keys = {
         -- SPLITS
-        { key = 'v',          mods = 'LEADER',     action = wezterm.action.SplitHorizontal },
-        { key = 's',          mods = 'LEADER',     action = wezterm.action.SplitVertical },
-        -- MOVING
-        { key = 'h',          mods = 'LEADER',     action = wezterm.action.PaneSelect },
+        { key = 'v', mods = 'LEADER', action = act.SplitHorizontal },
+        { key = 's', mods = 'LEADER', action = act.SplitVertical },
+        -- PANES
+        { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection 'Left' },
+        { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection 'Right' },
+        { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up' },
+        { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection 'Down' },
         -- TABS
-        { key = 'RightArrow', mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(1) },
-        { key = 'LeftArrow',  mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative( -1) },
+        { key = 'RightArrow', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(1) },
+        { key = 'LeftArrow', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(-1) },
     }
 }
