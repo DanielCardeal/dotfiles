@@ -135,6 +135,11 @@ require('packer').startup(function()
     -- ##############
     use "folke/zen-mode.nvim"
 
+    -- #############
+    --    HARPOON
+    -- #############
+    use 'ThePrimeagen/harpoon'
+
     -- ##############
     --    SNIPPETS
     -- ##############
@@ -431,8 +436,6 @@ pcall(require('telescope').load_extension, 'fzf')
 
 -- Keymaps
 nmap('<leader><leader>', require('telescope.builtin').git_files, 'Git Files')
-nmap('<leader>,', require('telescope.builtin').buffers, 'List Buffers')
-nmap('<leader>.', require('telescope.builtin').find_files, 'Find Files')
 
 nmap('<leader>ff', require('telescope.builtin').find_files, '[F]ind [F]iles')
 nmap('<leader>fr', require('telescope.builtin').oldfiles, '[F]ind [R]ecent')
@@ -724,6 +727,14 @@ iron.setup {
 --    ZEN MODE (CONFIG)
 -- #######################
 nmap('<leader>Z', require('zen-mode').toggle, 'Toogle [Z]en-Mode')
+
+-- ######################
+--    HARPOON (CONFIG)
+-- ######################
+nmap("<leader>,", require('harpoon.ui').nav_prev, "[Harpoon] Navigate Prev")
+nmap("<leader>.", require('harpoon.ui').nav_next, "[Harpoon] Navigate Next")
+nmap("<leader><", require('harpoon.mark').add_file, "[Harpoon] Add File")
+nmap("<leader>>", require('harpoon.ui').toggle_quick_menu, "[Harpoon] Quick Menu")
 
 -- ##############
 --    TERMINAL
