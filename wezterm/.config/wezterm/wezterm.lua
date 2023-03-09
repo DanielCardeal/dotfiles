@@ -5,7 +5,7 @@ return {
     -- ###########
     --    STYLE
     -- ###########
-    window_background_opacity = 0.95,
+    window_background_opacity = 0.90,
     color_scheme = "Gruvbox dark, hard (base16)",
     font_size = 13,
     colors = {
