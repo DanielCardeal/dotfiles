@@ -19,6 +19,11 @@ require('packer').startup(function()
     -- #####################
     use 'wbthomason/packer.nvim'
 
+    -- ############
+    --    ICONES
+    -- ############
+    use 'nvim-tree/nvim-web-devicons'
+
     -- ###########
     --    ALPHA
     -- ###########
