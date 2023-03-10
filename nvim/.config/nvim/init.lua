@@ -93,6 +93,7 @@ require('packer').startup(function()
             'ray-x/lsp_signature.nvim'
         },
     }
+    use "glepnir/lspsaga.nvim"
 
     -- #############
     --    NULL-LS
@@ -592,6 +593,9 @@ require('mason-lspconfig').setup {
     ensure_installed = default_servers,
 }
 
+-- LSPSAGA (CONFIG)
+require('lspsaga').setup {}
+
 -- Melhora autocomplete com LSP
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -655,6 +659,7 @@ cmp.setup {
     },
     window = {
         completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
     formatting = {
         format = require('lspkind').cmp_format({
