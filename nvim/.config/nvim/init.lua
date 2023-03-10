@@ -354,7 +354,7 @@ require('Comment').setup()
 -- ####################
 local alpha_dashboard = require('alpha.themes.dashboard')
 require('alpha').setup(alpha_dashboard.config)
---
+
 alpha_dashboard.section.header.val = {
     "                                                     ",
     "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
@@ -524,6 +524,8 @@ null_ls.setup {
         -- Python
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
+        null_ls.builtins.diagnostics.mypy,
+        null_ls.builtins.diagnostics.flake8,
         -- Fish
         null_ls.builtins.diagnostics.fish,
         null_ls.builtins.formatting.fish_indent,
@@ -574,7 +576,7 @@ local on_attach = function(_, _)
 end
 
 -- Instala e configura LSPs automaticamente
-local default_servers = { 'clangd', 'rust_analyzer', 'pyright', 'sumneko_lua', 'texlab' }
+local default_servers = { 'clangd', 'rust_analyzer', 'jedi_language_server', 'sumneko_lua', 'texlab' }
 
 require('mason').setup()
 require('mason-lspconfig').setup {
@@ -663,7 +665,7 @@ cmp.setup {
         { name = 'nvim_lua' },
         { name = 'luasnip' },
         { name = 'path' },
-        { name = 'buffer', keyword_length = 5 },
+        { name = 'buffer',  keyword_length = 5 },
     },
     snippet = {
         expand = function(args)
