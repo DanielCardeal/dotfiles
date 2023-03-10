@@ -89,6 +89,8 @@ require('packer').startup(function()
 
             -- UI com status atual dos language servers
             'j-hui/fidget.nvim',
+            -- LSP-SIGNATURE
+            'ray-x/lsp_signature.nvim'
         },
     }
 
@@ -573,6 +575,13 @@ local on_attach = function(_, _)
         end
     end
     nmap('<leader>cf', fmt, '[C]ode [F]ormat')
+
+    -- Ajuda na hora de escrever as funções
+    require("lsp_signature").setup {
+        bind = true,
+        doc_lines = 0,
+        hint_enable = false,
+    }
 end
 
 -- Instala e configura LSPs automaticamente
