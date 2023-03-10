@@ -270,7 +270,6 @@ vim.g.gruvbox_material_background = 'hard'
 vim.g.gruvbox_material_foreground = 'material'
 vim.g.gruvbox_material_enable_bold = 1
 vim.g.gruvbox_material_transparent_background = 2
-vim.g.gruvbox_material_dim_inactive_windows = 0
 
 -- SELEÇÃO DO TEMA
 local tema_ativo = 'gruvbox-material'
