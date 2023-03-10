@@ -685,7 +685,7 @@ end
 vim.o.spell = true -- Corretor automático ligado por padrão
 nmap("<leader>zz", function() vim.o.spell = not vim.o.spell end, "Spell Toggle")
 nmap("<leader>zc", "1z=", "[Z]pell [C]orrect Default")
-nmap("<leader>zC", "1z=", "[Z]pell [C]orrect")
+nmap("<leader>zC", "z=", "[Z]pell [C]orrect")
 nmap("<leader>za", "zg", "[Z]pell [A]dd")
 
 -- ########################
