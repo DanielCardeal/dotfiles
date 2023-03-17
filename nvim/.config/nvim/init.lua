@@ -321,8 +321,6 @@ map({ 'o', 'x' }, 'ag', ':<c-u>normal! ggVG<cr>')
 
 -- Manipulação de buffers/janelas
 nmap('<leader>w', '\23', "[W]indow")
-nmap('<leader>q', '<cmd>qa<cr>', '[Q]uit')
-nmap('<leader>Q', '<cmd>qa!<cr>', '[Q]uit (force)')
 nmap('<leader>bk', '<cmd>bd<cr>', '[B]uffer [D]elete')
 
 -- GOTOs
