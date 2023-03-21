@@ -5,9 +5,9 @@ return {
     -- ###########
     --    STYLE
     -- ###########
-    window_background_opacity = 0.90,
+    window_background_opacity = 0.95,
     color_scheme = "Gruvbox dark, hard (base16)",
-    font_size = 13,
+    font_size = 11,
     colors = {
         cursor_bg = "fe8019", -- laranja gruvbox
     },
