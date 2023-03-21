@@ -581,7 +581,7 @@ local on_attach = function(_, _)
 end
 
 -- Instala e configura LSPs automaticamente
-local default_servers = { 'clangd', 'rust_analyzer', 'pyright', 'sumneko_lua', 'texlab' }
+local default_servers = { 'clangd', 'rust_analyzer', 'pyright', 'lua_ls', 'texlab' }
 
 require('mason').setup()
 require('mason-lspconfig').setup {
