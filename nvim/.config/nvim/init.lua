@@ -776,6 +776,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
 vim.keymap.set('t', [[<C-,>]], [[<C-\><C-n>]])
 
 nmap('<leader>to', '<cmd>term<cr>', '[T]erminal [O]pen')
-nmap('<leader>ts', "<cmd>bo 12sp <bar> term<cr>", '[T]erminal [S]plit')
-nmap('<leader>tv', "<cmd>bo vsp <bar> term<cr>", '[T]erminal [V]split')
+nmap('<leader>ts', "<cmd>12sp <bar> term<cr>", '[T]erminal [S]plit')
+nmap('<leader>tv', "<cmd>vsp <bar> term<cr>", '[T]erminal [V]split')
 nmap('<leader>tt', "<cmd>tabnew <bar> term<cr>", '[T]erminal [T]ab')
