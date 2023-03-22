@@ -522,6 +522,9 @@ null_ls.setup {
         -- Python
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
+        null_ls.builtins.diagnostics.mypy.with {
+            extra_args = { "--follow-imports=normal" },
+        },
         -- Fish
         null_ls.builtins.diagnostics.fish,
         null_ls.builtins.formatting.fish_indent,
@@ -599,6 +602,19 @@ for _, lsp in ipairs(default_servers) do
         capabilities = capabilities,
     }
 end
+-- Configuração específica para os servidores
+-- NOTE,BUG: isso só está sendo por causa de um bug do pyright + scipy, descrito em https://github.com/microsoft/pylance-release/issues/3978
+require('lspconfig').pyright.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        python = {
+            analysis = {
+                useLibraryCodeForTypes = false
+            }
+        }
+    }
+}
 
 -- Habilita LSP status
 require('fidget').setup()
