@@ -439,6 +439,7 @@ nmap('<leader><leader>', require('telescope.builtin').git_files, 'Git Files')
 
 nmap('<leader>ff', require('telescope.builtin').find_files, '[F]ind [F]iles')
 nmap('<leader>fr', require('telescope.builtin').oldfiles, '[F]ind [R]ecent')
+nmap('<leader>fb', require('telescope.builtin').buffers, '[F]ind [B]uffers')
 
 nmap('<leader>ss', require('telescope.builtin').current_buffer_fuzzy_find, '[S]earch [S]tring')
 nmap('<leader>sp', require('telescope.builtin').live_grep, '[S]earch [P]roject')
