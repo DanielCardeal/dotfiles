@@ -47,12 +47,6 @@ require('packer').startup(function()
     use 'windwp/nvim-autopairs'
     use 'p00f/nvim-ts-rainbow' -- parêntesis coloridos
 
-    -- ################
-    --    WHITESPACE
-    -- ################
-    use 'tpope/vim-sleuth'
-    use 'DanielCardeal/trimmy.nvim'
-
     -- #################
     --    COMENTÁRIOS
     -- #################
@@ -481,11 +475,6 @@ require('nvim-treesitter.configs').setup {
 --    PARÊNTESIS (CONFIG)
 -- #########################
 require('nvim-autopairs').setup()
-
--- #########################
---    WHITESPACE (CONFIG)
--- #########################
-require('trimmy').setup()
 
 -- ##################
 --    GIT (CONFIG)
