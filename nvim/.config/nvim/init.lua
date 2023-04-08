@@ -741,6 +741,21 @@ iron.setup {
 -- #######################
 --    ZEN MODE (CONFIG)
 -- #######################
+require('zen-mode').setup {
+    window = {
+        options = {
+            number = false,
+        }
+    },
+    plugins = {
+        gitsigns = { enabled = false },
+        kitty = {
+            enabled = true,
+            font = "+4",
+        },
+    }
+}
+
 nmap('<leader>Z', require('zen-mode').toggle, 'Toogle [Z]en-Mode')
 
 -- ######################
