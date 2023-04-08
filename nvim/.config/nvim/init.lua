@@ -87,7 +87,6 @@ require('packer').startup(function()
             'ray-x/lsp_signature.nvim'
         },
     }
-    use "glepnir/lspsaga.nvim"
 
     -- #############
     --    NULL-LS
@@ -578,9 +577,6 @@ require('mason').setup()
 require('mason-lspconfig').setup {
     ensure_installed = default_servers,
 }
-
--- LSPSAGA (CONFIG)
-require('lspsaga').setup {}
 
 -- Melhora autocomplete com LSP
 local capabilities = vim.lsp.protocol.make_client_capabilities()
