@@ -566,8 +566,8 @@ local on_attach = function(_, _)
         end
     end
     local range_fmt = function()
-        local start_row, _ = table.unpack(vim.api.nvim_buf_get_mark(0, "<"))
-        local end_row, _ = table.unpack(vim.api.nvim_buf_get_mark(0, ">"))
+        local start_row, _ = unpack(vim.api.nvim_buf_get_mark(0, "<"))
+        local end_row, _ = unpack(vim.api.nvim_buf_get_mark(0, ">"))
         vim.lsp.buf.format({
             range = {
                 ["start"] = { start_row, 0 },
