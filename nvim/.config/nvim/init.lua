@@ -565,7 +565,20 @@ local on_attach = function(_, _)
             vim.lsp.buf.formatting()
         end
     end
+    local range_fmt = function()
+        local start_row, _ = table.unpack(vim.api.nvim_buf_get_mark(0, "<"))
+        local end_row, _ = table.unpack(vim.api.nvim_buf_get_mark(0, ">"))
+        vim.lsp.buf.format({
+            range = {
+                ["start"] = { start_row, 0 },
+                ["end"] = { end_row, 0 },
+            },
+            async = true,
+        })
+    end
+
     nmap('<leader>cf', fmt, '[C]ode [F]ormat')
+    map("v", "<leader>cf", range_fmt, { desc = '[C]ode [F]ormat' })
 
     -- Ajuda na hora de escrever as funções
     require("lsp_signature").setup {
