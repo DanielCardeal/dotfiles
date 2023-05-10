@@ -168,6 +168,11 @@ require('packer').startup(function()
     -- ###############
     use 'DanielCardeal/temple.nvim'
 
+    -- #############
+    --    ORGMODE
+    -- #############
+    use 'nvim-orgmode/orgmode'
+
     -- ###########
     --    LATEX
     -- ###########
@@ -452,8 +457,9 @@ nmap('<leader>hk', require('telescope.builtin').keymaps, '[H]elp [K]eymaps')
 --    TREESITTER (CONFIG)
 -- #########################
 require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'markdown', 'markdown_inline', 'python', 'rust', 'vimdoc', 'comment' },
-    highlight = { enable = true, additional_vim_regex_highlighting = false },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'markdown', 'markdown_inline', 'python', 'rust', 'vimdoc', 'comment',
+        'org' },
+    highlight = { enable = true, additional_vim_regex_highlighting = { 'org' } },
     indent = { enable = true },
     textobjects = {
         select = {
@@ -688,6 +694,7 @@ cmp.setup {
         }),
     },
     sources = {
+        { name = 'orgmode' },
         { name = 'nvim_lsp' },
         { name = 'nvim_lua' },
         { name = 'luasnip' },
@@ -721,6 +728,15 @@ nmap("<leader>za", "zg", "[Z]pell [A]dd")
 --    TEMPLATES (CONFIG)
 -- ########################
 require('temple').setup()
+
+-- ######################
+--    ORGMODE (CONFIG)
+-- ######################
+require('orgmode').setup_ts_grammar()
+require('orgmode').setup {
+    org_agenda_files = { '~/Documentos/org/agenda.org' },
+    org_default_notes = '~/Documentos/org/refile.org',
+}
 
 -- ###################
 --    IRON (CONFIG)
