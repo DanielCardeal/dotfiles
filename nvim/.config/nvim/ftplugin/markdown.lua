@@ -7,15 +7,8 @@ local c = ls.choice_node
 local fmt = require('luasnip.extras.fmt').fmt
 
 ls.add_snippets("markdown", {
-    s("l", fmt([[
-    [{}]({})
-    ]], { i(1, 'alt'), i(2, 'url') })),
-
-    s("img", fmt([[
-    ![{}]({})
-    ]], { i(1, 'alt'), i(2, 'path') })),
-
-    s("h", fmt([[
+    -- Headers
+    s("head", fmt([[
     {} {}
     ]], { c(1, {
         t('#'),
@@ -24,5 +17,28 @@ ls.add_snippets("markdown", {
         t('####'),
         t('#####'),
         t('######'),
-    }), i(2, 'Header') }))
+    }), i(2, 'Header') })),
+
+    -- Links
+    s("link", fmt([[
+    [{}]({})
+    ]], { i(1, 'alt'), i(2, 'url') })),
+
+    -- Imagens
+    s("img", fmt([[
+    ![{}]({})
+    ]], { i(1, 'alt'), i(2, 'path') })),
+
+    -- Estilo
+    s("it", { t({ "*" }), i(1), t({ "*" }) }),
+    s("bold", { t({ "**" }), i(1), t({ "**" }) }),
+    s("boldit", { t({ "***" }), i(1), t({ "***" }) }),
+
+    -- Código
+    s("code", { t({ "`" }), i(1), t({ "`" }) }),
+    s("codeblock", fmt([[
+    ```{}
+    {}
+    ```
+    ]], { i(1, 'language'), i(2, 'code') }))
 })
