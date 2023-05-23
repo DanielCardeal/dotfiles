@@ -422,7 +422,7 @@ require('telescope').setup {
         find_files = {
             -- Mostra arquivos ocultos em <leader>ff
             hidden = true,
-            file_ignore_patterns = { '.git' },
+            file_ignore_patterns = { '.git', '.venv' },
         },
         live_grep = {
             -- Busca em arquivos oculto em <leader>sp
