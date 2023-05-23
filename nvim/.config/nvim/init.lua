@@ -522,9 +522,6 @@ null_ls.setup {
         -- Python
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
-        null_ls.builtins.diagnostics.mypy.with {
-            extra_args = { "--follow-imports=normal" },
-        },
         -- Fish
         null_ls.builtins.diagnostics.fish,
         null_ls.builtins.formatting.fish_indent,
@@ -595,7 +592,7 @@ local on_attach = function(_, _)
 end
 
 -- Instala e configura LSPs automaticamente
-local default_servers = { 'clangd', 'rust_analyzer', 'pyright', 'lua_ls', 'texlab' }
+local default_servers = { 'clangd', 'rust_analyzer', 'pylsp', 'lua_ls', 'texlab' }
 
 require('mason').setup()
 require('mason-lspconfig').setup {
@@ -612,16 +609,18 @@ for _, lsp in ipairs(default_servers) do
         capabilities = capabilities,
     }
 end
--- Configuração específica para os servidores
--- NOTE,BUG: isso só está sendo por causa de um bug do pyright + scipy, descrito em https://github.com/microsoft/pylance-release/issues/3978
-require('lspconfig').pyright.setup {
+-- Específicos da linguagem
+require('lspconfig')['pylsp'].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
-        python = {
-            analysis = {
-                useLibraryCodeForTypes = false
-            }
+        pylsp = {
+            plugins = {
+                autopep8 = { enabled = false },
+                pycodestyle = {
+                    ignore = { 'E501' },
+                }
+            },
         }
     }
 }
