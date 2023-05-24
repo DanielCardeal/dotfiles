@@ -556,7 +556,7 @@ local on_attach = function(_, _)
     nmap('<leader>sI', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[S]earch [S]ymbols (workspace)')
 
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+    map({ 'n', 'i' }, '<C-k>', vim.lsp.buf.signature_help, 'LSP: Signature help')
 
     nmap("]e", vim.diagnostic.goto_next, "Next [E]rror")
     nmap("[e", vim.diagnostic.goto_prev, "Prev [E]rror")
