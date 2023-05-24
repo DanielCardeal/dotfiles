@@ -318,7 +318,7 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 nmap('<leader>fs', '<cmd>w<cr>', '[F]ile [S]ave')
 nmap('<leader>fS', '<cmd>wa<cr>', '[F]ile [S]ave (all)')
 
--- Text objects
+-- Text object para selecionar todo o buffer
 map({ 'o', 'x' }, 'ig', ':<c-u>normal! ggVG<cr>')
 map({ 'o', 'x' }, 'ag', ':<c-u>normal! ggVG<cr>')
 
