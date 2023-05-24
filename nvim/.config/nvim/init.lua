@@ -533,6 +533,8 @@ null_ls.setup {
 -- ##################
 --    LSP (CONFIG)
 -- ##################
+vim.diagnostic.config({ virtual_text = false })
+
 local on_attach = function(_, _)
     -- Função auxiliar para não precisar repetir a descrição em todos os mappings do LSP
     local nmap = function(left, right, desc)
