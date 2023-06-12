@@ -772,7 +772,8 @@ iron.setup {
 -- ####################
 --    TODOs (CONFIG)
 -- ####################
-require('todo-comments').setup {}
+-- TODO: comentários brilhantes
+require('todo-comments').setup { signs = false, }
 nmap("]t", require("todo-comments").jump_next, { desc = "Next [T]ODO comment" })
 nmap("[t", require("todo-comments").jump_prev, { desc = "Previous [T]ODO comment" })
 
