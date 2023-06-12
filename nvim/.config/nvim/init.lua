@@ -787,10 +787,6 @@ require('zen-mode').setup {
     },
     plugins = {
         gitsigns = { enabled = false },
-        kitty = {
-            enabled = true,
-            font = "+4",
-        },
     }
 }
 
