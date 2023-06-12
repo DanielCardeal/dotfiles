@@ -60,6 +60,11 @@ require('packer').startup(function()
     use 'projekt0n/github-nvim-theme'
     use 'sainnhe/gruvbox-material'
 
+    -- ###########
+    --    TODOs
+    -- ###########
+    use 'folke/todo-comments.nvim'
+
     -- ################
     --    StatusLine
     -- ################
@@ -763,6 +768,13 @@ iron.setup {
     },
     ignore_blank_lines = true,
 }
+
+-- ####################
+--    TODOs (CONFIG)
+-- ####################
+require('todo-comments').setup {}
+nmap("]t", require("todo-comments").jump_next, { desc = "Next [T]ODO comment" })
+nmap("[t", require("todo-comments").jump_prev, { desc = "Previous [T]ODO comment" })
 
 -- #######################
 --    ZEN MODE (CONFIG)
