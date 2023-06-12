@@ -476,8 +476,8 @@ require('nvim-treesitter.configs').setup {
                 ['ia'] = '@parameter.inner',
                 ['af'] = '@function.outer',
                 ['if'] = '@function.inner',
-                ['ac'] = '@class.outer',
-                ['ic'] = '@class.inner',
+                ['ac'] = '@comment.outer',
+                ['ic'] = '@comment.outer', -- TODO: não existe comment.inner
             },
         },
     },
