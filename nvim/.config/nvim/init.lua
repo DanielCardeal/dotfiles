@@ -87,7 +87,8 @@ require('packer').startup(function()
             'williamboman/mason-lspconfig.nvim',
 
             -- UI com status atual dos language servers
-            'j-hui/fidget.nvim',
+            -- TODO: acompanhar desenvolvimento
+            { 'j-hui/fidget.nvim', tag = 'legacy' },
         },
     }
 
