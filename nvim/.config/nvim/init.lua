@@ -324,6 +324,10 @@ map({ 'o', 'x' }, 'ag', ':<c-u>normal! ggVG<cr>')
 nmap('<leader>w', '\23', "[W]indow")
 nmap('<leader>bk', '<cmd>bd<cr>', '[B]uffer [D]elete')
 
+-- Command-mode mappings
+map('c', '<c-k>', '<up>')
+map('c', '<c-j>', '<down>')
+
 -- GOTOs
 nmap("]q", "<cmd>cnext<cr>", "[Q]fix Next")
 nmap("[q", "<cmd>cprevious<cr>", "[Q]fix Previous")
