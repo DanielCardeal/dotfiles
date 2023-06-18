@@ -238,7 +238,7 @@ local set = {
     linebreak = true,
     -- Caracteres invisíveis
     list = true,
-    listchars = { tab = '» ', trail = '·', --[[ eol = '¬' ]]  },
+    listchars = { tab = '» ', trail = '·', --[[ eol = '¬' ]] },
     showbreak = '↳',
     -- Update time
     updatetime = 250,
