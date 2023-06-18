@@ -263,6 +263,10 @@ local set = {
     -- Concealing
     conceallevel = 2,
     concealcursor = "c",
+    -- Folds
+    foldmethod = 'expr',
+    foldexpr = "nvim_treesitter#foldexpr()",
+    foldlevel=20,
 }
 for k, v in pairs(set) do
     vim.opt[k] = v
