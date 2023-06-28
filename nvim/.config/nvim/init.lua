@@ -598,7 +598,7 @@ local on_attach = function(_, _)
 end
 
 -- Instala e configura LSPs automaticamente
-local default_servers = { 'clangd', 'rust_analyzer', 'pylsp', 'lua_ls', 'texlab' }
+local default_servers = { 'clangd', 'rust_analyzer', 'pyright', 'lua_ls', 'texlab' }
 
 require('mason').setup()
 require('mason-lspconfig').setup {
@@ -615,21 +615,6 @@ for _, lsp in ipairs(default_servers) do
         capabilities = capabilities,
     }
 end
--- Específicos da linguagem
-require('lspconfig')['pylsp'].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        pylsp = {
-            plugins = {
-                autopep8 = { enabled = false },
-                pycodestyle = {
-                    ignore = { 'E501' },
-                }
-            },
-        }
-    }
-}
 
 -- Habilita LSP status
 require('fidget').setup()
