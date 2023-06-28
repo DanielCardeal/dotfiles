@@ -149,7 +149,10 @@ require('packer').startup(function()
     -- ##############
     --    SNIPPETS
     -- ##############
-    use { 'L3MON4D3/LuaSnip' }
+    use {
+        'L3MON4D3/LuaSnip',
+        requires = { "rafamadriz/friendly-snippets" },
+    }
 
     -- ################
     --    CLINGO ASP
@@ -660,6 +663,9 @@ map({ "i", "s" }, "<c-l>", function()
         luasnip.change_choice(1)
     end
 end)
+
+-- Load friendly snippets
+require("luasnip.loaders.from_vscode").lazy_load()
 
 -- ###########################
 --    AUTOCOMPLETE (CONFIG)
