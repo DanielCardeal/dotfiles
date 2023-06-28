@@ -517,6 +517,10 @@ nmap('<leader>gp', require('gitsigns').preview_hunk, '[G]it [P]review Hunk')
 nmap('<leader>gr', require('gitsigns').reset_hunk, '[G]it [R]eset Hunk')
 nmap('<leader>gR', require('gitsigns').reset_buffer, '[G]it [R]eset Buffer')
 
+-- mesclando conflitos
+nmap('<leader>gf', '<cmd>diffget //2<cr>', "[G]it diffget left")
+nmap('<leader>gj', '<cmd>diffget //3<cr>', "[G]it diffget right")
+
 nmap("]h", require('gitsigns').next_hunk, "Next [H]unk")
 nmap("[h", require('gitsigns').prev_hunk, "Previous [H]unk")
 
