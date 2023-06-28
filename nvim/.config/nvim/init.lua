@@ -44,6 +44,7 @@ require('packer').startup(function()
     --    LEAP
     -- ##########
     use 'ggandor/leap.nvim'
+    use 'ggandor/flit.nvim'
 
     -- ################
     --    PARÊNTESIS
@@ -400,6 +401,7 @@ nmap('<leader><tab>', '<cmd>NvimTreeToggle<cr>', 'Toggle Nvim Tree')
 --    LEAP (CONFIG)
 -- ###################
 require('leap').add_default_mappings()
+require('flit').setup()
 vim.api.nvim_create_autocmd('ColorScheme', {
     group = vim.api.nvim_create_augroup('LeapAugroup', { clear = true }),
     pattern = '*',
