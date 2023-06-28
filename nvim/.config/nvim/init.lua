@@ -35,6 +35,11 @@ require('packer').startup(function()
     -- ##################
     use 'nvim-tree/nvim-tree.lua'
 
+    -- ############
+    --    REPEAT
+    -- ############
+    use 'tpope/vim-repeat'
+
     -- ##########
     --    LEAP
     -- ##########
