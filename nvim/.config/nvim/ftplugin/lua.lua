@@ -32,15 +32,6 @@ ls.add_snippets("lua", {
         f(comment_header, 1),
     })),
 
-    s("mod", fmt([[
-    local M = {{}}
-
-    {}
-
-    return M
-    ]], { i(0) }
-    )),
-
     s("nmap", fmt([[
     nmap("{}", {}, "{}")
     ]], {

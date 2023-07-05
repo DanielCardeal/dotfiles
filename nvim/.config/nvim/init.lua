@@ -35,16 +35,10 @@ require('packer').startup(function()
     -- ##################
     use 'nvim-tree/nvim-tree.lua'
 
-    -- ############
-    --    REPEAT
-    -- ############
-    use 'tpope/vim-repeat'
-
     -- ##########
     --    LEAP
     -- ##########
     use 'ggandor/leap.nvim'
-    use 'ggandor/flit.nvim'
 
     -- ################
     --    PARÊNTESIS
@@ -131,11 +125,6 @@ require('packer').startup(function()
         after = 'nvim-treesitter',
     }
 
-    -- ##########
-    --    IRON
-    -- ##########
-    use { 'hkupty/iron.nvim' }
-
     -- ##############
     --    Zen Mode
     -- ##############
@@ -175,11 +164,6 @@ require('packer').startup(function()
             'saadparwaiz1/cmp_luasnip',
         },
     }
-
-    -- ###############
-    --    TEMPLATES
-    -- ###############
-    use 'DanielCardeal/temple.nvim'
 
     -- #############
     --    ORGMODE
@@ -275,7 +259,7 @@ local set = {
     -- Folds
     foldmethod = 'expr',
     foldexpr = "nvim_treesitter#foldexpr()",
-    foldlevel=20,
+    foldlevel = 20,
 }
 for k, v in pairs(set) do
     vim.opt[k] = v
@@ -404,7 +388,6 @@ nmap('<leader><tab>', '<cmd>NvimTreeToggle<cr>', 'Toggle Nvim Tree')
 --    LEAP (CONFIG)
 -- ###################
 require('leap').add_default_mappings()
-require('flit').setup()
 vim.api.nvim_create_autocmd('ColorScheme', {
     group = vim.api.nvim_create_augroup('LeapAugroup', { clear = true }),
     pattern = '*',
@@ -481,7 +464,6 @@ nmap('<leader>hk', require('telescope.builtin').keymaps, '[H]elp [K]eymaps')
 require('nvim-treesitter.configs').setup {
     ensure_installed = { 'c', 'cpp', 'go', 'lua', 'markdown', 'markdown_inline', 'python', 'rust', 'vimdoc', 'org' },
     highlight = { enable = true, additional_vim_regex_highlighting = { 'org' } },
-    indent = { enable = true },
     textobjects = {
         select = {
             enable = true,
@@ -513,7 +495,6 @@ require('nvim-autopairs').setup()
 require('gitsigns').setup {
     numhl = true,
     current_line_blame = true,
-    keymaps = {},
 }
 
 -- Keymaps
@@ -612,7 +593,7 @@ local on_attach = function(_, _)
 end
 
 -- Instala e configura LSPs automaticamente
-local default_servers = { 'clangd', 'rust_analyzer', 'pyright', 'lua_ls', 'texlab' }
+local default_servers = { 'clangd', 'rust_analyzer', 'pylsp', 'lua_ls', 'texlab', 'ltex' }
 
 require('mason').setup()
 require('mason-lspconfig').setup {
@@ -731,11 +712,6 @@ nmap("<leader>zc", "1z=", "[Z]pell [C]orrect Default")
 nmap("<leader>zC", "z=", "[Z]pell [C]orrect")
 nmap("<leader>za", "zg", "[Z]pell [A]dd")
 
--- ########################
---    TEMPLATES (CONFIG)
--- ########################
-require('temple').setup()
-
 -- ######################
 --    ORGMODE (CONFIG)
 -- ######################
@@ -743,36 +719,6 @@ require('orgmode').setup_ts_grammar()
 require('orgmode').setup {
     org_agenda_files = { '~/Documentos/org/agenda.org' },
     org_default_notes = '~/Documentos/org/refile.org',
-}
-
--- ###################
---    IRON (CONFIG)
--- ###################
-local iron = require("iron.core")
-
-iron.setup {
-    config = {
-        scratch_repl = true,
-        repl_definition = {
-            sh = { command = { "bash" } },
-            python = { command = { "ipython3", "--no-autoindent" } },
-        },
-        repl_open_cmd = require('iron.view').split.vertical(80),
-    },
-    keymaps = {
-        send_motion = "<space>rs",
-        visual_send = "<space>rs",
-        send_file = "<space>rf",
-        send_line = "<space>rl",
-        send_mark = "<space>rm",
-        mark_motion = "<space>rM",
-        mark_visual = "<space>rM",
-        cr = "<space>r<cr>",
-        interrupt = "<space>r<space>",
-        exit = "<space>rq",
-        clear = "<space>rc",
-    },
-    ignore_blank_lines = true,
 }
 
 -- ####################
