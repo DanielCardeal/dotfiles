@@ -475,10 +475,10 @@ require('lazy').setup({
         'tpope/vim-fugitive',
         cmd = 'Git',
         keys = {
-            { '<leader>gg', '<cmd>Git<cr>',       "[G]it fugitive" },
-            { '<leader>gl', '<cmd>Git log<cr>',   "[G]it [L]og" },
-            { '<leader>gP', '<cmd>Git push<cr>',  "[G]it [P]ush" },
-            { '<leader>gb', '<cmd>Git blame<cr>', "[G]it [B]lame" },
+            { '<leader>gg', '<cmd>Git<cr>',       "git status" },
+            { '<leader>gl', '<cmd>Git log<cr>',   "git log" },
+            { '<leader>gP', '<cmd>Git push<cr>',  "git push" },
+            { '<leader>gb', '<cmd>Git blame<cr>', "git blame" },
         }
     },
 
