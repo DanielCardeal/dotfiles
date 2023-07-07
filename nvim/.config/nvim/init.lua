@@ -598,3 +598,30 @@ map({ 'o', 'x' }, 'ah', ':<c-u>Gitsigns select_hunk<cr>', 'text obj: hunk')
 
 vim.keymap.set({ "n" }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set({ "n" }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- ###############
+--    TEMPLATES
+-- ###############
+local template_augroup = vim.api.nvim_create_augroup('NaniTemplate', { clear = true })
+vim.api.nvim_create_autocmd('BufNewFile', {
+    pattern = '*.tex',
+    group = template_augroup,
+    callback = function(_)
+        vim.ui.select({ 'lista' }, {
+            prompt = 'carregar template:',
+
+        }, function(choice)
+            if not choice then
+                return
+            end
+            vim.cmd("0r ~/.config/nvim/templates/lista.tex")
+            vim.fn.searchpos('Lista X')
+        end)
+    end
+})
+
+vim.api.nvim_create_autocmd('BufNewFile', {
+    pattern = '.editorconfig',
+    group = template_augroup,
+    command = "0r ~/.config/nvim/templates/.editorconfig",
+})
