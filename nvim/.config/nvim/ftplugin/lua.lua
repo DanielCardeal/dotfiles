@@ -1,11 +1,11 @@
 -- Keymaps
-ftmap('lua', 'n', "<leader>ms", "<cmd>so<cr>", "[S]ource file")
-ftmap('lua', 'n', "<leader>mc",
+lead_nmap("ms", "<cmd>so<cr>", "source file", 'lua')
+lead_nmap("mc",
     function()
         require('luasnip').cleanup()
         vim.cmd [[so]]
     end,
-    "[C]leanup snippets and source file")
+    "clean snips and source file")
 
 -- Snippets
 local ls = require('luasnip')
