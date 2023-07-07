@@ -345,6 +345,22 @@ require('lazy').setup({
     { 'stevearc/dressing.nvim',    event = 'VeryLazy', opts = {}, },
     { 'NvChad/nvim-colorizer.lua', event = 'VeryLazy', opts = {} },
 
+    -- #############
+    --    TROUBLE
+    -- #############
+    {
+        "folke/trouble.nvim",
+        keys = {
+            { '<leader>td', '<cmd>Trouble document_diagnostics<cr>', 'trouble diagnostics' },
+            { '<leader>tD', '<cmd>Trouble lsp_definitions<cr>',      'trouble definitions' },
+            { '<leader>tr', '<cmd>Trouble lsp_references<cr>',       'trouble refs' },
+            { '<leader>tt', '<cmd>TodoTrouble<cr>',                  'trouble TODOs' },
+            { '<leader>tq', '<cmd>Trouble quickfix<cr>',             'trouble qflist' },
+        },
+        cmd = 'Trouble',
+        opts = {},
+    },
+
     -- ###############
     --    NVIM TREE
     -- ###############
