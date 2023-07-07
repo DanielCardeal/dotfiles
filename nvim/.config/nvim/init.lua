@@ -40,7 +40,7 @@ local set = {
     shiftwidth = 0,
     expandtab = true,
     -- Coluna lateral
-    number = true,
+    relativenumber = true,
     cursorline = true,
     signcolumn = 'yes',
     fillchars = { diff = '╱', eob = " " },
