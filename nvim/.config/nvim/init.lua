@@ -323,6 +323,7 @@ require('lazy').setup({
                 sources = {
                     { name = 'nvim_lsp' },
                     { name = 'nvim_lua' },
+                    -- { name = 'neorg' },
                     { name = 'luasnip' },
                     { name = 'path' },
                     { name = 'buffer',  keyword_length = 5 },
@@ -530,17 +531,29 @@ require('lazy').setup({
     {
         "nvim-neorg/neorg",
         build = ":Neorg sync-parsers",
-        ft = 'neorg',
+        enabled = false,
+        ft = 'norg',
+        keys = {
+            { '<leader>oo', '<cmd>Neorg workspace<cr>', 'neorg default workspace' },
+            { '<leader>oi', '<cmd>Neorg index<cr>',     'neorg index' },
+        },
         config = function()
+            NEORG_DIR = '~/Documentos/neorg/'
             require("neorg").setup {
                 load = {
-                    ["core.defaults"] = {},  -- Loads default behaviour
-                    ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                    ["core.dirman"] = {      -- Manages Neorg workspaces
+                    ["core.defaults"] = {},
+                    ["core.concealer"] = {},
+                    ['core.completion'] = {
+                        config = { engine = 'nvim-cmp' },
+                    },
+                    ["core.dirman"] = {
                         config = {
                             workspaces = {
-                                notes = "~/Documentos/neorg/notes/",
+                                ic = NEORG_DIR .. "ic/",
+                                faculdade = NEORG_DIR .. "faculdade/",
+                                pessoal = NEORG_DIR .. "pessoal/",
                             },
+                            default_workspace = 'faculdade',
                         },
                     },
                 },
