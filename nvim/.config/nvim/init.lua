@@ -550,7 +550,7 @@ require('lazy').setup({
 -- ##########
 --    TEMA
 -- ##########
-local tema_ativo = 'nightfox'
+local tema_ativo = 'catppuccin'
 vim.cmd.colorscheme(tema_ativo)
 
 -- Faz sintax highlight em texto copiado
