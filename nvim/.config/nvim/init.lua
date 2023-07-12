@@ -369,7 +369,12 @@ require('lazy').setup({
         keys = {
             { "<leader><tab>", "<cmd>NvimTreeFocus<cr>", 'Focus file explorer' }
         },
-        opts = { renderer = { group_empty = true } },
+        opts = {
+            sync_root_with_cwd = true,
+            renderer = {
+                group_empty = true
+            },
+        },
     },
 
     -- ##########
