@@ -190,6 +190,13 @@ require('lazy').setup({
                     }
                 }
             }
+            lspconfig.ltex.setup {
+                settings = {
+                    ltex = {
+                        language = 'pt-BR',
+                    }
+                }
+            }
 
             -- On attach
             vim.api.nvim_create_autocmd('LspAttach', {
