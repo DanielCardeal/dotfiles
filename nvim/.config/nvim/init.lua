@@ -164,7 +164,7 @@ require('lazy').setup({
             { 'williamboman/mason.nvim', build = ':MasonUpdate' },
             'williamboman/mason-lspconfig.nvim',
             -- UI
-            { 'j-hui/fidget.nvim',       tag = 'legacy',        event = 'VeryLazy', opts = {} },
+            { 'j-hui/fidget.nvim',       enabled = false,       tag = 'legacy', event = 'VeryLazy', opts = {} },
         },
         config = function()
             -- NOTE: extensões do pylsp precisam ser instaladas manualmente
