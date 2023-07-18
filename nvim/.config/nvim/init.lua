@@ -564,7 +564,25 @@ require('lazy').setup({
     -- ###########
     --    LATEX
     -- ###########
-    { 'lervag/vimtex' }
+    {
+        'lervag/vimtex',
+        init = function()
+            vim.g.vimtex_view_general_viewer = 'evince'
+            vim.g.vimtex_complete_enabled = false
+            vim.g.vimtex_fold_enabled = true
+            vim.g.vimtex_format_enabled = false
+            vim.g.vimtex_quickfix_mode = 2
+            vim.g.vimtex_compiler_latexmk = {
+                options = {
+                    '-shell-escape',
+                    '-verbose',
+                    '-file-line-error',
+                    '-synctex=1',
+                    '-interaction=nonstopmode',
+                },
+            }
+        end,
+    }
 })
 
 -- ##########
