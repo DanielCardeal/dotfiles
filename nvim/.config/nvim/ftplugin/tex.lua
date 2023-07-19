@@ -1,5 +1,6 @@
 -- Correção de texto automaticamente acionada no LaTeX
 vim.opt_local.spell = true
+vim.opt_local.conceallevel = 0
 
 -- ##############
 --    SNIPPETS
