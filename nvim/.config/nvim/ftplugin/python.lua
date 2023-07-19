@@ -10,7 +10,7 @@ ls.add_snippets("python", {
     s("#!", fmt([[
     #! /bin/env {}
 
-    ]], { c(1, { t('python'), t('python3'), t('python2') }) })),
+    ]], { c(1, { t('python3'), t('python2') }) })),
 
     s("ifmain", fmt([[
     if __name__ == "__main__":
