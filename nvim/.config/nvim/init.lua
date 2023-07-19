@@ -119,20 +119,25 @@ require('lazy').setup({
         cmd = 'Telescope',
         dependencies = {
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', },
+            { 'jemag/telescope-diff.nvim' },
         },
         keys = {
-            { '<leader><leader>', "<cmd>Telescope git_files<cr>",                  'find git file' },
-            { '<leader>ff',       "<cmd>Telescope find_files hidden=true<cr>",     'find file' },
-            { '<leader>fr',       "<cmd>Telescope oldfiles<cr>",                   'find recent' },
-            { '<leader>fb',       "<cmd>Telescope buffers<cr>",                    'find buffer' },
-            { '<leader>ss',       "<cmd>Telescope current_buffer_fuzzy_find<cr>",  'search buffer' },
-            { '<leader>sp',       "<cmd>Telescope live_grep<cr>",                  'search project' },
-            { '<leader>st',       "<cmd>TodoTelescope<cr>",                        "search todo's" },
-            { '<leader>ht',       "<cmd>Telescope colorscheme<cr>",                'search themes' },
-            { '<leader>hh',       "<cmd>Telescope help_tags<cr>",                  'help vim' },
-            { '<leader>hm',       "<cmd>Telescope man_pages<cr>",                  'help manpages' },
-            { '<leader>hb',       "<cmd>Telescope keymaps<cr>",                    'help keymaps' },
-            { '<leader>zC',       '<cmd>Telescope spell_suggest theme=cursor<cr>', 'spell suggest' },
+            { '<leader><leader>', "<cmd>Telescope git_files<cr>",                                                     'find git file' },
+            { '<leader>ff',       "<cmd>Telescope find_files hidden=true<cr>",                                        'find file' },
+            { '<leader>fr',       "<cmd>Telescope oldfiles<cr>",                                                      'find recent' },
+            { '<leader>fb',       "<cmd>Telescope buffers<cr>",                                                       'find buffer' },
+            { '<leader>fd',       function() require('telescope').extensions.diff.diff_current { hidden = true } end,
+                                                                                                                          'diff this file' },
+            { '<leader>fD',       function() require('telescope').extensions.diff.diff_files { hidden = true } end,
+                                                                                                                          'diff this file' },
+            { '<leader>ss',       "<cmd>Telescope current_buffer_fuzzy_find<cr>",                                     'search buffer' },
+            { '<leader>sp',       "<cmd>Telescope live_grep<cr>",                                                     'search project' },
+            { '<leader>st',       "<cmd>TodoTelescope<cr>",                                                           "search todo's" },
+            { '<leader>ht',       "<cmd>Telescope colorscheme<cr>",                                                   'search themes' },
+            { '<leader>hh',       "<cmd>Telescope help_tags<cr>",                                                     'help vim' },
+            { '<leader>hm',       "<cmd>Telescope man_pages<cr>",                                                     'help manpages' },
+            { '<leader>hb',       "<cmd>Telescope keymaps<cr>",                                                       'help keymaps' },
+            { '<leader>zC',       '<cmd>Telescope spell_suggest theme=cursor<cr>',                                    'spell suggest' },
         },
         config = function()
             require('telescope').setup {
@@ -151,6 +156,7 @@ require('lazy').setup({
                 },
             }
             require('telescope').load_extension('fzf')
+            require('telescope').load_extension('diff')
         end,
     },
 
