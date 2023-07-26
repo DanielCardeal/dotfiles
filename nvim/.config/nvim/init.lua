@@ -348,6 +348,7 @@ require('lazy').setup({
             map({ 'i', 's' }, '<c-j>', function() if luasnip.jumpable(1) then luasnip.jump(1) end end)
             map({ 'i', 's' }, '<c-k>', function() if luasnip.jumpable(-1) then luasnip.jump(-1) end end)
             map({ 'i', 's' }, '<c-l>', function() if luasnip.choice_active() then luasnip.change_choice(1) end end)
+            require("luasnip.loaders.from_vscode").load()
             -- Integração autopairs
             cmp.event:on('confirm_done',
                 require('nvim-autopairs.completion.cmp').on_confirm_done({ map_char = { tex = '' } }))
