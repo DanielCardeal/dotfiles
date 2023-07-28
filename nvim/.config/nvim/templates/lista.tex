@@ -1,31 +1,74 @@
-\documentclass[12pt, twoside, a4paper]{article}
+\documentclass[12pt]{article}
 
-% --- Formatação doc ---
-\usepackage[top = 2.5cm, bottom = 2cm, left = 2.5cm, right = 2.5cm]{geometry}
-\usepackage{lmodern}  % fonte ABNT
-\usepackage{indentfirst} % identação do primeiro parágrafo
+\usepackage{lmodern}
 \usepackage[T1]{fontenc}
-\usepackage[brazil]{babel}
-\usepackage{gensymb}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
 
-% --- Utils ---
-\usepackage{amsmath} % | matemática
-\usepackage{amssymb} % |
+% Configura linguagem do documento, além de definir as tags \en e \br para
+% modificar a língua no meio do texto. Como pt-BR é a última língua da lista, é
+% definida como padrão pelo pacote.
+\usepackage[english,brazilian]{babel}
+\babeltags{br = brazilian, en = english}
+
+% Modifica formatação da página para um tamanho mais agradável do que o padrão do
+% LaTeX.
+\usepackage[a4paper]{geometry}
+\geometry{
+  textwidth=152mm,
+  hmarginratio=12:17, % 24:34 -> com papel A4, 24mm + 152mm + 34mm = 210mm
+  textheight=237mm,
+  vmarginratio=8:7, % 32:28 -> com papel A4, 32mm + 237mm + 28mm = 297mm
+  headsep=11mm, % distância entre a base do cabeçalho e o texto
+  headheight=21mm, % qualquer medida grande o suficiente, p.ex., top - headsep
+  footskip=10mm,
+  marginpar=20mm,
+  marginparsep=5mm,
+}
+
+% Melhora a tipografia de equações e símbolos matemáticos, além de disponibilizar
+% alguns ambientes úteis quando escrevendo equações.
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
 \usepackage{graphicx}
-\usepackage[shortlabels]{enumitem} % configura enumerate
+
+% Permite configurar ambientes 'enumerate' com labels diferentes, da seguinte
+% forma:
+%
+% \begin{enumerate}{a)}
+% \item ...
+% \end{enumerate}
+\usepackage[shortlabels]{enumitem}
 
 % \usepackage{minted}    % | trechos de código
 % \usemintedstyle{manni} % |
 
-\usepackage{tabularx} % | Tabelas melhores
-\usepackage{booktabs} % |
+% Disponibiliza comandos \toprule, \botrule e \midrule para tabelas mais
+% elegantes.
+\usepackage{booktabs}
+
+% Permite criar links clicáveis usando o comando \href
+\usepackage{hyperref}
+
+% Permite incluir imagens SVG usando o programa Inkscape como intermediário (gera
+% erro de compilação caso Inkscape não possa ser encontrado)
+\usepackage{svg}
+
+% Adiciona recuo no primeiro parágrafo das seções, como é correto gramaticalmente
+% em português
+\usepackage{indentfirst}
+
+% Usa espaçamento de 1.5
+\linespread{1.25}
 
 % Remove número das seções
 \makeatletter
 \renewcommand{\@seccntformat}[1]{}
 \makeatother
 
-% Header bonitinho
+% Cabeçalho personalizado para listas e EPs
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
@@ -33,28 +76,23 @@
 \newcommand{\cabecalho}[2]{%
     \thispagestyle{plain}
     {\flushleft{%
-        {{\bf\Large #1 --- #2} \hfill \today}\\
-        {\bf Nome}: Daniel Pessoa Cardeal\\
-        {\bf N\degree{} USP}: 10693170
+        {\bf\LARGE #1 -- #2}\\
+        \vspace{4mm}
+        {\bf Nome}: Daniel Pessoa Cardeal \hfill {\bf Nº USP}: 10693170 \\
+        % {\bf Nome}: Outro integrante \hfill {\bf Nº USP}: 12345678 \\
     }}
-    \vspace*{8mm}
+    \vspace*{4mm}
     \hrule
     \vspace*{8mm}
-    \lhead{#1}
-    \rhead{#2}
+    \lhead{#1 -- #2}
     \cfoot{\thepage}
 }
 
-% Ajeita o espaçamento para equivalente ao 1.5
-\linespread{1.25}
-
-% Facilita escrever coisas entre aspas
+% facilita a escrita de aspas no estilo brasileiro
 \renewcommand{\quote}[1]{``#1''}
 
-% --- Começo do documento ---
 \begin{document}
 
 \cabecalho{Lista X}{MACXXXX}
 
 \end{document}
-
