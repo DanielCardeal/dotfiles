@@ -414,12 +414,25 @@ require('lazy').setup({
     --    PARÊNTESIS
     -- ################
     { 'tpope/vim-surround' },
-    { 'windwp/nvim-autopairs',       event = 'InsertEnter', opts = {} },
+    { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
+
+    -- ###############
+    --    WHICH-KEY
+    -- ###############
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {},
+    },
 
     -- #################
     --    COMENTÁRIOS
     -- #################
-    { 'numToStr/Comment.nvim',       event = 'VeryLazy',    opts = {} },
+    { 'numToStr/Comment.nvim',       event = 'VeryLazy', opts = {} },
 
     -- ############
     --     TEMA
@@ -447,6 +460,7 @@ require('lazy').setup({
                 harpoon = true,
                 leap = true,
                 mason = true,
+                which_key = true,
                 indent_blankline = { enabled = true, }
             }
         }
@@ -588,10 +602,9 @@ require('lazy').setup({
         'lervag/vimtex',
         init = function()
             vim.g.vimtex_view_general_viewer = 'evince'
-            vim.g.vimtex_complete_enabled = false
             vim.g.vimtex_fold_enabled = true
             vim.g.vimtex_format_enabled = false
-            vim.g.vimtex_quickfix_mode = 2
+            vim.g.vimtex_quickfix_open_on_warning = false
             vim.g.vimtex_compiler_latexmk = {
                 options = {
                     '-shell-escape',
