@@ -123,22 +123,28 @@ require('lazy').setup({
             { 'jemag/telescope-diff.nvim' },
         },
         keys = {
-            { '<leader><leader>', "<cmd>Telescope git_files<cr>",              'find git file' },
-            { '<leader>ff',       "<cmd>Telescope find_files hidden=true<cr>", 'find file' },
-            { '<leader>fr',       "<cmd>Telescope oldfiles<cr>",               'find recent' },
-            { '<leader>fb',       "<cmd>Telescope buffers<cr>",                'find buffer' },
-            { '<leader>fd', function() require('telescope').extensions.diff.diff_current { hidden = true } end,
-                'diff this file' },
-            { '<leader>fD', function() require('telescope').extensions.diff.diff_files { hidden = true } end,
-                'diff this file' },
-            { '<leader>ss', "<cmd>Telescope current_buffer_fuzzy_find<cr>",  'search buffer' },
-            { '<leader>sp', "<cmd>Telescope live_grep<cr>",                  'search project' },
-            { '<leader>st', "<cmd>TodoTelescope<cr>",                        "search todo's" },
-            { '<leader>ht', "<cmd>Telescope colorscheme<cr>",                'search themes' },
-            { '<leader>hh', "<cmd>Telescope help_tags<cr>",                  'help vim' },
-            { '<leader>hm', "<cmd>Telescope man_pages<cr>",                  'help manpages' },
-            { '<leader>hb', "<cmd>Telescope keymaps<cr>",                    'help keymaps' },
-            { '<leader>zC', '<cmd>Telescope spell_suggest theme=cursor<cr>', 'spell suggest' },
+            { '<leader><leader>', "<cmd>Telescope git_files<cr>",              desc = 'find git file' },
+            { '<leader>ff',       "<cmd>Telescope find_files hidden=true<cr>", desc = 'find file' },
+            { '<leader>fr',       "<cmd>Telescope oldfiles<cr>",               desc = 'find recent' },
+            { '<leader>fb',       "<cmd>Telescope buffers<cr>",                desc = 'find buffer' },
+            {
+                '<leader>fd',
+                function() require('telescope').extensions.diff.diff_current { hidden = true } end,
+                desc = 'diff this file'
+            },
+            {
+                '<leader>fD',
+                function() require('telescope').extensions.diff.diff_files { hidden = true } end,
+                desc = 'diff files'
+            },
+            { '<leader>ss', "<cmd>Telescope current_buffer_fuzzy_find<cr>",  desc = 'search buffer' },
+            { '<leader>sp', "<cmd>Telescope live_grep<cr>",                  desc = 'search project' },
+            { '<leader>st', "<cmd>TodoTelescope<cr>",                        desc = "search todo's" },
+            { '<leader>ht', "<cmd>Telescope colorscheme<cr>",                desc = 'search themes' },
+            { '<leader>hh', "<cmd>Telescope help_tags<cr>",                  desc = 'help vim' },
+            { '<leader>hm', "<cmd>Telescope man_pages<cr>",                  desc = 'help manpages' },
+            { '<leader>hb', "<cmd>Telescope keymaps<cr>",                    desc = 'help keymaps' },
+            { '<leader>zC', '<cmd>Telescope spell_suggest theme=cursor<cr>', desc = 'spell suggest' },
         },
         config = function()
             require('telescope').setup {
@@ -216,7 +222,7 @@ require('lazy').setup({
                     local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
                     local lsp_map = function(mode, lhs, rhs, desc)
-                        vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = 'lsp: ' .. desc })
+                        vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
                     end
 
                     lsp_map({ 'n' }, '<leader>cr', vim.lsp.buf.rename, 'rename')
@@ -368,11 +374,11 @@ require('lazy').setup({
     {
         "folke/trouble.nvim",
         keys = {
-            { '<leader>td', '<cmd>Trouble document_diagnostics<cr>', 'trouble diagnostics' },
-            { '<leader>tD', '<cmd>Trouble lsp_definitions<cr>',      'trouble definitions' },
-            { '<leader>tr', '<cmd>Trouble lsp_references<cr>',       'trouble refs' },
-            { '<leader>tt', '<cmd>TodoTrouble<cr>',                  'trouble TODOs' },
-            { '<leader>tq', '<cmd>Trouble quickfix<cr>',             'trouble qflist' },
+            { '<leader>td', '<cmd>Trouble document_diagnostics<cr>', desc = 'trouble diagnostics' },
+            { '<leader>tD', '<cmd>Trouble lsp_definitions<cr>',      desc = 'trouble definitions' },
+            { '<leader>tr', '<cmd>Trouble lsp_references<cr>',       desc = 'trouble refs' },
+            { '<leader>tt', '<cmd>TodoTrouble<cr>',                  desc = 'trouble TODOs' },
+            { '<leader>tq', '<cmd>Trouble quickfix<cr>',             desc = 'trouble qflist' },
         },
         cmd = 'Trouble',
         opts = {},
@@ -384,7 +390,7 @@ require('lazy').setup({
     {
         'nvim-tree/nvim-tree.lua',
         keys = {
-            { "<leader><tab>", "<cmd>NvimTreeFocus<cr>", 'Focus file explorer' }
+            { "<leader><tab>", "<cmd>NvimTreeFocus<cr>", desc = 'focus file explorer' }
         },
         opts = {
             sync_root_with_cwd = true,
@@ -497,10 +503,10 @@ require('lazy').setup({
         'tpope/vim-fugitive',
         cmd = 'Git',
         keys = {
-            { '<leader>gg', '<cmd>Git<cr>',       "git status" },
-            { '<leader>gl', '<cmd>Git log<cr>',   "git log" },
-            { '<leader>gP', '<cmd>Git push<cr>',  "git push" },
-            { '<leader>gb', '<cmd>Git blame<cr>', "git blame" },
+            { '<leader>gg', '<cmd>Git<cr>',       desc = "git status" },
+            { '<leader>gl', '<cmd>Git log<cr>',   desc = "git log" },
+            { '<leader>gP', '<cmd>Git push<cr>',  desc = "git push" },
+            { '<leader>gb', '<cmd>Git blame<cr>', desc = "git blame" },
         }
     },
 
@@ -511,7 +517,7 @@ require('lazy').setup({
         "folke/zen-mode.nvim",
         cmd = 'ZenMode',
         keys = {
-            { '<leader>Z', "<cmd>ZenMode<cr>", 'zen mode' },
+            { '<leader>Z', "<cmd>ZenMode<cr>", desc = 'zen mode' },
         },
         opts = {},
     },
@@ -522,10 +528,10 @@ require('lazy').setup({
     {
         'ThePrimeagen/harpoon',
         keys = {
-            { "<leader>,", function() require('harpoon.ui').nav_prev() end,          "[Harpoon] Navigate Prev" },
-            { "<leader>.", function() require('harpoon.ui').nav_next() end,          "[Harpoon] Navigate Next" },
-            { "<leader><", function() require('harpoon.mark').add_file() end,        "[Harpoon] Add File" },
-            { "<leader>>", function() require('harpoon.ui').toggle_quick_menu() end, "[Harpoon] Quick Menu" },
+            { "<leader>,", function() require('harpoon.ui').nav_prev() end,          desc = "harpoon prev" },
+            { "<leader>.", function() require('harpoon.ui').nav_next() end,          desc = "harpoon next" },
+            { "<leader><", function() require('harpoon.mark').add_file() end,        desc = "harpoon add" },
+            { "<leader>>", function() require('harpoon.ui').toggle_quick_menu() end, desc = "harpoon menu" },
         }
     },
 
@@ -543,8 +549,8 @@ require('lazy').setup({
         enabled = false,
         ft = 'norg',
         keys = {
-            { '<leader>oo', '<cmd>Neorg workspace<cr>', 'neorg default workspace' },
-            { '<leader>oi', '<cmd>Neorg index<cr>',     'neorg index' },
+            { '<leader>oo', '<cmd>Neorg workspace<cr>', desc = 'neorg default workspace' },
+            { '<leader>oi', '<cmd>Neorg index<cr>',     desc = 'neorg index' },
         },
         config = function()
             NEORG_DIR = '~/Documentos/neorg/'
