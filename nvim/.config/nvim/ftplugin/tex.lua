@@ -1,6 +1,15 @@
 -- Correção de texto automaticamente acionada no LaTeX
 vim.opt_local.spell = true
-vim.opt_local.conceallevel = 0
+
+-- Completion
+require('cmp').setup.buffer {
+    sources = {
+        { name = 'omni',   max_item_count = 5, priority = 9999},
+        { name = 'luasnip' },
+        { name = 'buffer', keyword_length = 5 },
+    },
+}
+
 
 -- ##############
 --    SNIPPETS
