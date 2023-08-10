@@ -182,9 +182,9 @@ require('lazy').setup({
         config = function()
             -- NOTE: extensões do pylsp precisam ser instaladas manualmente
             -- usando o comando PylspInstall:
-            -- >> PylspInstall python-lsp-black pyls-isort pylsp-rope
+            -- >> PylspInstall python-lsp-black pyls-isort pylsp-rope pylsp-mypy
             local lspconfig = require('lspconfig')
-            local default_servers = { 'clangd', 'rust_analyzer', 'pylsp', 'lua_ls', 'texlab', 'ltex' }
+            local default_servers = { 'clangd', 'rust_analyzer', 'pyright', 'lua_ls', 'texlab', 'ltex' }
             require('mason').setup()
             require('mason-lspconfig').setup {
                 ensure_installed = default_servers,
@@ -194,15 +194,15 @@ require('lazy').setup({
             end
 
             -- Específicos de linguagem
-            lspconfig.pylsp.setup {
-                settings = {
-                    pylsp = {
-                        plugins = {
-                            pycodestyle = { maxLineLength = 100 }
-                        }
-                    }
-                }
-            }
+            -- lspconfig.pylsp.setup {
+            --     settings = {
+            --         pylsp = {
+            --             plugins = {
+            --                 pycodestyle = { maxLineLength = 100 }
+            --             }
+            --         }
+            --     }
+            -- }
             lspconfig.ltex.setup {
                 settings = {
                     ltex = {
@@ -245,6 +245,23 @@ require('lazy').setup({
                 end
             })
         end,
+    },
+
+    -- #############
+    --    NV-TERM
+    -- #############
+    {
+        "NvChad/nvterm",
+        keys = {
+            {
+                "<space>ts",
+                function() require('nvterm.terminal').toggle("horizontal") end,
+                desc = 'term toggle horizontal'
+            },
+            { "<space>tv", function() require('nvterm.terminal').toggle("vertical") end, desc = 'term toggle vertical' },
+            { "<space>tf", function() require('nvterm.terminal').toggle("float") end,    desc = 'term toggle float' },
+        },
+        opts = { behavior = { auto_insert = false } },
     },
 
     -- #############
@@ -675,6 +692,8 @@ map({ 'o', 'x' }, 'ah', ':<c-u>Gitsigns select_hunk<cr>', 'text obj: hunk')
 
 vim.keymap.set({ "n" }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set({ "n" }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+vim.keymap.set('t', [[<C-,>]], [[<C-\><C-n>]]) -- <c-,> funciona como esc para sair do terminal
 
 -- ###############
 --    TEMPLATES
