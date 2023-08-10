@@ -1,4 +1,10 @@
 ---@diagnostic disable: lowercase-global
+
+local IS_TABLET = false
+if os.getenv("TERMUX_VERSION") then
+    IS_TABLET = true
+end
+
 -- #####################
 --    SETTINGS GERAIS
 -- #####################
@@ -185,6 +191,9 @@ require('lazy').setup({
             -- >> PylspInstall python-lsp-black pyls-isort pylsp-rope pylsp-mypy
             local lspconfig = require('lspconfig')
             local default_servers = { 'clangd', 'rust_analyzer', 'pyright', 'lua_ls', 'texlab', 'ltex' }
+            if IS_TABLET then
+                default_servers = { 'pyright' }
+            end
             require('mason').setup()
             require('mason-lspconfig').setup {
                 ensure_installed = default_servers,
@@ -473,6 +482,7 @@ require('lazy').setup({
         name = "catppuccin",
         lazy = true,
         opts = {
+            no_italic = IS_TABLET,
             integrations = {
                 fidget = true,
                 harpoon = true,
