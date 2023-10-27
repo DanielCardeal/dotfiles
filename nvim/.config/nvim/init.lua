@@ -671,6 +671,8 @@ lead_nmap('bk', '<cmd>bd<cr>', 'delete buffer')
 
 lead_nmap('w', '\23', 'window')
 
+lead_nmap('q', '<cmd>cclose<cr>', 'close qflist')
+
 lead_nmap('gs', require('gitsigns').stage_hunk, 'stage hunk')
 lead_nmap('gp', require('gitsigns').preview_hunk, 'preview hunk')
 lead_nmap('gr', require('gitsigns').reset_hunk, 'reset hunk')
