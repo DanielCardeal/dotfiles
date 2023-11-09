@@ -278,12 +278,14 @@ require('lazy').setup({
     -- #############
     {
         'jose-elias-alvarez/null-ls.nvim',
-        enabled = false,
         config = function()
             local null_ls = require('null-ls')
             null_ls.setup {
                 debug = true,
                 sources = {
+                    null_ls.builtins.formatting.black,
+                    null_ls.builtins.formatting.isort,
+                    null_ls.builtins.diagnostics.mypy,
                     -- Fish
                     null_ls.builtins.diagnostics.fish,
                     null_ls.builtins.formatting.fish_indent,
@@ -549,8 +551,10 @@ require('lazy').setup({
             { '<leader>gl', '<cmd>Git log<cr>',   desc = "git log" },
             { '<leader>gP', '<cmd>Git push<cr>',  desc = "git push" },
             { '<leader>gb', '<cmd>Git blame<cr>', desc = "git blame" },
+            { '<leader>gm', '<cmd>Gdiff!<cr>',    desc = "git merge file" },
         }
     },
+    { "sindrets/diffview.nvim" },
 
     -- ##############
     --    Zen Mode
