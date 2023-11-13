@@ -461,7 +461,7 @@ require('lazy').setup({
     -- #################
     --    COMENTÁRIOS
     -- #################
-    { 'numToStr/Comment.nvim',       event = 'VeryLazy', opts = {} },
+    { 'tpope/vim-commentary',        event = 'VeryLazy' },
 
     -- ############
     --     TEMA
@@ -487,6 +487,7 @@ require('lazy').setup({
             no_italic = IS_TABLET,
             integrations = {
                 fidget = true,
+                vimwiki = true,
                 harpoon = true,
                 leap = true,
                 mason = true,
@@ -586,38 +587,15 @@ require('lazy').setup({
     -- ################
     { 'rkaminsk/vim-syntax-clingo' },
 
-    -- ###########
-    --    NEORG
-    -- ###########
+    -- #############
+    --    VIM-WIKI
+    -- #############
     {
-        "nvim-neorg/neorg",
-        build = ":Neorg sync-parsers",
-        enabled = false,
-        ft = 'norg',
-        keys = {
-            { '<leader>oo', '<cmd>Neorg workspace<cr>', desc = 'neorg default workspace' },
-            { '<leader>oi', '<cmd>Neorg index<cr>',     desc = 'neorg index' },
-        },
-        config = function()
-            NEORG_DIR = '~/Documentos/neorg/'
-            require("neorg").setup {
-                load = {
-                    ["core.defaults"] = {},
-                    ["core.concealer"] = {},
-                    ['core.completion'] = {
-                        config = { engine = 'nvim-cmp' },
-                    },
-                    ["core.dirman"] = {
-                        config = {
-                            workspaces = {
-                                ic = NEORG_DIR .. "ic/",
-                                faculdade = NEORG_DIR .. "faculdade/",
-                                pessoal = NEORG_DIR .. "pessoal/",
-                            },
-                            default_workspace = 'faculdade',
-                        },
-                    },
-                },
+        'vimwiki/vimwiki',
+        init = function()
+            vim.g.vimwiki_map_prefix = '<leader>o'
+            vim.g.vimwiki_list = {
+                { path = '~/Documentos/vimwiki/wiki/', path_html = '~/Documentos/vimwiki/html/', }
             }
         end,
     },
