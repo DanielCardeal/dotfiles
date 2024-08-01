@@ -27,5 +27,5 @@ local function stop_autocompile(_)
     vim.api.nvim_del_augroup_by_name("MarkdownAutocompile")
 end
 
-lead_nmap("mc", setup_autocompile, "start autocompile", 'markdown')
-lead_nmap("mC", stop_autocompile, "stop autocompile", 'markdown')
+nmap("<leader>mc", setup_autocompile, "start autocompile")
+nmap("<leader>mC", stop_autocompile, "stop autocompile")

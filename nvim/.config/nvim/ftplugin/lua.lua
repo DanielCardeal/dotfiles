@@ -1,6 +1,6 @@
 -- Keymaps
-lead_nmap("ms", "<cmd>so<cr>", "source file", 'lua')
-lead_nmap("mc",
+nmap("<leader>ms", "<cmd>so<cr>", "source file")
+nmap("<leader>mc",
     function()
         require('luasnip').cleanup()
         vim.cmd [[so]]
