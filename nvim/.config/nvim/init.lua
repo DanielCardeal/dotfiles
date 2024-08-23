@@ -4,6 +4,9 @@
 -- ######################
 vim.g.mapleader = " "
 
+vim.g.nani_scratch_bufnr = nil
+vim.g.nani_scratch_height = 7
+
 local set = {
     termguicolors = true,
     background = "dark",
@@ -996,6 +999,38 @@ wk.add({
     { "<leader>Q", "<cmd>cclose<cr>", desc = "close qflist" },
 
     { "<leader>w", proxy = "<c-w>", group = "windows" },
+    {
+        "<leader>x",
+        function()
+            wins = vim.api.nvim_list_wins()
+            if vim.g.nani_scratch_bufnr == nil then
+                vim.g.nani_scratch_bufnr = vim.api.nvim_create_buf(true, true)
+            end
+
+            -- If already focused on the scratch buffer:
+            --   a) close window if there is another window
+            --   b) ignore command if it is the only window
+            if vim.api.nvim_get_current_buf() == vim.g.nani_scratch_bufnr then
+                if #wins > 1 then
+                    vim.api.nvim_win_close(0, false)
+                end
+                return
+            end
+
+            -- Focus scratch if it is already open in another window
+            for _, win in pairs(wins) do
+                if vim.api.nvim_win_get_buf(win) == vim.g.nani_scratch_bufnr then
+                    vim.api.nvim_set_current_win(win)
+                    return
+                end
+            end
+            -- Otherwise, opens a new split and puts the scratch buffer there
+            vim.cmd("split")
+            vim.api.nvim_win_set_height(0, vim.g.nani_scratch_height)
+            vim.api.nvim_win_set_buf(0, vim.g.nani_scratch_bufnr)
+        end,
+        desc = "scratch",
+    },
     { "<leader><leader>", "<cmd>Telescope git_files<cr>", desc = "open file (git)" },
 })
 
