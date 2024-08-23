@@ -1,25 +1,28 @@
 -- Compilação automática usando pandoc
 local function setup_autocompile(_)
-    if not vim.fn.executable('pandoc') then
+    if not vim.fn.executable("pandoc") then
         error("Impossível começar compilação automática: compilador `pandoc` não encontrado.")
     end
 
     vim.api.nvim_create_autocmd("BufWritePost", {
-        pattern = '*.md',
+        pattern = "*.md",
         group = vim.api.nvim_create_augroup("MarkdownAutocompile", { clear = true }),
         callback = function()
             local basename = vim.fn.expand("<afile>:p:r")
-            local cur_file = basename .. '.md'
-            local out_file = basename .. '.pdf'
+            local cur_file = basename .. ".md"
+            local out_file = basename .. ".pdf"
             vim.fn.jobstart({
                 "pandoc",
-                "-f", "markdown-implicit_figures",
-                "-V", "colorlinks=true",
+                "-f",
+                "markdown-implicit_figures",
+                "-V",
+                "colorlinks=true",
                 "--listings",
-                "-o", out_file,
+                "-o",
+                out_file,
                 cur_file,
             })
-        end
+        end,
     })
 end
 
@@ -27,5 +30,15 @@ local function stop_autocompile(_)
     vim.api.nvim_del_augroup_by_name("MarkdownAutocompile")
 end
 
-nmap("<leader>mc", setup_autocompile, "start autocompile")
-nmap("<leader>mC", stop_autocompile, "stop autocompile")
+local wk = require("which-key")
+wk.add({
+    {
+        buffer = true,
+        { "<leader>mc", setup_autocompile, desc = "start autocompile" },
+        {
+            "<leader>mC",
+            stop_autocompile,
+            desc = "stop autocompile",
+        },
+    },
+})

@@ -70,19 +70,6 @@ for k, v in pairs(set) do
     vim.opt[k] = v
 end
 
--- Wrapper around vim.keymap.set
-function map(mode, lhs, rhs, desc, ft)
-    if ft then
-        desc = ft .. ": " .. desc
-    end
-    vim.keymap.set(mode, lhs, rhs, { desc = desc })
-end
-
--- Binds a normal mode keymap
-function nmap(lhs, rhs, desc, ft)
-    return map("n", lhs, rhs, desc, ft)
-end
-
 -- ###############
 --    BOOTSTRAP
 -- ###############
@@ -903,7 +890,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --    KEYMAPS
 -- #############
 local wk = require("which-key")
-
 wk.add({
     { "<leader>c", group = "code" },
     {
@@ -995,10 +981,16 @@ wk.add({
         { "]h", require("gitsigns").next_hunk, desc = "hunk" },
     },
 
-    { "<leader>q", "<cmd>copen<cr>", desc = "open qflist" },
-    { "<leader>Q", "<cmd>cclose<cr>", desc = "close qflist" },
+    {
+        "<leader>q",
+        function()
+            vim.api.nvim_win_close(0, false)
+        end,
+        desc = "close window",
+    },
+    { "<leader>Q", "<cmd>copen<cr>", desc = "focus qflist" },
 
-    { "<leader>w", proxy = "<c-w>", group = "windows" },
+    { "<leader>w", "<c-w>", group = "windows", hidden = true },
     {
         "<leader>x",
         function()
@@ -1032,19 +1024,25 @@ wk.add({
         desc = "scratch",
     },
     { "<leader><leader>", "<cmd>Telescope git_files<cr>", desc = "open file (git)" },
+
+    -- Use <c-k>/<c-j> to move up/down in command history
+    {
+        mode = "c",
+        { "<c-k>", "<up>", desc = "prev. command" },
+        { "<c-j>", "<down>", desc = "next command" },
+    },
+
+    -- Add some quality of life text-objects:
+    --  g --> buffer
+    --  h --> hunk
+    {
+        mode = { "o", "x" },
+        { "ig", ":<c-u>normal! ggVG<cr>", desc = "text obj: buffer" },
+        { "ag", ":<c-u>normal! ggVG<cr>", desc = "text obj: buffer" },
+        { "ih", ":<c-u>Gitsigns select_hunk<cr>", desc = "text obj: hunk" },
+        { "ah", ":<c-u>Gitsigns select_hunk<cr>", desc = "text obj: hunk" },
+    },
 })
-
--- Use <c-k>/<c-j> to move up/down in command history
-map({ "c" }, "<c-k>", "<up>", "down")
-map({ "c" }, "<c-j>", "<down>", "up")
-
--- Add some quality of life text-objects:
---  g --> buffer
---  h --> hunk
-map({ "o", "x" }, "ig", ":<c-u>normal! ggVG<cr>", "text obj: buffer")
-map({ "o", "x" }, "ag", ":<c-u>normal! ggVG<cr>", "text obj: buffer")
-map({ "o", "x" }, "ih", ":<c-u>Gitsigns select_hunk<cr>", "text obj: hunk")
-map({ "o", "x" }, "ah", ":<c-u>Gitsigns select_hunk<cr>", "text obj: hunk")
 
 -- Use gj and gk in place of the normal j k movements.
 vim.keymap.set({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
