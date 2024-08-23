@@ -737,7 +737,12 @@ require("lazy").setup({
     -- #################
     --    COLORSCHEME
     -- #################
-    { "rebelot/kanagawa.nvim" },
+    {
+        "rebelot/kanagawa.nvim",
+        opts = {
+            compile = true,
+        },
+    },
 
     -- ################
     --    StatusLine
