@@ -89,347 +89,11 @@ vim.opt.rtp:prepend(lazypath)
 -- #############
 --    PLUGINS
 -- #############
-require('lazy').setup({
-    -- ###################
-    --    DEPENDÊNCIAS
-    -- ###################
-    { 'nvim-tree/nvim-web-devicons', opts = {},  priority = 2000 },
-    { 'nvim-lua/plenary.nvim',       lazy = true },
-
-    -- ###############
-    --    TELESCOPE
-    -- ###############
-    {
-        'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
-        cmd = 'Telescope',
-        dependencies = {
-            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', },
-            { 'jemag/telescope-diff.nvim' },
-        },
-        keys = {
-            { '<leader><leader>', "<cmd>Telescope git_files<cr>",              desc = 'find git file' },
-            { '<leader>ff',       "<cmd>Telescope find_files hidden=true<cr>", desc = 'find file' },
-            { '<leader>fr',       "<cmd>Telescope oldfiles<cr>",               desc = 'find recent' },
-            { '<leader>fb',       "<cmd>Telescope buffers<cr>",                desc = 'find buffer' },
-            {
-                '<leader>fd',
-                function() require('telescope').extensions.diff.diff_current { hidden = true } end,
-                desc = 'diff this file'
-            },
-            {
-                '<leader>fD',
-                function() require('telescope').extensions.diff.diff_files { hidden = true } end,
-                desc = 'diff files'
-            },
-            { '<leader>ss', "<cmd>Telescope current_buffer_fuzzy_find<cr>",  desc = 'search buffer' },
-            { '<leader>sp', "<cmd>Telescope live_grep<cr>",                  desc = 'search project' },
-            { '<leader>st', "<cmd>TodoTelescope<cr>",                        desc = "search todo's" },
-            { '<leader>ht', "<cmd>Telescope colorscheme<cr>",                desc = 'search themes' },
-            { '<leader>hh', "<cmd>Telescope help_tags<cr>",                  desc = 'help vim' },
-            { '<leader>hm', "<cmd>Telescope man_pages<cr>",                  desc = 'help manpages' },
-            { '<leader>hb', "<cmd>Telescope keymaps<cr>",                    desc = 'help keymaps' },
-            { '<leader>zC', '<cmd>Telescope spell_suggest theme=cursor<cr>', desc = 'spell suggest' },
-        },
-        config = function()
-            require('telescope').setup {
-                defaults = {
-                    prompt_prefix = "  ",
-                    vimgrep_arguments = {
-                        'rg',
-                        '--color=never',
-                        '--no-heading',
-                        '--with-filename',
-                        '--line-number',
-                        '--column',
-                        '--smart-case',
-                        '--hidden', -- busca em dirs ocultos
-                    }
-                },
-            }
-            require('telescope').load_extension('fzf')
-            require('telescope').load_extension('diff')
-        end,
-    },
-
-    -- #########
-    --    LSP
-    -- #########
-    {
-        'neovim/nvim-lspconfig',
-        dependencies = {
-            -- Instalação automática de language servers
-            { 'williamboman/mason.nvim', build = ':MasonUpdate' },
-            'williamboman/mason-lspconfig.nvim',
-            -- UI
-            { 'j-hui/fidget.nvim',       enabled = false,       tag = 'legacy', event = 'VeryLazy', opts = {} },
-        },
-        config = function()
-            -- NOTE: extensões do pylsp precisam ser instaladas manualmente
-            -- usando o comando PylspInstall:
-            -- >> PylspInstall python-lsp-black pyls-isort pylsp-rope pylsp-mypy
-            local lspconfig = require('lspconfig')
-            local default_servers = { 'clangd', 'rust_analyzer', 'pyright', 'lua_ls', 'texlab', 'ltex' }
-            if IS_TABLET then
-                default_servers = { 'pyright' }
-            end
-            require('mason').setup()
-            require('mason-lspconfig').setup {
-                ensure_installed = default_servers,
-            }
-            for _, lsp in ipairs(default_servers) do
-                lspconfig[lsp].setup {}
-            end
-
-            -- Específicos de linguagem
-            -- lspconfig.pylsp.setup {
-            --     settings = {
-            --         pylsp = {
-            --             plugins = {
-            --                 pycodestyle = { maxLineLength = 100 }
-            --             }
-            --         }
-            --     }
-            -- }
-            lspconfig.ltex.setup {
-                settings = {
-                    ltex = {
-                        language = 'pt-BR',
-                    }
-                }
-            }
-
-            -- On attach
-            vim.api.nvim_create_autocmd('LspAttach', {
-                group = vim.api.nvim_create_augroup('NaniLspConfig', { clear = true }),
-                callback = function(ev)
-                    if not (ev.data and ev.data.client_id) then
-                        return
-                    end
-                    local bufnr = ev.buf
-                    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
-                    local lsp_map = function(mode, lhs, rhs, desc)
-                        vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
-                    end
-
-                    lsp_map({ 'n' }, '<leader>cr', vim.lsp.buf.rename, 'rename')
-                    lsp_map({ 'n' }, '<leader>ca', vim.lsp.buf.code_action, 'code action')
-                    lsp_map({ 'n' }, '<leader>si', "<cmd>Telescope lsp_document_symbols<cr>", 'doc. symbols')
-
-                    lsp_map({ 'n' }, 'gd', vim.lsp.buf.definition, 'goto definition')
-                    lsp_map({ 'n' }, 'gD', vim.lsp.buf.declaration, 'goto declaration')
-                    lsp_map({ 'n' }, 'gr', vim.lsp.buf.references, 'qflist references')
-                    lsp_map({ 'n' }, 'gI', vim.lsp.buf.implementation, 'qflist implementations')
-
-                    lsp_map({ 'n' }, 'K', vim.lsp.buf.hover, 'documentation')
-                    lsp_map({ 'i' }, '<c-h>', vim.lsp.buf.signature_help, 'function signature')
-
-                    lsp_map({ 'n' }, ']e', vim.diagnostic.goto_next, "next error")
-                    lsp_map({ 'n' }, '[e', vim.diagnostic.goto_prev, "previous error")
-                    lsp_map({ 'n' }, "<leader>e", vim.diagnostic.open_float, "show error")
-
-                    lsp_map({ 'n', 'v' }, '<leader>cf', vim.lsp.buf.format, 'code format')
-                end
-            })
-        end,
-    },
-
-    -- #############
-    --    NV-TERM
-    -- #############
-    {
-        "NvChad/nvterm",
-        keys = {
-            {
-                "<space>ts",
-                function() require('nvterm.terminal').toggle("horizontal") end,
-                desc = 'term toggle horizontal'
-            },
-            { "<space>tv", function() require('nvterm.terminal').toggle("vertical") end, desc = 'term toggle vertical' },
-            { "<space>tf", function() require('nvterm.terminal').toggle("float") end,    desc = 'term toggle float' },
-        },
-        opts = { behavior = { auto_insert = false } },
-    },
-
-    -- #############
-    --    NULL-LS
-    -- #############
-    {
-        'jose-elias-alvarez/null-ls.nvim',
-        config = function()
-            local null_ls = require('null-ls')
-            null_ls.setup {
-                debug = true,
-                sources = {
-                    null_ls.builtins.formatting.black,
-                    null_ls.builtins.formatting.isort,
-                    null_ls.builtins.diagnostics.mypy,
-                    -- Fish
-                    null_ls.builtins.diagnostics.fish,
-                    null_ls.builtins.formatting.fish_indent,
-                    -- Bash
-                    null_ls.builtins.formatting.shfmt,
-                }
-            }
-        end,
-    },
-
-    -- ################
-    --    TREESITTER
-    -- ################
-    {
-        'nvim-treesitter/nvim-treesitter',
-        build = ":TSUpdate",
-        config = function()
-            require('nvim-treesitter.configs').setup {
-                ensure_installed = { 'lua', 'markdown', 'python', 'vimdoc', 'org', },
-                highlight = { enable = true, additional_vim_regex_highlighting = { 'org' } },
-                textobjects = {
-                    select = {
-                        enable = true,
-                        lookahead = true,
-                        keymaps = {
-                            ['aa'] = '@parameter.outer',
-                            ['ia'] = '@parameter.inner',
-                            ['af'] = '@function.outer',
-                            ['if'] = '@function.inner',
-                            ['ac'] = '@comment.outer',
-                            ['ic'] = '@comment.outer',
-                        },
-                    },
-                },
-            }
-        end
-    },
-    {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        after = 'nvim-treesitter',
-    },
-
-    -- #################
-    --   AUTOCOMPLETE
-    -- #################
-    {
-        'hrsh7th/nvim-cmp',
-        event = 'InsertEnter',
-        dependencies = {
-            -- UI
-            'onsails/lspkind.nvim',
-            -- Sources
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-nvim-lua',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-omni',
-            'saadparwaiz1/cmp_luasnip',
-            -- Snippets
-            { 'L3MON4D3/LuaSnip', version = 'v1.*', build = 'make install_jsregexp' },
-            'rafamadriz/friendly-snippets',
-        },
-        config = function()
-            local cmp = require('cmp')
-            local luasnip = require('luasnip')
-            local lspkind = require('lspkind')
-
-            cmp.setup({
-                snippet = {
-                    expand = function(args)
-                        luasnip.lsp_expand(args.body)
-                    end,
-                },
-                mapping = cmp.mapping.preset.insert {
-                    ['<c-space>'] = cmp.mapping.confirm { select = true },
-                    -- mappings luasnip
-                },
-                sources = {
-                    { name = 'nvim_lsp' },
-                    { name = 'nvim_lua' },
-                    -- { name = 'neorg' },
-                    { name = 'luasnip' },
-                    { name = 'path' },
-                    { name = 'buffer',  keyword_length = 5 },
-                },
-                formatting = {
-                    format = lspkind.cmp_format({
-                        with_text = true,
-                    })
-                },
-                -- window = {
-                --     completion = cmp.config.window.bordered(),
-                --     documentation = cmp.config.window.bordered(),
-                -- },
-            })
-            map({ 'i', 's' }, '<c-j>', function() if luasnip.jumpable(1) then luasnip.jump(1) end end)
-            map({ 'i', 's' }, '<c-k>', function() if luasnip.jumpable(-1) then luasnip.jump(-1) end end)
-            map({ 'i', 's' }, '<c-l>', function() if luasnip.choice_active() then luasnip.change_choice(1) end end)
-            require("luasnip.loaders.from_vscode").load()
-            -- Integração autopairs
-            cmp.event:on('confirm_done',
-                require('nvim-autopairs.completion.cmp').on_confirm_done({ map_char = { tex = '' } }))
-        end,
-    },
-
-    -- ########
-    --    UI
-    -- ########
-    { 'stevearc/dressing.nvim',    event = 'VeryLazy', opts = {}, },
-    { 'NvChad/nvim-colorizer.lua', event = 'VeryLazy', opts = {} },
-
-    -- #############
-    --    TROUBLE
-    -- #############
-    {
-        "folke/trouble.nvim",
-        keys = {
-            { '<leader>td', '<cmd>Trouble document_diagnostics<cr>', desc = 'trouble diagnostics' },
-            { '<leader>tD', '<cmd>Trouble lsp_definitions<cr>',      desc = 'trouble definitions' },
-            { '<leader>tr', '<cmd>Trouble lsp_references<cr>',       desc = 'trouble refs' },
-            { '<leader>tt', '<cmd>TodoTrouble<cr>',                  desc = 'trouble TODOs' },
-            { '<leader>tq', '<cmd>Trouble quickfix<cr>',             desc = 'trouble qflist' },
-        },
-        cmd = 'Trouble',
-        opts = {},
-    },
-
-    -- ###############
-    --    NVIM TREE
-    -- ###############
-    {
-        'nvim-tree/nvim-tree.lua',
-        keys = {
-            { "<leader><tab>", "<cmd>NvimTreeFocus<cr>", desc = 'focus file explorer' }
-        },
-        opts = {
-            sync_root_with_cwd = true,
-            renderer = {
-                group_empty = true
-            },
-        },
-    },
-
-    -- ##########
-    --    LEAP
-    -- ##########
-    {
-        'ggandor/leap.nvim',
-        config = function()
-            require('leap').add_default_mappings()
-        end
-    },
-
-    -- ################
-    --    PARÊNTESIS
-    -- ################
-    { 'tpope/vim-surround' },
-    { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
-=======
 require("lazy").setup({
     -- ###########
     --    ICONS
     -- ###########
     { "nvim-tree/nvim-web-devicons" },
->>>>>>> d1ddfa9 (nvim: arruma config do neovim para v0.9.4)
 
     -- ###############
     --    WHICH-KEY
@@ -473,21 +137,6 @@ require("lazy").setup({
     --    TELESCOPE
     -- ###############
     {
-<<<<<<< HEAD
-        "catppuccin/nvim",
-        name = "catppuccin",
-        lazy = true,
-        opts = {
-            no_italic = IS_TABLET,
-            integrations = {
-                fidget = true,
-                vimwiki = true,
-                harpoon = true,
-                leap = true,
-                mason = true,
-                which_key = true,
-                indent_blankline = { enabled = true, }
-=======
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         dependencies = {
@@ -534,7 +183,6 @@ require("lazy").setup({
                 "lua_ls",
                 "gopls",
                 "texlab",
->>>>>>> d1ddfa9 (nvim: arruma config do neovim para v0.9.4)
             }
             require("mason").setup()
             require("mason-lspconfig").setup({ ensure_installed = servers })
@@ -804,39 +452,7 @@ require("lazy").setup({
     -- #############
     --    HARPOON
     -- #############
-    {
-        "ThePrimeagen/harpoon",
-        keys = {
-            {
-                "<leader>,",
-                function()
-                    require("harpoon.ui").nav_prev()
-                end,
-                desc = "harpoon prev",
-            },
-            {
-                "<leader>.",
-                function()
-                    require("harpoon.ui").nav_next()
-                end,
-                desc = "harpoon next",
-            },
-            {
-                "<leader>>",
-                function()
-                    require("harpoon.mark").add_file()
-                end,
-                desc = "harpoon add",
-            },
-            {
-                "<leader><",
-                function()
-                    require("harpoon.ui").toggle_quick_menu()
-                end,
-                desc = "harpoon menu",
-            },
-        },
-    },
+    { "ThePrimeagen/harpoon" },
 
     -- ################
     --    CLINGO ASP
@@ -1024,6 +640,36 @@ wk.add({
         desc = "scratch",
     },
     { "<leader><leader>", "<cmd>Telescope git_files<cr>", desc = "open file (git)" },
+
+    -- Harpoon
+    {
+        "<leader>,",
+        function()
+            require("harpoon.ui").nav_prev()
+        end,
+        desc = "harpoon prev",
+    },
+    {
+        "<leader>.",
+        function()
+            require("harpoon.ui").nav_next()
+        end,
+        desc = "harpoon next",
+    },
+    {
+        "<leader><",
+        function()
+            require("harpoon.mark").add_file()
+        end,
+        desc = "harpoon add",
+    },
+    {
+        "<leader>>",
+        function()
+            require("harpoon.ui").toggle_quick_menu()
+        end,
+        desc = "harpoon menu",
+    },
 
     -- Use <c-k>/<c-j> to move up/down in command history
     {
