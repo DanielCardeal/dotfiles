@@ -4,7 +4,12 @@ wk.add({
     {
         buffer = true,
         {
-            { "<leader>ms", "<cmd>so<cr>", desc = "source file" },
+            { "<leader>m", group = "lua" },
+            {
+                "<leader>mr",
+                "<cmd>source<cr>",
+                desc = "run",
+            },
             {
                 "<leader>mc",
                 function()

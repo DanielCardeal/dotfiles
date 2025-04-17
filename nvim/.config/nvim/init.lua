@@ -96,6 +96,21 @@ require("lazy").setup({
     { "nvim-tree/nvim-web-devicons" },
 
     -- ###############
+    --   COMMENTARY
+    -- ###############
+    { "tpope/vim-commentary" },
+
+    -- ################
+    --    DELIMITERS
+    -- ################
+    { "tpope/vim-surround" },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    },
+
+    -- ###############
     --    WHICH-KEY
     -- ###############
     {
@@ -123,13 +138,6 @@ require("lazy").setup({
 
             -- Common text objects
             require("mini.ai").setup()
-
-            -- vim-commentary alternative
-            require("mini.comment").setup()
-
-            -- Better delimiter experiences
-            require("mini.pairs").setup()
-            require("mini.surround").setup()
         end,
     },
 
@@ -141,7 +149,6 @@ require("lazy").setup({
         branch = "0.1.x",
         dependencies = {
             { "nvim-lua/plenary.nvim", lazy = true },
-            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
             { "jemag/telescope-diff.nvim" },
         },
         config = function()
@@ -160,7 +167,6 @@ require("lazy").setup({
                     live_grep = { additional_args = { "--hidden" } },
                 },
             })
-            require("telescope").load_extension("fzf")
             require("telescope").load_extension("diff")
         end,
     },
@@ -263,7 +269,6 @@ require("lazy").setup({
                     "vim",
                     "vimdoc",
                 },
-                auto_install = true,
                 indent = { enable = true },
                 highlight = {
                     enable = true,
@@ -376,10 +381,12 @@ require("lazy").setup({
     --    COLORSCHEME
     -- #################
     {
-        "rebelot/kanagawa.nvim",
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
         opts = {
-            compile = true,
-        },
+            flavour = "mocha",
+        }
     },
 
     -- ################
@@ -394,14 +401,15 @@ require("lazy").setup({
             },
             sections = {
                 lualine_a = { "mode" },
-                lualine_b = { "filename" },
+                lualine_b = {
+                    {
+                        "filename",
+                        path = 1,
+                    }
+                },
                 lualine_c = {
                     "branch",
-                    {
-                        "diff",
-                        symbols = { added = " ", modified = " ", removed = " " },
-                        padding = { left = 2, right = 1 },
-                    },
+                    "diff",
                 },
                 lualine_x = {
                     {
@@ -416,6 +424,22 @@ require("lazy").setup({
                 },
                 lualine_y = { "filetype" },
                 lualine_z = { "location" },
+            },
+            winbar = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = { "filename" },
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = {},
+            },
+            inactive_winbar = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = { "filename" },
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = {},
             },
         },
     },
@@ -437,27 +461,23 @@ require("lazy").setup({
     },
     { "sindrets/diffview.nvim" },
 
-    -- ###############
-    --    FLIT/LEAP
-    -- ###############
+    -- ###########
+    --    SNEAK
+    -- ###########
     {
-        "ggandor/leap.nvim",
-        keys = {
-            { "gs", "<Plug>(leap-forward)", mode = { "n", "x", "o" }, desc = "Leap forward" },
-            { "gS", "<Plug>(leap-backward)", mode = { "n", "x", "o" }, desc = "Leap backward" },
-        },
+        "justinmk/vim-sneak",
+        init = function()
+            vim.keymap.set({ "n" }, "f", "<Plug>Sneak_f")
+            vim.keymap.set({ "n" }, "F", "<Plug>Sneak_F")
+            vim.keymap.set({ "n" }, "t", "<Plug>Sneak_t")
+            vim.keymap.set({ "n" }, "T", "<Plug>Sneak_T")
+        end,
     },
-    { "ggandor/flit.nvim", dependencies = "ggandor/leap.nvim", opts = {} },
 
     -- #############
     --    HARPOON
     -- #############
     { "ThePrimeagen/harpoon" },
-
-    -- ################
-    --    CLINGO ASP
-    -- ################
-    { "rkaminsk/vim-syntax-clingo" },
 
     -- ###########
     --    KITTY
@@ -490,8 +510,8 @@ require("lazy").setup({
 -- #################
 --    COLORSCHEME
 -- #################
-local current_theme = "kanagawa"
-vim.cmd.colorscheme(current_theme)
+local default_colorscheme = "catppuccin"
+vim.cmd.colorscheme(default_colorscheme)
 
 -- Faz sintax highlight em texto copiado
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -508,14 +528,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 local wk = require("which-key")
 wk.add({
     { "<leader>c", group = "code" },
-    {
-        "<leader>cf",
-        function()
-            require("conform").format({ async = true, lsp_fallback = true })
-        end,
-        desc = "code format",
-    },
-
     { "<leader>f", group = "file" },
     {
         mode = { "n", "v" },
@@ -550,6 +562,11 @@ wk.add({
         { "<leader>gR", require("gitsigns").reset_buffer, desc = "git reset buffer" },
         { "<leader>gf", "<cmd>diffget //2<cr>", desc = "diffget left" },
         { "<leader>gj", "<cmd>diffget //3<cr>", desc = "diffget right" },
+        { "<leader>gg", "<cmd>Git<cr>", desc = "git status" },
+        { "<leader>gl", "<cmd>Git log<cr>", desc = "git log" },
+        { "<leader>gP", "<cmd>Git push<cr>", desc = "git push" },
+        { "<leader>gb", "<cmd>Git blame<cr>", desc = "git blame" },
+        { "<leader>gm", "<cmd>Gdiffsplit!<cr>", desc = "git merge file" },
     },
 
     { "<leader>h", group = "help" },
@@ -569,6 +586,8 @@ wk.add({
         { "<leader>sp", "<cmd>Telescope live_grep<cr>", desc = "search in project" },
         { "<leader>st", "<cmd>Telescope colorscheme<cr>", desc = "switch themes" },
     },
+
+    { "<leader>u", vim.cmd.UndotreeToggle },
 
     { "<leader>z", group = "spell" },
     {
@@ -682,6 +701,10 @@ wk.add({
         { "ah", ":<c-u>Gitsigns select_hunk<cr>", desc = "text obj: hunk" },
     },
 })
+
+-- Use jk to move up/down in command history
+vim.keymap.set("i", "jk", "<esc>", { silent = true })
+vim.keymap.set("i", "kj", "<esc>", { silent = true })
 
 -- Use <c-k>/<c-j> to move up/down in command history
 vim.keymap.set({ "c" }, "<c-k>", "<up>", { desc = "prev. command" })
