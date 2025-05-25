@@ -22,7 +22,7 @@ local set = {
     inccommand = "split",
 
     scrolloff = 5,
-    clipboard = { "unnamed", "unnamedplus" },
+    clipboard = { "unnamed" },
 
     wrap = true,
     breakindent = true,
