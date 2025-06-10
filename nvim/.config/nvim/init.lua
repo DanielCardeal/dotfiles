@@ -95,11 +95,6 @@ require("lazy").setup({
     -- ###########
     { "nvim-tree/nvim-web-devicons" },
 
-    -- ###############
-    --   COMMENTARY
-    -- ###############
-    { "tpope/vim-commentary" },
-
     -- ################
     --    DELIMITERS
     -- ################
@@ -130,14 +125,12 @@ require("lazy").setup({
         "echasnovski/mini.nvim",
         version = false, -- use latest version
         config = function()
-            -- Show indentation scope
-            require("mini.indentscope").setup()
-
             -- Move selections
             require("mini.move").setup()
-
-            -- Common text objects
-            require("mini.ai").setup()
+            -- File tree
+            require("mini.files").setup()
+            -- Statusline
+            require("mini.statusline").setup()
         end,
     },
 
@@ -227,23 +220,6 @@ require("lazy").setup({
                 end,
             })
         end,
-    },
-
-    -- ################
-    --    FORMATTING
-    -- ################
-    {
-        "stevearc/conform.nvim",
-        branch = "nvim-0.9",
-        opts = {
-            notify_on_error = false,
-            format_on_save = false,
-            formatters_by_ft = {
-                lua = { "stylua" },
-                go = { "gofmt" },
-                markdown = { "prettier" },
-            },
-        },
     },
 
     -- ################
@@ -361,22 +337,6 @@ require("lazy").setup({
         end,
     },
 
-    -- ###############
-    --    NVIM TREE
-    -- ###############
-    {
-        "nvim-tree/nvim-tree.lua",
-        keys = {
-            { "<leader><tab>", "<cmd>NvimTreeFocus<cr>", desc = "focus file explorer" },
-        },
-        opts = {
-            sync_root_with_cwd = true,
-            renderer = {
-                group_empty = true,
-            },
-        },
-    },
-
     -- #################
     --    COLORSCHEME
     -- #################
@@ -387,61 +347,6 @@ require("lazy").setup({
         opts = {
             flavour = "mocha",
         }
-    },
-
-    -- ################
-    --    StatusLine
-    -- ################
-    {
-        "nvim-lualine/lualine.nvim",
-        opts = {
-            options = {
-                section_separators = { left = "", right = "" },
-                component_separators = { left = "", right = "" },
-            },
-            sections = {
-                lualine_a = { "mode" },
-                lualine_b = {
-                    {
-                        "filename",
-                        path = 1,
-                    }
-                },
-                lualine_c = {
-                    "branch",
-                    "diff",
-                },
-                lualine_x = {
-                    {
-                        "diagnostics",
-                        symbols = {
-                            error = " ",
-                            warn = " ",
-                            info = " ",
-                            hint = " ",
-                        },
-                    },
-                },
-                lualine_y = { "filetype" },
-                lualine_z = { "location" },
-            },
-            winbar = {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = { "filename" },
-                lualine_x = {},
-                lualine_y = {},
-                lualine_z = {},
-            },
-            inactive_winbar = {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = { "filename" },
-                lualine_x = {},
-                lualine_y = {},
-                lualine_z = {},
-            },
-        },
     },
 
     -- #########
@@ -599,6 +504,8 @@ wk.add({
     },
     { "<leader>zc", "1z=", desc = "correct default" },
     { "<leader>za", "zg", desc = "spell add" },
+
+    { "<leader><tab>", function() MiniFiles.open() end, desc = "focus file explorer" },
 
     { "[", group = "previous" },
     {
