@@ -149,7 +149,7 @@ require("lazy").setup({
             local actions = require("telescope.actions")
             telescope.setup({
                 defaults = {
-                    prompt_prefix = "  ",
+                    prompt_prefix = " 🔎 ",
                     mappings = {
                         n = { ["<c-q>"] = actions.smart_send_to_qflist + actions.open_qflist },
                         i = { ["<c-q>"] = actions.smart_send_to_qflist + actions.open_qflist },
