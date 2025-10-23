@@ -4,6 +4,8 @@ vim.g.mapleader = " "
 vim.g.nani_scratch_bufnr = nil
 vim.g.nani_scratch_height = 7
 
+vim.cmd.colorscheme("default")
+
 local set = {
     termguicolors = true,
     background = "dark",
@@ -18,6 +20,7 @@ local set = {
     smartcase = true,
     incsearch = true,
     inccommand = "split",
+    colorcolumn = "80",
 
     scrolloff = 5,
 
@@ -101,13 +104,33 @@ require("lazy").setup({
     },
 
     {
+        "folke/zen-mode.nvim",
+        keys = {
+            {
+                "<leader>cz",
+                "<cmd>ZenMode<cr>",
+                mode = "n",
+                desc = "Toggle Zen",
+            },
+        },
+        opts = {},
+    },
+
+    {
         "echasnovski/mini.nvim",
         version = false,
         config = function()
+            require("mini.starter").setup()
             require("mini.comment").setup()
+
+            require("mini.files").setup({})
+            vim.keymap.set({ "n" }, "<leader><tab>", MiniFiles.open, { desc = "File explorer" })
+
             require("mini.cursorword").setup({
-                delay = 500 --[[ ms ]],
+                delay = 1000 --[[ ms ]],
             })
+            vim.api.nvim_set_hl(0, "MiniCursorwordCurrent", { link = "Visual" })
+            vim.api.nvim_set_hl(0, "MiniCursorword", { link = "MiniCursorwordCurrent" })
 
             local statusline = require("mini.statusline")
             statusline.section_location = function()
@@ -257,7 +280,7 @@ require("lazy").setup({
         opts = {
             formatters_by_ft = {
                 lua = { "stylua" },
-                golang = { "gofmt" },
+                go = { "goimports", "gofmt" },
             },
         },
     },
@@ -348,11 +371,20 @@ require("lazy").setup({
     },
 
     { "ThePrimeagen/harpoon" },
+
+    {
+        "fatih/vim-go",
+        init = function ()
+            vim.g.go_fmt_autosave = 0
+            vim.g.go_imports_autosave = 0
+            vim.g.go_code_completion_enabled = 0
+            vim.g.go_doc_popup_window = 1
+        end,
+        ft = "go",
+    },
+
     { "fladson/vim-kitty" },
 })
-
--- Colorscheme
-vim.cmd.colorscheme("default")
 
 -- "pisca" quando copia o texto
 vim.api.nvim_create_autocmd("TextYankPost", {
